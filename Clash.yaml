@@ -197,18 +197,14 @@ dns:
       - +.googleapis.com
       - +.gvt1.com
 proxies:
-  - {name: 🇨🇳 CN 1 → anjue, server: 116.129.254.29, port: 3383, type: trojan, password: faf42aa0a9ad4c1e, sni: 116.129.254.29, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 2 → anjue, server: 116.129.253.191, port: 3383, type: trojan, password: 182228812d1e0f23, sni: 116.129.253.191, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 3 → anjue, server: 116.129.253.134, port: 3383, type: trojan, password: 6222266fcd4ed224, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 4 → anjue, server: 116.129.253.191, port: 3383, type: trojan, password: faf42aa0a9ad4c1e, sni: 116.129.253.191, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 5 → anjue, server: 116.129.253.134, port: 3383, type: trojan, password: 182228812d1e0f23, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 6 → anjue, server: 116.129.254.29, port: 3383, type: trojan, password: 182228812d1e0f23, sni: 116.129.254.29, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 7 → anjue, server: 116.129.253.134, port: 3384, type: trojan, password: d4e41ff772c7fd45, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 8 → anjue, server: 223.111.122.199, port: 38080, type: vmess, uuid: 6248895b-4255-4f07-9479-d198bc1eb8db, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /guolicheng/fr, headers: {Host: i0.hdslb.com}}, udp: true}
+  - {name: 🇨🇳 CN 1 → anjue, server: 116.129.253.134, port: 3383, type: trojan, password: 6222266fcd4ed224, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 2 → anjue, server: 116.129.253.134, port: 3383, type: trojan, password: 182228812d1e0f23, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 3 → anjue, server: 116.129.254.29, port: 3383, type: trojan, password: 182228812d1e0f23, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 4 → anjue, server: 223.111.122.199, port: 38080, type: vmess, uuid: 6248895b-4255-4f07-9479-d198bc1eb8db, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /guolicheng/fr, headers: {Host: i0.hdslb.com}}, udp: true}
+  - {name: 🇨🇳 CN 5 → anjue, server: 116.129.253.191, port: 3383, type: trojan, password: 182228812d1e0f23, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 6 → anjue, server: 221.181.185.171, port: 16302, type: vmess, uuid: f1d39fe1-bfa3-34ff-86a2-29250af03183, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 7 → anjue, server: 221.181.185.171, port: 16255, type: vmess, uuid: f1d39fe1-bfa3-34ff-86a2-29250af03183, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: 🇨🇳 TW 1 → anjue, server: download1tw.windowsupdate.lol, port: 443, type: trojan, password: 6248895b-4255-4f07-9479-d198bc1eb8db, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 TW 2 → anjue, server: download2tw.windowsupdate.lol, port: 443, type: trojan, password: 6248895b-4255-4f07-9479-d198bc1eb8db, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 TW 3 → anjue, server: 60.249.3.125, port: 3389, type: trojan, password: 182228812d1e0f23, skip-cert-verify: true, udp: true}
-  - {name: 🇸🇬 SG 1 → anjue, server: agroup.node3.t.nodelist-gfwairport.download, port: 50001, type: trojan, password: 8d1834c9-4e23-47e3-834e-363cb81b1ff7, skip-cert-verify: true, udp: true}
 proxy-groups:
   - name: 🌐 节点选择
     type: select
@@ -233,11 +229,7 @@ proxy-groups:
       - 🇨🇳 CN 5 → anjue
       - 🇨🇳 CN 6 → anjue
       - 🇨🇳 CN 7 → anjue
-      - 🇨🇳 CN 8 → anjue
       - 🇨🇳 TW 1 → anjue
-      - 🇨🇳 TW 2 → anjue
-      - 🇨🇳 TW 3 → anjue
-      - 🇸🇬 SG 1 → anjue
   - name: 💡 自动选择
     type: url-test
     url: https://www.google.com/generate_204
@@ -251,11 +243,7 @@ proxy-groups:
       - 🇨🇳 CN 5 → anjue
       - 🇨🇳 CN 6 → anjue
       - 🇨🇳 CN 7 → anjue
-      - 🇨🇳 CN 8 → anjue
       - 🇨🇳 TW 1 → anjue
-      - 🇨🇳 TW 2 → anjue
-      - 🇨🇳 TW 3 → anjue
-      - 🇸🇬 SG 1 → anjue
   - name: 🇭🇰 香港节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -284,15 +272,13 @@ proxy-groups:
     tolerance: 100
     proxies:
       - 🇨🇳 TW 1 → anjue
-      - 🇨🇳 TW 2 → anjue
-      - 🇨🇳 TW 3 → anjue
   - name: 🇸🇬 狮城节点
     type: url-test
     url: https://www.google.com/generate_204
     interval: 300
     tolerance: 100
     proxies:
-      - 🇸🇬 SG 1 → anjue
+      - DIRECT
   - name: 🇰🇷 韩国节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -310,7 +296,6 @@ proxy-groups:
       - 🇨🇳 CN 5 → anjue
       - 🇨🇳 CN 6 → anjue
       - 🇨🇳 CN 7 → anjue
-      - 🇨🇳 CN 8 → anjue
   - name: 🪜 故障转移
     type: fallback
     url: https://www.google.com/generate_204
@@ -324,11 +309,7 @@ proxy-groups:
       - 🇨🇳 CN 5 → anjue
       - 🇨🇳 CN 6 → anjue
       - 🇨🇳 CN 7 → anjue
-      - 🇨🇳 CN 8 → anjue
       - 🇨🇳 TW 1 → anjue
-      - 🇨🇳 TW 2 → anjue
-      - 🇨🇳 TW 3 → anjue
-      - 🇸🇬 SG 1 → anjue
   - name: 👉 国内网站
     type: select
     proxies:
