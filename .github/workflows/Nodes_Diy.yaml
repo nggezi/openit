@@ -34,7 +34,7 @@ jobs:
          cd ./utils/rm/
          npm ci
     - name: move urls #because ./utils/subconverter/generate.ini so input ./sub/url2
-      run: mv ./sub/url2 > ./utils/rm/url #output ./utils/rm/url
+      run: mv ./sub/url2 ./utils/rm/url #output ./utils/rm/url
     - name: remove & rename #input ./utils/rm/url
       run: cd ./utils/rm/ && npm start #output ./utils/rm/out
     - name: url & https
