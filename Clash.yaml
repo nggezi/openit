@@ -202,6 +202,7 @@ proxies:
   - {name: 🇨🇳 CN 3 → anjue, server: 116.129.253.134, port: 3389, type: trojan, password: faf42aa0a9ad4c1e, sni: 116.129.253.134, skip-cert-verify: true, udp: true}
   - {name: 🇨🇳 CN 4 → anjue, server: 223.111.122.199, port: 38080, type: vmess, uuid: 8498bfc8-c030-40df-80e8-69f9e06fe16a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /guolicheng/us1, headers: {Host: www.189.cn}}, udp: true}
   - {name: 🇨🇳 CN 5 → anjue, server: 223.111.122.199, port: 38080, type: vmess, uuid: 8498bfc8-c030-40df-80e8-69f9e06fe16a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /guolicheng/us3, headers: {Host: www.189.cn}}, udp: true}
+  - {name: 🇨🇳 CN 6 → anjue, server: 223.111.122.199, port: 38080, type: vmess, uuid: 8498bfc8-c030-40df-80e8-69f9e06fe16a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /guolicheng/us2, headers: {Host: www.189.cn}}, udp: true}
   - {name: 🇭🇰 HK 1 → anjue, server: hk1.sanfen001.pics, port: 443, type: trojan, password: 9010950e-8e09-486a-bf96-3b0cf22097b4, sni: hk1.sanfen001.pics, skip-cert-verify: true, udp: true}
   - {name: 🇯🇵 JP 1 → anjue, server: 146.56.166.153, port: 443, type: vmess, uuid: 0479eb9d-999d-4bff-ae3f-4f7cc440ce46, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /dongtaiwang.com, headers: {Host: v2ray2.ssr-free2.xyz}}, udp: true}
   - {name: 🇺🇸 US 1 → anjue, server: hk2.sanfen001.pics, port: 443, type: trojan, password: 9010950e-8e09-486a-bf96-3b0cf22097b4, sni: hk1.sanfen001.pics, skip-cert-verify: true, udp: true}
@@ -229,6 +230,7 @@ proxy-groups:
       - 🇨🇳 CN 3 → anjue
       - 🇨🇳 CN 4 → anjue
       - 🇨🇳 CN 5 → anjue
+      - 🇨🇳 CN 6 → anjue
       - 🇭🇰 HK 1 → anjue
       - 🇯🇵 JP 1 → anjue
       - 🇺🇸 US 1 → anjue
@@ -245,6 +247,7 @@ proxy-groups:
       - 🇨🇳 CN 3 → anjue
       - 🇨🇳 CN 4 → anjue
       - 🇨🇳 CN 5 → anjue
+      - 🇨🇳 CN 6 → anjue
       - 🇭🇰 HK 1 → anjue
       - 🇯🇵 JP 1 → anjue
       - 🇺🇸 US 1 → anjue
@@ -302,6 +305,7 @@ proxy-groups:
       - 🇨🇳 CN 3 → anjue
       - 🇨🇳 CN 4 → anjue
       - 🇨🇳 CN 5 → anjue
+      - 🇨🇳 CN 6 → anjue
   - name: 🪜 故障转移
     type: fallback
     url: https://www.google.com/generate_204
@@ -313,6 +317,7 @@ proxy-groups:
       - 🇨🇳 CN 3 → anjue
       - 🇨🇳 CN 4 → anjue
       - 🇨🇳 CN 5 → anjue
+      - 🇨🇳 CN 6 → anjue
       - 🇭🇰 HK 1 → anjue
       - 🇯🇵 JP 1 → anjue
       - 🇺🇸 US 1 → anjue
