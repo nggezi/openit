@@ -1,20 +1,33 @@
-name: Remove old artifacts
+#
+# Copyright (c) 2019-2021 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File: .github/workflows/update-checker.yml
+# Description: Source code update checker
+#
+
+name: Update Checker
+
+env:
+  REPO_URL: https://github.com/anjue39/openit
+  REPO_BRANCH: main
 
 on:
-  schedule:
-    # Every day at 1am
-    - cron: '0 1 * * *'
+  workflow_dispatch:
+#  schedule:
+#    - cron: 0 */18 * * *
 
 jobs:
-  remove-old-artifacts:
+  check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     steps:
-    - name: Remove old artifacts
-      uses: c-hive/gha-remove-artifacts@v1
+
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
       with:
-        age: '2 days' # '<number> <unit>', e.g. 5 days, 2 years, 90 seconds, parsed by Moment.js
-        # Optional inputs
-        # skip-tags: true
-        # skip-recent: 5
+        retain_days: 3
+        keep_minimum_runs: 3
