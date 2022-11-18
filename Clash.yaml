@@ -197,122 +197,132 @@ dns:
       - +.googleapis.com
       - +.gvt1.com
 proxies:
-  - {name: MO 1 → anjue, server: 45.64.22.55, port: 443, type: trojan, password: TaSXwOxORaZ7pD8DlzCE3yNFS5C38eeCuDng03FcA4BSpjK96YaZRIAlx2yqY3, sni: mhkla.freetrade.link, skip-cert-verify: true, udp: true}
-  - {name: MO 2 → anjue, server: 45.64.22.23, port: 443, type: trojan, password: Z3YS0KxB8u5jgp736e834y3DaXwSOYzxlFDFqpNCaalDA9CEIRceZOCAnR2yTS, sni: reooec.freetrade.link, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 1 → anjue, server: data-hk-v2.shwjfkw.cn, port: 50206, type: vmess, uuid: b1478e24-4916-3abe-8f17-15931012ecbe, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: data-hk-v2.shwjfkw.cn}}, udp: true}
-  - {name: 🇨🇳 CN 10 → anjue, server: pr1.jymzffbquawl.com, port: 3607, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 100 → anjue, server: cdn-cn.nekocloud.cn, port: 10005, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 101 → anjue, server: cdn-cn.nekocloud.cn, port: 10003, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 102 → anjue, server: cdn-cn.nekocloud.cn, port: 10004, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 11 → anjue, server: cdn-cn.nekocloud.cn, port: 19058, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 12 → anjue, server: cdn-cn.nekocloud.cn, port: 19041, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 13 → anjue, server: cdn-cn.nekocloud.cn, port: 19056, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 14 → anjue, server: cdn-cn.nekocloud.cn, port: 18998, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 15 → anjue, server: pr1.jymzffbquawl.com, port: 3603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 16 → anjue, server: cdn-cn.nekocloud.cn, port: 19087, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 17 → anjue, server: pr1.jymzffbquawl.com, port: 3605, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 18 → anjue, server: cdn-cn.nekocloud.cn, port: 19053, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 19 → anjue, server: cdn-cn.nekocloud.cn, port: 19089, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 2 → anjue, server: a006.zhuan99.men, port: 10006, type: trojan, password: a2de0dbe-0c64-4d27-b5ee-65e1514bbbd2, sni: zhu.99ton.men, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 20 → anjue, server: cdn-cn.nekocloud.cn, port: 19076, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 21 → anjue, server: cdn-cn.nekocloud.cn, port: 19091, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 22 → anjue, server: cdn-cn.nekocloud.cn, port: 19052, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 23 → anjue, server: cdn-cn.nekocloud.cn, port: 19061, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 24 → anjue, server: cdn-cn.nekocloud.cn, port: 19063, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 25 → anjue, server: pr1.jymzffbquawl.com, port: 3604, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 26 → anjue, server: cdn-cn.nekocloud.cn, port: 19071, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 27 → anjue, server: cdn-cn.nekocloud.cn, port: 19072, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 28 → anjue, server: cdn-cn.nekocloud.cn, port: 19066, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 29 → anjue, server: cdn-cn.nekocloud.cn, port: 19065, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 3 → anjue, server: asdmnioqw21dom.nekodafu.xyz, port: 26714, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
-  - {name: 🇨🇳 CN 30 → anjue, server: cdn-cn.nekocloud.cn, port: 19002, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 31 → anjue, server: cdn-cn.nekocloud.cn, port: 19093, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 32 → anjue, server: cdn-cn.nekocloud.cn, port: 19086, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 33 → anjue, server: cdn-cn.nekocloud.cn, port: 19070, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 34 → anjue, server: cdn-cn.nekocloud.cn, port: 19001, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 35 → anjue, server: cdn-cn.nekocloud.cn, port: 19032, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 36 → anjue, server: cdn-cn.nekocloud.cn, port: 19031, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 37 → anjue, server: bs1.jymzffbquawl.com, port: 3605, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 38 → anjue, server: cdn-cn.nekocloud.cn, port: 19005, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 39 → anjue, server: pr1.jymzffbquawl.com, port: 3601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 4 → anjue, server: asdmnioqw21dom.nekodafu.xyz, port: 47540, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
-  - {name: 🇨🇳 CN 40 → anjue, server: shcuzxhk.eucdurl.me, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 41 → anjue, server: cdn-cn.nekocloud.cn, port: 19025, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 42 → anjue, server: cdn-cn.nekocloud.cn, port: 19013, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 43 → anjue, server: cdn-cn.nekocloud.cn, port: 19017, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 44 → anjue, server: cdn-cn.nekocloud.cn, port: 19012, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 45 → anjue, server: cdn-cn.nekocloud.cn, port: 19015, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 46 → anjue, server: cucshk4.debugex.xyz, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 47 → anjue, server: cucshk4.debugex.xyz, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 48 → anjue, server: cdn-cn.nekocloud.cn, port: 19026, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 49 → anjue, server: cdn-cn.nekocloud.cn, port: 19098, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 5 → anjue, server: sh.cm.izhimajiasu.com, port: 45077, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
-  - {name: 🇨🇳 CN 50 → anjue, server: cdn-cn.nekocloud.cn, port: 19006, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 51 → anjue, server: pr1.jymzffbquawl.com, port: 3606, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 52 → anjue, server: cdn-cn.nekocloud.cn, port: 19019, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 53 → anjue, server: cdn-cn.nekocloud.cn, port: 19039, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 54 → anjue, server: pr1.jymzffbquawl.com, port: 3608, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 55 → anjue, server: pr1.jymzffbquawl.com, port: 3602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 56 → anjue, server: cdn-cn.nekocloud.cn, port: 19021, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 57 → anjue, server: cdn-cn.nekocloud.cn, port: 19020, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 58 → anjue, server: cdn-cn.nekocloud.cn, port: 19022, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
-  - {name: 🇨🇳 CN 59 → anjue, server: bs2.jymzffbquawl.com, port: 3600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 6 → anjue, server: 202.110.80.135, port: 48336, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
-  - {name: 🇨🇳 CN 60 → anjue, server: bs1.jymzffbquawl.com, port: 3603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 61 → anjue, server: bs1.jymzffbquawl.com, port: 3609, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 62 → anjue, server: bs3.jymzffbquawl.com, port: 3046, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 63 → anjue, server: pr3.jymzffbquawl.com, port: 6600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 64 → anjue, server: pr1.jymzffbquawl.com, port: 3600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 65 → anjue, server: bs3.jymzffbquawl.com, port: 6600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 66 → anjue, server: bs3.jymzffbquawl.com, port: 6602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 67 → anjue, server: bs3.jymzffbquawl.com, port: 6601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 68 → anjue, server: bs3.jymzffbquawl.com, port: 6603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 69 → anjue, server: eduall.buzzline.org, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 7 → anjue, server: asdmnioqw21dom.nekodafu.xyz, port: 13121, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
-  - {name: 🇨🇳 CN 70 → anjue, server: bs1.jymzffbquawl.com, port: 3600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 71 → anjue, server: pr3.jymzffbquawl.com, port: 6601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 72 → anjue, server: bs1.jymzffbquawl.com, port: 3602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 73 → anjue, server: official.taipeicitygovernment.co.ua, port: 8443, type: trojan, password: 96983eb4-c8f1-316e-ab00-500014ed3d8b, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 CN 74 → anjue, server: bs3.jymzffbquawl.com, port: 4600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 75 → anjue, server: bs3.jymzffbquawl.com, port: 4603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 76 → anjue, server: bs3.jymzffbquawl.com, port: 3036, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 77 → anjue, server: bs3.jymzffbquawl.com, port: 4602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 78 → anjue, server: pr3.jymzffbquawl.com, port: 3026, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 79 → anjue, server: pr3.jymzffbquawl.com, port: 4600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 8 → anjue, server: 14.215.164.183, port: 29516, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
-  - {name: 🇨🇳 CN 80 → anjue, server: pr3.jymzffbquawl.com, port: 3036, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 81 → anjue, server: bs3.jymzffbquawl.com, port: 3026, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 82 → anjue, server: bs3.jymzffbquawl.com, port: 5600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 83 → anjue, server: bs3.jymzffbquawl.com, port: 5603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 84 → anjue, server: bs1.jymzffbquawl.com, port: 3606, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 85 → anjue, server: pr3.jymzffbquawl.com, port: 5601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 86 → anjue, server: bs3.jymzffbquawl.com, port: 5602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 87 → anjue, server: bs3.jymzffbquawl.com, port: 5601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 88 → anjue, server: bs1.jymzffbquawl.com, port: 3601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 89 → anjue, server: bs1.jymzffbquawl.com, port: 3604, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 9 → anjue, server: pr1.jymzffbquawl.com, port: 3609, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 90 → anjue, server: pr3.jymzffbquawl.com, port: 5600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 91 → anjue, server: bs1.jymzffbquawl.com, port: 3608, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 92 → anjue, server: cmlayer02.debugex.xyz, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 93 → anjue, server: cminit.debugspace.work, port: 559, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 94 → anjue, server: cnrefhk01.standurl.xyz, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 95 → anjue, server: cmlayer02.debugex.xyz, port: 563, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 96 → anjue, server: cminit.debugspace.work, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 97 → anjue, server: bs1.jymzffbquawl.com, port: 3607, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
-  - {name: 🇨🇳 CN 98 → anjue, server: cnrefhk2.standurl.xyz, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
-  - {name: 🇨🇳 CN 99 → anjue, server: cdn-cn.nekocloud.cn, port: 18996, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 1 → anjue, server: official.taipeicitygovernment.co.ua, port: 8443, type: trojan, password: 96983eb4-c8f1-316e-ab00-500014ed3d8b, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 10 → anjue, server: sh.cm.izhimajiasu.com, port: 41712, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 100 → anjue, server: bs1.jymzffbquawl.com, port: 3608, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 101 → anjue, server: pr3.jymzffbquawl.com, port: 5600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 102 → anjue, server: cminit.debugspace.work, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 103 → anjue, server: sh.cm.izhimajiasu.com, port: 45771, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 104 → anjue, server: bs1.jymzffbquawl.com, port: 3607, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 105 → anjue, server: cnrefhk01.standurl.xyz, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 106 → anjue, server: cnrefhk2.standurl.xyz, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 107 → anjue, server: cdn-cn.nekocloud.cn, port: 18996, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 108 → anjue, server: cdn-cn.nekocloud.cn, port: 10004, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 109 → anjue, server: cdn-cn.nekocloud.cn, port: 10003, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 11 → anjue, server: sh.cm.izhimajiasu.com, port: 45077, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 110 → anjue, server: cdn-cn.nekocloud.cn, port: 10005, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 111 → anjue, server: cdn-cn.nekocloud.cn, port: 10008, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 12 → anjue, server: 202.110.80.135, port: 48336, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
+  - {name: 🇨🇳 CN 13 → anjue, server: gz.cm.izhimajiasu.com, port: 45333, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 14 → anjue, server: 114.80.32.51, port: 233, type: trojan, password: 89cd0b3e-b9c1-4f76-8a96-0a6c6d1e8f71, sni: wel-hkt.optage.moe, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 15 → anjue, server: cu.kapoknode.com, port: 25897, type: vmess, uuid: e1a70dd5-2576-4bd9-a2fb-861bc0688c1e, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: cu.kapoknode.com}}, udp: true}
+  - {name: 🇨🇳 CN 16 → anjue, server: pr1.jymzffbquawl.com, port: 3609, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 17 → anjue, server: pr1.jymzffbquawl.com, port: 3607, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 18 → anjue, server: cdn-cn.nekocloud.cn, port: 19058, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 19 → anjue, server: cdn-cn.nekocloud.cn, port: 19056, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 2 → anjue, server: sh.cm.izhimajiasu.com, port: 45002, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 20 → anjue, server: pr1.jymzffbquawl.com, port: 3603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 21 → anjue, server: cdn-cn.nekocloud.cn, port: 19041, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 22 → anjue, server: cdn-cn.nekocloud.cn, port: 18998, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 23 → anjue, server: cdn-cn.nekocloud.cn, port: 19087, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 24 → anjue, server: cdn-cn.nekocloud.cn, port: 19053, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 25 → anjue, server: pr1.jymzffbquawl.com, port: 3605, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 26 → anjue, server: cdn-cn.nekocloud.cn, port: 19076, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 27 → anjue, server: cdn-cn.nekocloud.cn, port: 19089, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 28 → anjue, server: cdn-cn.nekocloud.cn, port: 19052, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 29 → anjue, server: cdn-cn.nekocloud.cn, port: 19063, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 3 → anjue, server: data-hk-v2.shwjfkw.cn, port: 50206, type: vmess, uuid: b1478e24-4916-3abe-8f17-15931012ecbe, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: data-hk-v2.shwjfkw.cn}}, udp: true}
+  - {name: 🇨🇳 CN 30 → anjue, server: cdn-cn.nekocloud.cn, port: 19061, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 31 → anjue, server: cdn-cn.nekocloud.cn, port: 19072, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 32 → anjue, server: cdn-cn.nekocloud.cn, port: 19066, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 33 → anjue, server: cdn-cn.nekocloud.cn, port: 19091, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 34 → anjue, server: pr1.jymzffbquawl.com, port: 3604, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 35 → anjue, server: cdn-cn.nekocloud.cn, port: 19086, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 36 → anjue, server: cdn-cn.nekocloud.cn, port: 19071, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 37 → anjue, server: cdn-cn.nekocloud.cn, port: 19065, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 38 → anjue, server: cdn-cn.nekocloud.cn, port: 19070, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 39 → anjue, server: cdn-cn.nekocloud.cn, port: 19093, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 4 → anjue, server: a006.zhuan99.men, port: 10006, type: trojan, password: a2de0dbe-0c64-4d27-b5ee-65e1514bbbd2, sni: zhu.99ton.men, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 40 → anjue, server: cdn-cn.nekocloud.cn, port: 19002, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 41 → anjue, server: cdn-cn.nekocloud.cn, port: 19031, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 42 → anjue, server: cdn-cn.nekocloud.cn, port: 19032, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 43 → anjue, server: cdn-cn.nekocloud.cn, port: 19001, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 44 → anjue, server: bs1.jymzffbquawl.com, port: 3605, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 45 → anjue, server: cdn-cn.nekocloud.cn, port: 19005, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 46 → anjue, server: shcuzxhk.eucdurl.me, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 47 → anjue, server: cdn-cn.nekocloud.cn, port: 19026, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 48 → anjue, server: cdn-cn.nekocloud.cn, port: 19017, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 49 → anjue, server: cdn-cn.nekocloud.cn, port: 19025, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 5 → anjue, server: sh.cm.izhimajiasu.com, port: 45447, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 50 → anjue, server: pr1.jymzffbquawl.com, port: 3601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 51 → anjue, server: cucshk4.debugex.xyz, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 52 → anjue, server: cdn-cn.nekocloud.cn, port: 19098, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 53 → anjue, server: cdn-cn.nekocloud.cn, port: 19015, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 54 → anjue, server: cucshk4.debugex.xyz, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 55 → anjue, server: cdn-cn.nekocloud.cn, port: 19012, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 56 → anjue, server: cdn-cn.nekocloud.cn, port: 19013, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 57 → anjue, server: cdn-cn.nekocloud.cn, port: 19006, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 58 → anjue, server: cdn-cn.nekocloud.cn, port: 19020, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 59 → anjue, server: pr1.jymzffbquawl.com, port: 3606, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 6 → anjue, server: 114.80.32.51, port: 233, type: trojan, password: 89cd0b3e-b9c1-4f76-8a96-0a6c6d1e8f71, sni: wel-hgc.optage.moe, skip-cert-verify: true, udp: true}
+  - {name: 🇨🇳 CN 60 → anjue, server: cdn-cn.nekocloud.cn, port: 19022, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 61 → anjue, server: cdn-cn.nekocloud.cn, port: 19039, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 62 → anjue, server: cdn-cn.nekocloud.cn, port: 19021, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 63 → anjue, server: cdn-cn.nekocloud.cn, port: 19019, type: ssr, cipher: aes-128-cfb, password: iluulrzviik, protocol: auth_aes128_md5, obfs: plain, protocol-param: 135594:8SRFZ2, obfs-param: 43235135594.wns.windows.com, udp: true}
+  - {name: 🇨🇳 CN 64 → anjue, server: pr1.jymzffbquawl.com, port: 3608, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 65 → anjue, server: pr1.jymzffbquawl.com, port: 3602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 66 → anjue, server: bs2.jymzffbquawl.com, port: 3600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 67 → anjue, server: bs1.jymzffbquawl.com, port: 3603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 68 → anjue, server: pr1.jymzffbquawl.com, port: 3600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 69 → anjue, server: bs3.jymzffbquawl.com, port: 6602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 7 → anjue, server: asdmnioqw21dom.nekodafu.xyz, port: 26714, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
+  - {name: 🇨🇳 CN 70 → anjue, server: bs3.jymzffbquawl.com, port: 6603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 71 → anjue, server: bs1.jymzffbquawl.com, port: 3609, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 72 → anjue, server: bs3.jymzffbquawl.com, port: 3046, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 73 → anjue, server: eduall.buzzline.org, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 55956:111111, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 74 → anjue, server: pr3.jymzffbquawl.com, port: 6600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 75 → anjue, server: bs3.jymzffbquawl.com, port: 3036, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 76 → anjue, server: bs1.jymzffbquawl.com, port: 3600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 77 → anjue, server: bs3.jymzffbquawl.com, port: 6601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 78 → anjue, server: pr3.jymzffbquawl.com, port: 6601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 79 → anjue, server: bs3.jymzffbquawl.com, port: 6600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 8 → anjue, server: sh.cm.izhimajiasu.com, port: 45011, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 80 → anjue, server: bs1.jymzffbquawl.com, port: 3602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 81 → anjue, server: bs3.jymzffbquawl.com, port: 4603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 82 → anjue, server: pr3.jymzffbquawl.com, port: 4600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 83 → anjue, server: bs3.jymzffbquawl.com, port: 4601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 84 → anjue, server: bs3.jymzffbquawl.com, port: 4600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 85 → anjue, server: pr3.jymzffbquawl.com, port: 3026, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 86 → anjue, server: pr3.jymzffbquawl.com, port: 4601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 87 → anjue, server: pr3.jymzffbquawl.com, port: 3036, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 88 → anjue, server: bs3.jymzffbquawl.com, port: 3026, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 89 → anjue, server: bs3.jymzffbquawl.com, port: 5603, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 9 → anjue, server: asdmnioqw21dom.nekodafu.xyz, port: 47540, type: ss, cipher: chacha20-ietf-poly1305, password: 4559b1d2-89f9-4283-8d15-13703bac5ffc, udp: true}
+  - {name: 🇨🇳 CN 90 → anjue, server: bs3.jymzffbquawl.com, port: 4602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 91 → anjue, server: bs3.jymzffbquawl.com, port: 5602, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 92 → anjue, server: bs3.jymzffbquawl.com, port: 5600, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 93 → anjue, server: bs3.jymzffbquawl.com, port: 5601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 94 → anjue, server: bs1.jymzffbquawl.com, port: 3606, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 95 → anjue, server: pr3.jymzffbquawl.com, port: 5601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 96 → anjue, server: bs1.jymzffbquawl.com, port: 3604, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
+  - {name: 🇨🇳 CN 97 → anjue, server: sh.cm.izhimajiasu.com, port: 45076, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 98 → anjue, server: sh.cm.izhimajiasu.com, port: 45325, type: ss, cipher: chacha20-ietf-poly1305, password: 79a55a5b-4d2a-4143-8484-1cc5b3b471da, udp: true}
+  - {name: 🇨🇳 CN 99 → anjue, server: bs1.jymzffbquawl.com, port: 3601, type: ss, cipher: rc4-md5, password: RenzheCloudSS, plugin: obfs, plugin-opts: {mode: http, host: c7ea4198729.microsoft.com}, udp: true}
   - {name: 🇭🇰 HK 1 → anjue, server: v2.clsnet.online, port: 543, type: vmess, uuid: 7ee5a840-75d1-34a8-bd2a-187cdb286792, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: 🇭🇰 HK 2 → anjue, server: v2-hkg-cm.clsnet.online, port: 543, type: vmess, uuid: 7ee5a840-75d1-34a8-bd2a-187cdb286792, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: 🇯🇵 JP 1 → anjue, server: jp1.happyfree.top, port: 443, type: trojan, password: 6578df36-8b6f-4411-b42a-521877145573, skip-cert-verify: true, udp: true}
-  - {name: 🇯🇵 JP 2 → anjue, server: dba.happyfree.top, port: 443, type: trojan, password: 6578df36-8b6f-4411-b42a-521877145573, skip-cert-verify: true, udp: true}
+  - {name: 🇭🇰 HK 3 → anjue, server: hk-s1.clsnet.online, port: 443, type: vmess, uuid: 7ee5a840-75d1-34a8-bd2a-187cdb286792, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇯🇵 JP 1 → anjue, server: dba.happyfree.top, port: 443, type: trojan, password: 6578df36-8b6f-4411-b42a-521877145573, skip-cert-verify: true, udp: true}
+  - {name: 🇯🇵 JP 2 → anjue, server: jp1.happyfree.top, port: 443, type: trojan, password: 6578df36-8b6f-4411-b42a-521877145573, skip-cert-verify: true, udp: true}
   - {name: 🇯🇵 JP 3 → anjue, server: kr01.happyfree.top, port: 443, type: trojan, password: 6578df36-8b6f-4411-b42a-521877145573, skip-cert-verify: true, udp: true}
   - {name: 🇯🇵 JP 4 → anjue, server: ap-northeast.6641634715834932.me, port: 443, type: trojan, password: 89cd0b3e-b9c1-4f76-8a96-0a6c6d1e8f71, sni: wel-usgt.optage.moe, skip-cert-verify: true, udp: true}
   - {name: 🇸🇬 SG 1 → anjue, server: 54.251.73.154, port: 11270, type: trojan, password: e385048a-2f5f-48eb-b810-ea3715638ef3, sni: sgmax02.170203.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇸🇬 SG 2 → anjue, server: 54.251.73.154, port: 41261, type: trojan, password: 2351c608-9c6b-424b-aad1-36a002e57fea, sni: sgmax03.170203.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇸🇬 SG 3 → anjue, server: 54.251.73.154, port: 14961, type: trojan, password: 2351c608-9c6b-424b-aad1-36a002e57fea, sni: sgmax01.170203.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇸🇬 SG 4 → anjue, server: 54.251.73.154, port: 64891, type: trojan, password: e385048a-2f5f-48eb-b810-ea3715638ef3, sni: 0a01f3ad01.170203.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇸🇬 SG 5 → anjue, server: 54.251.73.154, port: 55893, type: trojan, password: 2351c608-9c6b-424b-aad1-36a002e57fea, sni: sgmax06.170203.xyz, skip-cert-verify: true, udp: true}
+  - {name: 🇸🇬 SG 2 → anjue, server: 54.251.73.154, port: 64891, type: trojan, password: e385048a-2f5f-48eb-b810-ea3715638ef3, sni: 0a01f3ad01.170203.xyz, skip-cert-verify: true, udp: true}
+  - {name: 🇸🇬 SG 3 → anjue, server: 54.251.73.154, port: 55893, type: trojan, password: 2351c608-9c6b-424b-aad1-36a002e57fea, sni: sgmax06.170203.xyz, skip-cert-verify: true, udp: true}
+  - {name: 🇸🇬 SG 4 → anjue, server: 54.251.73.154, port: 14961, type: trojan, password: 2351c608-9c6b-424b-aad1-36a002e57fea, sni: sgmax01.170203.xyz, skip-cert-verify: true, udp: true}
+  - {name: 🇸🇬 SG 5 → anjue, server: 54.251.73.154, port: 41261, type: trojan, password: 2351c608-9c6b-424b-aad1-36a002e57fea, sni: sgmax03.170203.xyz, skip-cert-verify: true, udp: true}
   - {name: 🇸🇬 SG 6 → anjue, server: 54.251.73.154, port: 12705, type: trojan, password: bf117f86-45b1-465b-82df-7656c224cb08, sni: jpmax01.170203.xyz, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 1 → anjue, server: 32.72img.xyz, port: 443, type: trojan, password: 81d93f62-15a2-4994-adb9-0b5d906aac7e, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 2 → anjue, server: 168.138.171.65, port: 443, type: vmess, uuid: 4af6fd9a-e8b4-46f2-da3a-207f4577656c, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, udp: true}
 proxy-groups:
   - name: 🌐 节点选择
     type: select
@@ -330,14 +340,21 @@ proxy-groups:
   - name: ✋ 手动选择
     type: select
     proxies:
-      - MO 1 → anjue
-      - MO 2 → anjue
       - 🇨🇳 CN 1 → anjue
       - 🇨🇳 CN 10 → anjue
       - 🇨🇳 CN 100 → anjue
       - 🇨🇳 CN 101 → anjue
       - 🇨🇳 CN 102 → anjue
+      - 🇨🇳 CN 103 → anjue
+      - 🇨🇳 CN 104 → anjue
+      - 🇨🇳 CN 105 → anjue
+      - 🇨🇳 CN 106 → anjue
+      - 🇨🇳 CN 107 → anjue
+      - 🇨🇳 CN 108 → anjue
+      - 🇨🇳 CN 109 → anjue
       - 🇨🇳 CN 11 → anjue
+      - 🇨🇳 CN 110 → anjue
+      - 🇨🇳 CN 111 → anjue
       - 🇨🇳 CN 12 → anjue
       - 🇨🇳 CN 13 → anjue
       - 🇨🇳 CN 14 → anjue
@@ -436,6 +453,7 @@ proxy-groups:
       - 🇨🇳 CN 99 → anjue
       - 🇭🇰 HK 1 → anjue
       - 🇭🇰 HK 2 → anjue
+      - 🇭🇰 HK 3 → anjue
       - 🇯🇵 JP 1 → anjue
       - 🇯🇵 JP 2 → anjue
       - 🇯🇵 JP 3 → anjue
@@ -446,20 +464,29 @@ proxy-groups:
       - 🇸🇬 SG 4 → anjue
       - 🇸🇬 SG 5 → anjue
       - 🇸🇬 SG 6 → anjue
+      - 🇺🇸 US 1 → anjue
+      - 🇺🇸 US 2 → anjue
   - name: 💡 自动选择
     type: url-test
     url: https://www.google.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - MO 1 → anjue
-      - MO 2 → anjue
       - 🇨🇳 CN 1 → anjue
       - 🇨🇳 CN 10 → anjue
       - 🇨🇳 CN 100 → anjue
       - 🇨🇳 CN 101 → anjue
       - 🇨🇳 CN 102 → anjue
+      - 🇨🇳 CN 103 → anjue
+      - 🇨🇳 CN 104 → anjue
+      - 🇨🇳 CN 105 → anjue
+      - 🇨🇳 CN 106 → anjue
+      - 🇨🇳 CN 107 → anjue
+      - 🇨🇳 CN 108 → anjue
+      - 🇨🇳 CN 109 → anjue
       - 🇨🇳 CN 11 → anjue
+      - 🇨🇳 CN 110 → anjue
+      - 🇨🇳 CN 111 → anjue
       - 🇨🇳 CN 12 → anjue
       - 🇨🇳 CN 13 → anjue
       - 🇨🇳 CN 14 → anjue
@@ -558,6 +585,7 @@ proxy-groups:
       - 🇨🇳 CN 99 → anjue
       - 🇭🇰 HK 1 → anjue
       - 🇭🇰 HK 2 → anjue
+      - 🇭🇰 HK 3 → anjue
       - 🇯🇵 JP 1 → anjue
       - 🇯🇵 JP 2 → anjue
       - 🇯🇵 JP 3 → anjue
@@ -568,6 +596,8 @@ proxy-groups:
       - 🇸🇬 SG 4 → anjue
       - 🇸🇬 SG 5 → anjue
       - 🇸🇬 SG 6 → anjue
+      - 🇺🇸 US 1 → anjue
+      - 🇺🇸 US 2 → anjue
   - name: 🇭🇰 香港节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -576,6 +606,7 @@ proxy-groups:
     proxies:
       - 🇭🇰 HK 1 → anjue
       - 🇭🇰 HK 2 → anjue
+      - 🇭🇰 HK 3 → anjue
   - name: 🇯🇵 日本节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -592,7 +623,8 @@ proxy-groups:
     interval: 300
     tolerance: 100
     proxies:
-      - DIRECT
+      - 🇺🇸 US 1 → anjue
+      - 🇺🇸 US 2 → anjue
   - name: 🇹🇼 台湾节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -622,14 +654,21 @@ proxy-groups:
   - name: 🌍 其他地区
     type: select
     proxies:
-      - MO 1 → anjue
-      - MO 2 → anjue
       - 🇨🇳 CN 1 → anjue
       - 🇨🇳 CN 10 → anjue
       - 🇨🇳 CN 100 → anjue
       - 🇨🇳 CN 101 → anjue
       - 🇨🇳 CN 102 → anjue
+      - 🇨🇳 CN 103 → anjue
+      - 🇨🇳 CN 104 → anjue
+      - 🇨🇳 CN 105 → anjue
+      - 🇨🇳 CN 106 → anjue
+      - 🇨🇳 CN 107 → anjue
+      - 🇨🇳 CN 108 → anjue
+      - 🇨🇳 CN 109 → anjue
       - 🇨🇳 CN 11 → anjue
+      - 🇨🇳 CN 110 → anjue
+      - 🇨🇳 CN 111 → anjue
       - 🇨🇳 CN 12 → anjue
       - 🇨🇳 CN 13 → anjue
       - 🇨🇳 CN 14 → anjue
@@ -732,14 +771,21 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-      - MO 1 → anjue
-      - MO 2 → anjue
       - 🇨🇳 CN 1 → anjue
       - 🇨🇳 CN 10 → anjue
       - 🇨🇳 CN 100 → anjue
       - 🇨🇳 CN 101 → anjue
       - 🇨🇳 CN 102 → anjue
+      - 🇨🇳 CN 103 → anjue
+      - 🇨🇳 CN 104 → anjue
+      - 🇨🇳 CN 105 → anjue
+      - 🇨🇳 CN 106 → anjue
+      - 🇨🇳 CN 107 → anjue
+      - 🇨🇳 CN 108 → anjue
+      - 🇨🇳 CN 109 → anjue
       - 🇨🇳 CN 11 → anjue
+      - 🇨🇳 CN 110 → anjue
+      - 🇨🇳 CN 111 → anjue
       - 🇨🇳 CN 12 → anjue
       - 🇨🇳 CN 13 → anjue
       - 🇨🇳 CN 14 → anjue
@@ -838,6 +884,7 @@ proxy-groups:
       - 🇨🇳 CN 99 → anjue
       - 🇭🇰 HK 1 → anjue
       - 🇭🇰 HK 2 → anjue
+      - 🇭🇰 HK 3 → anjue
       - 🇯🇵 JP 1 → anjue
       - 🇯🇵 JP 2 → anjue
       - 🇯🇵 JP 3 → anjue
@@ -848,6 +895,8 @@ proxy-groups:
       - 🇸🇬 SG 4 → anjue
       - 🇸🇬 SG 5 → anjue
       - 🇸🇬 SG 6 → anjue
+      - 🇺🇸 US 1 → anjue
+      - 🇺🇸 US 2 → anjue
   - name: 👉 国内网站
     type: select
     proxies:
