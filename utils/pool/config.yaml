@@ -1,7 +1,7 @@
 sub: #注有#的是失效的订阅链接
 # proxypool节点池
  # http开头
-  - http://wxshi.top:9090/clash/proxies
+# - http://wxshi.top:9090/clash/proxies
 # - http://107.189.8.121/clash/proxies
 # - http://149.248.8.112/clash/proxies
 # - http://www.fuckgfw.tk/clash/proxies
@@ -12,9 +12,8 @@ sub: #注有#的是失效的订阅链接
 # - http://49.233.28.108:1314/clash/proxies
   - http://39.106.12.141:8081/clash/proxies
   - http://101.132.255.205:1234/clash/proxies
-  - http://139.196.162.200:9090/clash/proxies
-  - http://proxypool.918848.xyz/clash/proxies
-  - http://101.132.255.205:1234/clash/proxies
+# - http://139.196.162.200:9090/clash/proxies
+# - http://proxypool.918848.xyz/clash/proxies
 # - http://clash.3wking.com:12580/clash/proxies
 # - http://proxypool.turinglabs.net/clash/proxies
  # https开头
@@ -73,3 +72,4 @@ sub: #注有#的是失效的订阅链接
   - https://ghproxy.com/https://raw.githubusercontent.com/anjue39/openit/main/utils/pool/pool.yaml #入库订阅
 # TopPreeProxy
 # - https://ghproxy.com/https://raw.githubusercontent.com/alanbobs999/TopFreeProxies/master/sub/sub_merge_clash.yaml
+# local: ["output.yaml","../../Clash.yaml"] #同级、上级或下级目录的本地Clash配置文件，上级目录的文件需要使用"../"进行引导
