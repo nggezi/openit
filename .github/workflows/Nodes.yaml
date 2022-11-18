@@ -87,13 +87,3 @@ jobs:
     # steps:
     # - name: cURL
       # run: curl -s https://raw.githubusercontent.com/anjue39/openit/main/.github/webhook.sh | bash -s ${{ secrets.webhook }}
-
-
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 3
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
