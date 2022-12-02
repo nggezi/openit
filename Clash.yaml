@@ -197,17 +197,20 @@ dns:
       - +.googleapis.com
       - +.gvt1.com
 proxies:
+  - {name: IR 1 → anjue, server: uk3.iranz.me, port: 443, type: vmess, uuid: 0c5e33e9-74fe-4435-9ec1-e8d2223ed16a, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: uk3.iranz.me}}, udp: true}
   - {name: LT 1 → anjue, server: 212.24.103.3, port: 443, type: trojan, password: 4f9ca636-5195-406a-b48c-0388689dd9a7, skip-cert-verify: true, udp: true}
   - {name: MO 1 → anjue, server: 45.64.22.55, port: 443, type: trojan, password: TaSXwOxORaZ7pD8DlzCE3yNFS5C38eeCuDng03FcA4BSpjK96YaZRIAlx2yqY3, sni: mhkla.freetrade.link, skip-cert-verify: true, udp: true}
-  - {name: MO 2 → anjue, server: 45.64.22.55, port: 443, type: trojan, password: NqYpxKxB8A5jnDaISe834lAOaTwEOYzCeSD7CSZyFa0C3ypcR2F9XD3ug36lZR, sni: pbvre.freetrade.link, skip-cert-verify: true, udp: true}
-  - {name: MO 3 → anjue, server: 45.64.22.55, port: 443, type: trojan, password: Z3YS0KxB8u5jgp736e834y3DaXwSOYzxlFDFqpNCaalDA9CEIRceZOCAnR2yTS, sni: reooec.freetrade.link, skip-cert-verify: true, udp: true}
-  - {name: 🇦🇺 AU 1 → anjue, server: 203.30.188.120, port: 443, type: vmess, uuid: 4612618c-24cd-4379-9924-cfdf3d61fa5a, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /IYKLD53M}, udp: true}
+  - {name: MO 2 → anjue, server: 45.64.22.41, port: 443, type: trojan, password: f2117e99-9b6e-47fd-b0a9-634a0b15b998, sni: jgw2.gaox.ml, skip-cert-verify: true, udp: true}
+  - {name: MO 3 → anjue, server: 45.64.22.55, port: 443, type: trojan, password: NqYpxKxB8A5jnDaISe834lAOaTwEOYzCeSD7CSZyFa0C3ypcR2F9XD3ug36lZR, sni: pbvre.freetrade.link, skip-cert-verify: true, udp: true}
+  - {name: MO 4 → anjue, server: 45.64.22.55, port: 443, type: trojan, password: Z3YS0KxB8u5jgp736e834y3DaXwSOYzxlFDFqpNCaalDA9CEIRceZOCAnR2yTS, sni: reooec.freetrade.link, skip-cert-verify: true, udp: true}
+  - {name: 🇦🇺 AU 1 → anjue, server: 203.30.188.188, port: 443, type: vmess, uuid: 40d496a6-ceeb-4096-baeb-4cc52b205621, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /ECTCJ0DF, headers: {Host: lg1.trump2023.us}}, udp: true}
+  - {name: 🇦🇺 AU 2 → anjue, server: 203.30.190.190, port: 443, type: vmess, uuid: 40d496a6-ceeb-4096-baeb-4cc52b205621, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /ECTCJ0DF}, udp: true}
+  - {name: 🇦🇺 AU 3 → anjue, server: 203.30.188.189, port: 443, type: vmess, uuid: 56a2188b-2ab7-402c-b9b8-34847fdf0958, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /5QNROSRV}, udp: true}
   - {name: 🇨🇳 CN 1 → anjue, server: hnt.cndns.shop, port: 27761, type: ss, cipher: chacha20-ietf-poly1305, password: 31347057-7af5-4562-b912-f1c217c4c160, udp: true}
+  - {name: 🇩🇰 DK 1 → anjue, server: 185.162.228.229, port: 443, type: vmess, uuid: 56a2188b-2ab7-402c-b9b8-34847fdf0958, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /5QNROSRV}, udp: true}
   - {name: 🇫🇷 FR 1 → anjue, server: 51.68.89.16, port: 443, type: trojan, password: 814b6e9a-805a-4bda-b15a-a321c96092e1, skip-cert-verify: true, udp: true}
+  - {name: 🇷🇺 RU 1 → anjue, server: 95.163.243.235, port: 13936, type: vmess, uuid: eeca7f96-8255-453e-c000-46d0396e77a8, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: 🇺🇸 US 1 → anjue, server: 47.242.30.73, port: 57194, type: vmess, uuid: 190f9f72-0144-40c2-862b-8c7fbe7fc34a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: http, http-opts: {method: GET, path: [/]}, udp: true}
-  - {name: 🇺🇸 US 2 → anjue, server: 47.243.104.195, port: 58944, type: vmess, uuid: a0f25e25-9c5d-4d96-9051-5481c46e277d, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: http, http-opts: {method: GET, path: [/]}, udp: true}
-  - {name: 🇺🇸 US 3 → anjue, server: 66.235.200.22, port: 443, type: vmess, uuid: 17b2a313-37a0-4945-a8e4-e63375506b4a, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /A2DJOPFT}, udp: true}
-  - {name: 🇺🇸 US 4 → anjue, server: surongwei.eu.org, port: 443, type: vmess, uuid: 6093eefb-7ab6-41df-aba0-d5fa58147e10, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /reffs7y26g0ua, headers: {Host: surongwei.eu.org}}, udp: true}
 proxy-groups:
   - name: 🌐 节点选择
     type: select
@@ -225,34 +228,40 @@ proxy-groups:
   - name: ✋ 手动选择
     type: select
     proxies:
+      - IR 1 → anjue
       - LT 1 → anjue
       - MO 1 → anjue
       - MO 2 → anjue
       - MO 3 → anjue
+      - MO 4 → anjue
       - 🇦🇺 AU 1 → anjue
+      - 🇦🇺 AU 2 → anjue
+      - 🇦🇺 AU 3 → anjue
       - 🇨🇳 CN 1 → anjue
+      - 🇩🇰 DK 1 → anjue
       - 🇫🇷 FR 1 → anjue
+      - 🇷🇺 RU 1 → anjue
       - 🇺🇸 US 1 → anjue
-      - 🇺🇸 US 2 → anjue
-      - 🇺🇸 US 3 → anjue
-      - 🇺🇸 US 4 → anjue
   - name: 💡 自动选择
     type: url-test
     url: https://www.google.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
+      - IR 1 → anjue
       - LT 1 → anjue
       - MO 1 → anjue
       - MO 2 → anjue
       - MO 3 → anjue
+      - MO 4 → anjue
       - 🇦🇺 AU 1 → anjue
+      - 🇦🇺 AU 2 → anjue
+      - 🇦🇺 AU 3 → anjue
       - 🇨🇳 CN 1 → anjue
+      - 🇩🇰 DK 1 → anjue
       - 🇫🇷 FR 1 → anjue
+      - 🇷🇺 RU 1 → anjue
       - 🇺🇸 US 1 → anjue
-      - 🇺🇸 US 2 → anjue
-      - 🇺🇸 US 3 → anjue
-      - 🇺🇸 US 4 → anjue
   - name: 🇭🇰 香港节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -274,9 +283,6 @@ proxy-groups:
     tolerance: 100
     proxies:
       - 🇺🇸 US 1 → anjue
-      - 🇺🇸 US 2 → anjue
-      - 🇺🇸 US 3 → anjue
-      - 🇺🇸 US 4 → anjue
   - name: 🇹🇼 台湾节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -301,30 +307,39 @@ proxy-groups:
   - name: 🌍 其他地区
     type: select
     proxies:
+      - IR 1 → anjue
       - LT 1 → anjue
       - MO 1 → anjue
       - MO 2 → anjue
       - MO 3 → anjue
+      - MO 4 → anjue
       - 🇦🇺 AU 1 → anjue
+      - 🇦🇺 AU 2 → anjue
+      - 🇦🇺 AU 3 → anjue
       - 🇨🇳 CN 1 → anjue
+      - 🇩🇰 DK 1 → anjue
       - 🇫🇷 FR 1 → anjue
+      - 🇷🇺 RU 1 → anjue
   - name: 🪜 故障转移
     type: fallback
     url: https://www.google.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
+      - IR 1 → anjue
       - LT 1 → anjue
       - MO 1 → anjue
       - MO 2 → anjue
       - MO 3 → anjue
+      - MO 4 → anjue
       - 🇦🇺 AU 1 → anjue
+      - 🇦🇺 AU 2 → anjue
+      - 🇦🇺 AU 3 → anjue
       - 🇨🇳 CN 1 → anjue
+      - 🇩🇰 DK 1 → anjue
       - 🇫🇷 FR 1 → anjue
+      - 🇷🇺 RU 1 → anjue
       - 🇺🇸 US 1 → anjue
-      - 🇺🇸 US 2 → anjue
-      - 🇺🇸 US 3 → anjue
-      - 🇺🇸 US 4 → anjue
   - name: 👉 国内网站
     type: select
     proxies:
