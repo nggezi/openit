@@ -5,7 +5,19 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pip"
+    directory: "/utils/pool"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pip"
+    directory: "/utils/clashcheck"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/utils/rm"
     schedule:
       interval: "daily"
