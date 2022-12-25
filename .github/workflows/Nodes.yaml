@@ -30,23 +30,19 @@ jobs:
       run: sudo timedatectl set-timezone 'Asia/Shanghai'
     - name: git
       run: | #配置git的上传用户名和邮箱
-         git config pull.rebase false
          git config --local user.name "GitHub Actions"
          git config --local user.email "actions@github.com"
     - name: npm
       run: | #安装npm包
-         cd ./utils/rm/
-         npm ci
+         cd ./utils/rm/ && npm ci
     - name: pip
       run: | #安装pip包
          pip install -r ./utils/pool/requirements.txt
          pip install -r ./utils/clashcheck/requirements.txt
-    - name: pool #input ./utils/pool/config.yaml
-      run: cd ./utils/pool/ && python main.py #output ./utils/pool/output.yaml
     - name: copy pool to clashcheck #input ./utils/pool/output.yaml
       run: cp ./utils/pool/output.yaml ./utils/clashcheck/data/input.yaml #output ./utils/clashcheck/data/input.yaml
     - name: clashcheck #because ./utils/clashcheck/config/config.yaml so input ./utils/clashcheck/data/input.yaml
-      run: cd ./utils/clashcheck/ && python main.py && rm data/input.yaml #output ./utils/clashcheck/data/check.yaml & delete ./utils/clashcheck/data/input.yaml
+      run: cd ./utils/clashcheck/ && python main.py; rm data/input.yaml #output ./utils/clashcheck/data/check.yaml & delete 
     # - name: clashcheck #如果您想要fork本仓库并运行此workflow，请用#号注释掉这一行和下一行并删除上方四行开头的#并按照yaml文件格式对其行头
       # run: timeout -k 20 4m wget ${{ secrets.Check_File }} -O ./utils/clashcheck/data/check.yaml --limit-rate=200k -q || timeout -k 20 4m wget ${{ secrets.Check_File }} -O ./utils/clashcheck/data/check.yaml --limit-rate=200k -q
     - name: when pull has failed
