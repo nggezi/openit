@@ -3,7 +3,7 @@ import json
 
 
 
-def check(alive, proxy, apiurl,sema,timeout, testurl,testurl-google,testurl-10mb):
+def check(alive, proxy, apiurl, sema, timeout, testurl, testurl-google, testurl-10mb):
     try:
         r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url='+testurl-google+'&timeout=' + str(timeout), timeout=10)
         response = json.loads(r.text)
