@@ -9,7 +9,7 @@ from init import init, clean
 if __name__ == '__main__':
     with Manager() as manager:
         alive = manager.list()
-        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, config= init()
+        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl-google, testurl-10mb, testconfig= init()
         clashname, operating_system = checkenv()
         clash = subprocess.Popen([clashname, '-f', './temp/working.yaml', '-d', '.'])
         processes =[]
