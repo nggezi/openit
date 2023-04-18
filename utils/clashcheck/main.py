@@ -17,7 +17,7 @@ if __name__ == '__main__':
         time.sleep(5)
         for i in tqdm(range(int(len(config['proxies']))), desc="Testing"):
             sema.acquire()
-            p = Process(target=check, args=(alive,config['proxies'][i],apiurl,sema,timeout,testurl,testurl-google,testurl-10mb))
+            p = Process(target=check, args=(alive,config['proxies'][i],apiurl,sema,timeout,testurl))
             try:
                 p.start()
                 processes.append(p)
