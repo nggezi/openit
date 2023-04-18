@@ -19,6 +19,8 @@ def init():
         source = str(config['source'])
         timeout = config['timeout']
         testurl = config['test-url']
+        testurl-google = config['test-url-google']
+        testurl-10mb = config['test-url-10mb']
         outfile = config['outfile']
     # get clash config file
     if source.startswith('http://'):
