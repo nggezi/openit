@@ -9,7 +9,7 @@ from init import init, clean
 if __name__ == '__main__':
     with Manager() as manager:
         alive = manager.list()
-        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl-google, testurl-10mb, testconfig= init()
+        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl-google, testurl-10mb, config= init()
         clashname, operating_system = checkenv()
         clash = subprocess.Popen([clashname, '-f', './temp/working.yaml', '-d', '.'])
         processes =[]
@@ -17,7 +17,7 @@ if __name__ == '__main__':
         time.sleep(5)
         for i in tqdm(range(int(len(config['proxies']))), desc="Testing"):
             sema.acquire()
-            p = Process(target=check, args=(alive,config['proxies'][i],apiurl,sema,timeout,testurl))
+            p = Process(target=check, args=(alive,config['proxies'][i],apiurl,sema,timeout,testurl,testurl-google,testurl-10mb))
             try:
                 p.start()
                 processes.append(p)
