@@ -31,7 +31,7 @@ def init():
 
     # set clash api url
     baseurl = '127.0.0.1:' + str(api_port)
-    apiurl = 'http://'+baseurl
+    apiurl = 'http://' + baseurl
 
     # filter config files
     proxyconfig = filter(proxyconfig)
@@ -43,7 +43,7 @@ def init():
         file = yaml.dump(config, file)
 
     # return all variables
-    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, config, download_speed
+    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, config
 
 def clean(clash):
     shutil.rmtree('./temp')
