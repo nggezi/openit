@@ -1,0 +1,180 @@
+proxies:
+#
+proxy-groups:
+  - name: 🌐 Proxy
+    type: select
+    proxies:
+      - 💡 Auto
+      - DIRECT
+      - IR 1 → openitsub.com
+      - CN 56 → openitsub.com
+      - CN 3 → openitsub.com
+      - CN 50 → openitsub.com
+      - CN 28 → openitsub.com
+      - CN 10 → openitsub.com
+      - CN 9 → openitsub.com
+      - CN 8 → openitsub.com
+      - CN 22 → openitsub.com
+      - CN 26 → openitsub.com
+      - CN 25 → openitsub.com
+      - CN 21 → openitsub.com
+      - CN 6 → openitsub.com
+      - CN 5 → openitsub.com
+      - CN 4 → openitsub.com
+      - CN 1 → openitsub.com
+      - CN 7 → openitsub.com
+      - CN 24 → openitsub.com
+      - CN 20 → openitsub.com
+      - CN 14 → openitsub.com
+      - CN 13 → openitsub.com
+      - CN 23 → openitsub.com
+      - CN 2 → openitsub.com
+      - CN 19 → openitsub.com
+      - CN 18 → openitsub.com
+      - CN 17 → openitsub.com
+      - CN 35 → openitsub.com
+      - CN 12 → openitsub.com
+      - CN 11 → openitsub.com
+      - CN 39 → openitsub.com
+      - CN 38 → openitsub.com
+      - CN 37 → openitsub.com
+      - CN 36 → openitsub.com
+      - CN 34 → openitsub.com
+      - CN 33 → openitsub.com
+      - CN 32 → openitsub.com
+      - CN 31 → openitsub.com
+      - CN 30 → openitsub.com
+      - CN 29 → openitsub.com
+      - CN 16 → openitsub.com
+      - CN 27 → openitsub.com
+      - CN 15 → openitsub.com
+      - HK 4 → openitsub.com
+      - CN 55 → openitsub.com
+      - CN 54 → openitsub.com
+      - CN 49 → openitsub.com
+      - CN 51 → openitsub.com
+      - HK 1 → openitsub.com
+      - HK 3 → openitsub.com
+      - CN 48 → openitsub.com
+      - CN 43 → openitsub.com
+      - CN 42 → openitsub.com
+      - CN 41 → openitsub.com
+      - CN 40 → openitsub.com
+      - CN 47 → openitsub.com
+      - CN 46 → openitsub.com
+      - CN 45 → openitsub.com
+      - CN 44 → openitsub.com
+      - CN 52 → openitsub.com
+      - CN 53 → openitsub.com
+      - HK 2 → openitsub.com
+      - LT 1 → openitsub.com
+      - FR 1 → openitsub.com
+      - MO 1 → openitsub.com
+      - MO 2 → openitsub.com
+      - MO 3 → openitsub.com
+      - MO 4 → openitsub.com
+      - MO 5 → openitsub.com
+      - MO 6 → openitsub.com
+      - MO 7 → openitsub.com
+      - MO 8 → openitsub.com
+  - name: 💡 Auto
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - IR 1 → openitsub.com
+      - CN 56 → openitsub.com
+      - CN 3 → openitsub.com
+      - CN 50 → openitsub.com
+      - CN 28 → openitsub.com
+      - CN 10 → openitsub.com
+      - CN 9 → openitsub.com
+      - CN 8 → openitsub.com
+      - CN 22 → openitsub.com
+      - CN 26 → openitsub.com
+      - CN 25 → openitsub.com
+      - CN 21 → openitsub.com
+      - CN 6 → openitsub.com
+      - CN 5 → openitsub.com
+      - CN 4 → openitsub.com
+      - CN 1 → openitsub.com
+      - CN 7 → openitsub.com
+      - CN 24 → openitsub.com
+      - CN 20 → openitsub.com
+      - CN 14 → openitsub.com
+      - CN 13 → openitsub.com
+      - CN 23 → openitsub.com
+      - CN 2 → openitsub.com
+      - CN 19 → openitsub.com
+      - CN 18 → openitsub.com
+      - CN 17 → openitsub.com
+      - CN 35 → openitsub.com
+      - CN 12 → openitsub.com
+      - CN 11 → openitsub.com
+      - CN 39 → openitsub.com
+      - CN 38 → openitsub.com
+      - CN 37 → openitsub.com
+      - CN 36 → openitsub.com
+      - CN 34 → openitsub.com
+      - CN 33 → openitsub.com
+      - CN 32 → openitsub.com
+      - CN 31 → openitsub.com
+      - CN 30 → openitsub.com
+      - CN 29 → openitsub.com
+      - CN 16 → openitsub.com
+      - CN 27 → openitsub.com
+      - CN 15 → openitsub.com
+      - HK 4 → openitsub.com
+      - CN 55 → openitsub.com
+      - CN 54 → openitsub.com
+      - CN 49 → openitsub.com
+      - CN 51 → openitsub.com
+      - HK 1 → openitsub.com
+      - HK 3 → openitsub.com
+      - CN 48 → openitsub.com
+      - CN 43 → openitsub.com
+      - CN 42 → openitsub.com
+      - CN 41 → openitsub.com
+      - CN 40 → openitsub.com
+      - CN 47 → openitsub.com
+      - CN 46 → openitsub.com
+      - CN 45 → openitsub.com
+      - CN 44 → openitsub.com
+      - CN 52 → openitsub.com
+      - CN 53 → openitsub.com
+      - HK 2 → openitsub.com
+      - LT 1 → openitsub.com
+      - FR 1 → openitsub.com
+      - MO 1 → openitsub.com
+      - MO 2 → openitsub.com
+      - MO 3 → openitsub.com
+      - MO 4 → openitsub.com
+      - MO 5 → openitsub.com
+      - MO 6 → openitsub.com
+      - MO 7 → openitsub.com
+      - MO 8 → openitsub.com
+cfw-bypass:
+  - localhost
+  - 127.*
+  - 10.*
+  - 172.16.*
+  - 172.17.*
+  - 172.18.*
+  - 172.19.*
+  - 172.20.*
+  - 172.21.*
+  - 172.22.*
+  - 172.23.*
+  - 172.24.*
+  - 172.25.*
+  - 172.26.*
+  - 172.27.*
+  - 172.28.*
+  - 172.29.*
+  - 172.30.*
+  - 172.31.*
+  - 192.168.*
+  - <local>
+rules:
+ - MATCH,🌐 Proxy
