@@ -1,4 +1,4 @@
-import requests
+mport requests
 import json
 
 
@@ -34,12 +34,7 @@ def check(alive, proxies, apiurl, sema, timeout, testurl):
             r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url=https://cachefly.cachefly.net/10mb.test&timeout=' + str(timeout), timeout=10)
             response = json.loads(r.text)
             if 'delay' in response and response['delay'] > 0:
-                # 如果延迟大于0，代表请求成功，继续测试下载速度
-                r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/speed?url=https://cachefly.cachefly.net/1mb.test&timeout=' + str(timeout), timeout=100)
-                response = json.loads(r.text)
-                if 'speed' in response and response['speed'] > 3000000:
-                    # 如果下载速度大于3MB/s，将该代理加入第二轮测试通过的代理列表
-                    second_pass.append(proxy)
+                second_pass.append(proxy)
         except:
             pass
     
