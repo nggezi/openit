@@ -4,14 +4,12 @@ from multiprocessing import Process, Manager, Semaphore
 from check import check
 from tqdm import tqdm
 from init import init, clean
-from clash import push, checkenv, checkuse
-
+from clash import push, checkenv
 if __name__ == '__main__':
     with Manager() as manager:
         alive = manager.list()
         http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, config= init()
         clashname, operating_system = checkenv()
-        checkuse(clashname[2::], operating_system)
         clash = subprocess.Popen([clashname, '-f', './temp/working.yaml', '-d', '.'])
         processes =[]
         sema = Semaphore(threads)
