@@ -84,7 +84,7 @@ def checkenv():
 def filter(config):
     list = config["proxies"]
     ss_supported_ciphers = ['aes-128-gcm', 'aes-192-gcm', 'aes-256-gcm', 'aes-128-cfb', 'aes-192-cfb', 'aes-256-cfb', 'aes-128-ctr', 'aes-192-ctr', 'aes-256-ctr', 'rc4-md5', 'chacha20', 'chacha20-ietf', 'xchacha20', 'chacha20-ietf-poly1305', 'xchacha20-ietf-poly1305']
-    ssr_supported_obfs = ['plain', 'http_simple', 'http_post', 'random_head', 'tls1.2_ticket_auth', 'tls1.2_ticket_fastauth']
+    ssr_supported_obfs = ['plain', 'http_simple', 'http_post', 'random_head', 'tls1.2_ticket_fastauth', 'tls1.2_ticket_auth']
     ssr_supported_protocol = ['origin', 'auth_sha1_v4', 'auth_aes128_md5', 'auth_aes128_sha1', 'auth_chain_a', 'auth_chain_b']
     vmess_supported_ciphers = ['auto', 'aes-128-gcm', 'chacha20-poly1305', 'none']
     iplist = {}
@@ -100,6 +100,8 @@ def filter(config):
                 x = list[i]
                 authentication = ''
                 x['port'] = int(x['port'])
+                if x['password'].isdigit():
+                    x['password'] = int(x['password'])
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
@@ -113,13 +115,12 @@ def filter(config):
                         if x['cipher'] not in ss_supported_ciphers:
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
                             continue
-                        if country != 'CN':
-                            if ip in iplist:
-                                ss_omit_ip_dupe = ss_omit_ip_dupe + 1
-                                continue
-                            else:
-                                iplist[ip] = []
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            ss_omit_ip_dupe = ss_omit_ip_dupe + 1
+                            continue
+                        else:
+                            iplist[ip] = []
+                            iplist[ip].append(x['port'])
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSS'
                         authentication = 'password'
                     except:
@@ -132,12 +133,11 @@ def filter(config):
                             continue
                         if x['protocol'] not in ssr_supported_protocol:
                             continue
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                         authentication = 'password'
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
                     except:
@@ -209,14 +209,12 @@ def filter(config):
                         continue
                 else:
                     continue
+
                 if ip in iplist and x['port'] in iplist[ip]:
-                    if country != 'CN':
+                    if x[authentication] in passlist:
                         continue
                     else:
-                        if x[authentication] in passlist:
-                            continue
-                        else:
-                            passlist.append(x[authentication])
+                        passlist.append(x[authentication])
                 else:
                     try:
                         iplist[ip].append(x['port'])
