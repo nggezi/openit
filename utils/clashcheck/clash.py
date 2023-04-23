@@ -1,10 +1,11 @@
 import os
 import yaml
+import flag
 import socket
 import maxminddb
 import platform
+import psutil
 import requests
-import flag
 from tqdm import tqdm
 from pathlib import Path
 
@@ -58,7 +59,7 @@ def checkenv():
         elif 'x86_64' in operating_system:
             clashname='./clash-darwin-amd64'
         else:
-            print('not supported')
+            print('System is supported(Darwin) but Architecture is not supported.')
             exit(1)
     elif operating_system.startswith('Linux'):
         if 'x86_64' in operating_system:
@@ -66,19 +67,34 @@ def checkenv():
         elif 'aarch64' in operating_system:
             clashname='./clash-linux-arm64'
         else:
-            print('not supported')
+            print('System is supported(Linux) but Architecture is not supported.')
             exit(1)
     elif operating_system.startswith('Windows'):
         if 'AMD64' in operating_system:
             clashname='clash-windows-amd64.exe'
         else:
-            print('not supported')
+            print('System is supported(Windows) but Architecture is not supported.')
             exit(1)
     else:
-        print('not supported')
+        print('System is not supported.')
         exit(1)
 
     return clashname, operating_system
+
+
+def checkuse(clashname, operating_system):
+    pids = psutil.process_iter()
+    for pid in pids:
+        if(pid.name() == clashname):
+            if operating_system.startswith('Darwin'):
+                os.kill(pid.pid,9)
+            elif operating_system.startswith('Linux'):
+                os.kill(pid.pid,9)
+            elif operating_system.startswith('Windows'):
+                os.popen('taskkill.exe /pid:'+str(pid.pid))
+            else:
+                print(clashname, str(pid.pid) + " ← kill to continue")
+                exit(1)
 
 
 def filter(config):
