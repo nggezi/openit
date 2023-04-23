@@ -1,3 +1,8 @@
+# 这段代码是一个使用Python语言编写的Clash代理配置文件生成工具。
+# 它依赖于许多Python库，包括yaml、flag、socket、maxminddb、platform、psutil和requests等库。
+# 它的主要功能是将SS、SSR、Vmess等协议的代理服务器列表转换成Clash配置文件格式，并添加国旗和服务器数量信息。
+# 它还检测当前操作系统和处理器架构，确定Clash可执行文件的名称和路径。它还检查是否已有正在运行的Clash进程，并终止它们。
+# 最后，它过滤代理服务器列表，只保留支持的协议和加密方法，并按国家分类
 import os
 import yaml
 import flag
@@ -50,7 +55,7 @@ def push(list, outfile):
         yaml.dump(clash, writer, sort_keys=False)
 
 
-def checkenv():
+def checkenv(): #检查操作系统和处理器类型，并返回对应的 Clash 文件名和操作系统类型
     operating_system = str(platform.system() + '/' +  platform.machine() + ' with ' + platform.node())
     print('Try to run Clash on '+ operating_system)
     if operating_system.startswith('Darwin'):
@@ -82,7 +87,7 @@ def checkenv():
     return clashname, operating_system
 
 
-def checkuse(clashname, operating_system):
+def checkuse(clashname, operating_system): #检查是否有已经运行的 Clash 进程，若有则停止并继续执行。
     pids = psutil.process_iter()
     for pid in pids:
         if(pid.name() == clashname):
@@ -97,7 +102,7 @@ def checkuse(clashname, operating_system):
                 exit(1)
 
 
-def filter(config):
+def filter(config): #过滤配置文件中的代理，并返回筛选后的列表
     list = config["proxies"]
     ss_supported_ciphers = ['aes-128-gcm', 'aes-192-gcm', 'aes-256-gcm', 'aes-128-cfb', 'aes-192-cfb', 'aes-256-cfb', 'aes-128-ctr', 'aes-192-ctr', 'aes-256-ctr', 'rc4-md5', 'chacha20', 'chacha20-ietf', 'xchacha20', 'chacha20-ietf-poly1305', 'xchacha20-ietf-poly1305']
     ssr_supported_obfs = ['plain', 'http_simple', 'http_post', 'random_head', 'tls1.2_ticket_fastauth', 'tls1.2_ticket_auth']
