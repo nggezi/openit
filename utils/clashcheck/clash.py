@@ -179,6 +179,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                                 continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                         authentication = 'uuid'
                     except:
