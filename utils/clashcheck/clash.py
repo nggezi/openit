@@ -2,7 +2,8 @@
 # 它依赖于许多Python库，包括yaml、flag、socket、maxminddb、platform、psutil和requests等库。
 # 它的主要功能是将SS、SSR、Vmess等协议的代理服务器列表转换成Clash配置文件格式，并添加国旗和服务器数量信息。
 # 它还检测当前操作系统和处理器架构，确定Clash可执行文件的名称和路径。它还检查是否已有正在运行的Clash进程，并终止它们。
-# 最后，它过滤代理服务器列表，只保留支持的协议和加密方法，并按国家分类
+# 最后，它过滤代理服务器列表，只保留支持的协议和加密方法，并按国家分类。
+# 基于CFW安全，less is more，把hk/mo/tw/cn统一划为CN节点，这些节点不安定，排除不做考虑，CN这个池子啥鱼🐟都有，舍弃它。
 import os
 import yaml
 import flag
