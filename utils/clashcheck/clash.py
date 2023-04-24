@@ -122,7 +122,6 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
              'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
              'rules': ['MATCH,🌐 Proxy']}
     with maxminddb.open_database('Country.mmdb') as countrify:
-        ip_port_dict = {}
         for i in tqdm(range(int(len(list))), desc="Parse"):
             try:
                 x = list[i]
@@ -141,11 +140,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         if x['cipher'] not in ss_supported_ciphers:
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
                             continue
-                        if ip + ':' + str(x['port']) in ip_port_dict:
+                        if (ip, x['port']) in iplist:
                             ss_omit_ip_dupe = ss_omit_ip_dupe + 1
                             continue
                         else:
-                            ip_port_dict[ip + ':' + str(x['port'])] = True
+                            iplist.add((ip, x['port']))
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSS'
                         authentication = 'password'
                     except:
@@ -166,7 +165,7 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         authentication = 'password'
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
                     except:
-                        continue
+                            continue
                 elif x['type'] == 'vmess':
                     try:
                         if 'udp' in x:
@@ -180,10 +179,10 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                                 continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
-                        if ip + ':' + str(x['port']) in ip_port_dict:
+                        if (ip, x['port']) in iplist:
                             continue
                         else:
-                            ip_port_dict[ip + ':' + str(x['port'])] = True
+                            iplist.add((ip, x['port']))
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                         authentication = 'uuid'
                     except:
