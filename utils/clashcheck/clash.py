@@ -40,12 +40,7 @@ def push(list, outfile):
                         country = str(countrify.get(ip)['country']['iso_code'])
                     except:
                         country = 'UN'
-                    # ----基于CFW安全，把hk/mo/tw/cn统一划为CN节点--------
-                    if country == 'TW' or country == 'MO' or country == 'HK':
-                        flagcountry = 'CN'
-                    else:
-                        flagcountry = country
-                    # -------以上为排除划为cn节点的代码，如不需要可以注释掉------------------
+                    flagcountry = country
                     try:
                         country_count[country] = country_count[country] + 1
                         x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
@@ -127,6 +122,10 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                 x = list[i]
                 authentication = ''
                 x['port'] = int(x['port'])
+              # 以下两行如果加上，vmess节点就没了，也不知道什么原因
+              # 以下两行的作用是检查该字符串是否只包含数字字符。如果是，则将该字符串转换为整数，并将新的整数值存储回"x"字典中的"password"键
+              # if x['password'].isdigit():
+                 # x['password'] = int(x['password'])
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
@@ -140,11 +139,12 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         if x['cipher'] not in ss_supported_ciphers:
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
                             continue
-                        if (ip, x['port']) in iplist:
+                        if ip in iplist:
                             ss_omit_ip_dupe = ss_omit_ip_dupe + 1
                             continue
                         else:
-                            iplist.add((ip, x['port']))
+                            iplist[ip] = []
+                            iplist[ip].append(x['port'])
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSS'
                         authentication = 'password'
                     except:
@@ -165,7 +165,7 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         authentication = 'password'
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
                     except:
-                            continue
+                        continue
                 elif x['type'] == 'vmess':
                     try:
                         if 'udp' in x:
@@ -179,10 +179,6 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                                 continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
-                        if (ip, x['port']) in iplist:
-                            continue
-                        else:
-                            iplist.add((ip, x['port']))
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                         authentication = 'uuid'
                     except:
@@ -239,14 +235,10 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                     continue
 
                 if ip in iplist and x['port'] in iplist[ip]:
-                    # 增加一个CN判断，是CN预定义的都排除，如不需要可注释掉下面一行，同时下面嵌套if语段tab一下
-                    if country != 'CN':
+                    if x[authentication] in passlist:
                         continue
                     else:
-                        if x[authentication] in passlist:
-                            continue
-                        else:
-                            passlist.append(x[authentication])
+                        passlist.append(x[authentication])
                 else:
                     try:
                         iplist[ip].append(x['port'])
