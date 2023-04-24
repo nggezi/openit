@@ -41,8 +41,8 @@ def push(list, outfile):
                     except:
                         country = 'UN'
                     # ----基于CFW安全，把hk/mo/tw/cn统一划为CN节点--------
-                    if country == 'TW' or country == 'MO' or country == 'HK':
-                        flagcountry = 'CN'
+                    # if country == 'TW' or country == 'MO' or country == 'HK':
+                    #     flagcountry = 'CN'
                     else:
                         flagcountry = country
                     # -------以上为排除划为cn节点的代码，如不需要可以注释掉------------------
