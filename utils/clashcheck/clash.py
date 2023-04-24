@@ -129,8 +129,8 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                 x['port'] = int(x['port'])
               # 以下两行如果加上，vmess节点就没了，也不知道什么原因
               # 以下两行的作用是检查该字符串是否只包含数字字符。如果是，则将该字符串转换为整数，并将新的整数值存储回"x"字典中的"password"键
-                if x['password'].isdigit():
-                   x['password'] = int(x['password'])
+               # if x['password'].isdigit():
+                #   x['password'] = int(x['password'])
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
@@ -144,8 +144,6 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         if x['cipher'] not in ss_supported_ciphers:
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
                             continue
-                        # 增加一个CN判断，是CN预定义的都排除，如不需要可注释掉下面一行，同时下面嵌套if语段tab一下
-                        if country != 'CN':
                             if ip in iplist:
                                 ss_omit_ip_dupe = ss_omit_ip_dupe + 1
                                 continue
@@ -164,13 +162,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             continue
                         if x['protocol'] not in ssr_supported_protocol:
                             continue
-                        # 增加一个CN判断，是CN预定义的都排除，如不需要可注释掉下面一行，同时下面嵌套if语段tab一下
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                         authentication = 'password'
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
                     except:
