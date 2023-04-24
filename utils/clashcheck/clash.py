@@ -46,7 +46,6 @@ def push(list, outfile):
                     else:
                         flagcountry = country
                     # -------以上为排除划为cn节点的代码，如不需要可以注释掉------------------
-                    flagcountry = country
                     try:
                         country_count[country] = country_count[country] + 1
                         x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
