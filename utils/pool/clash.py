@@ -17,7 +17,7 @@ def push(list):
     passlist = []
     count = 1
     clash = {'proxies': [], 'proxy-groups': [
-            {'name': 'automatic', 'type': 'url-test', 'proxies': [], 'url': 'https://www.google.com/generate_204',
+            {'name': 'automatic', 'type': 'url-test', 'proxies': [], 'url': 'https://www.google.com/favicon.ico',
              'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
              'rules': ['MATCH,🌐 Proxy']}
     with maxminddb.open_database('Country.mmdb') as countrify:
