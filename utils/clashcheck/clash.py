@@ -39,13 +39,13 @@ def push(list, outfile):
                     try:
                         country = str(countrify.get(ip)['country']['iso_code'])
                     except:
-                    # 以下两行是排除CN节点，用#号注释掉下面第5-7行
+                        country = 'UN'
+                    # 以下两行是排除CN节点，用#号注释掉下面第5-6行
                     if country == 'TW' or country == 'MO' or country == 'HK':
                         flagcountry = 'CN'
                     else:
                         flagcountry = country
                     # 以下两行是不排除CN节点，用#号注释掉上面5行
-                    #    country = 'UN'
                     #flagcountry = country
                     try:
                         country_count[country] = country_count[country] + 1
