@@ -258,19 +258,19 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                     continue
 
                 if ip in iplist and x['port'] in iplist[ip]:
-                    # 以下两行是排除CN节点，用#号注释掉下面第8-12行 
-                    #if country != 'CN':
-                    #    continue
-                    #else:
-                    #    if x[authentication] in passlist:
-                    #        continue
-                    #    else:
-                    #        passlist.append(x[authentication])
-                    # 以下两行是不排除CN节点，用#号注释掉上面第8行 
-                    if x[authentication] in passlist:
+                    # 以下7行是排除CN节点，用#号注释掉下面第8-12行 
+                    if country != 'CN':
                         continue
                     else:
-                        passlist.append(x[authentication])
+                        if x[authentication] in passlist:
+                            continue
+                        else:
+                            passlist.append(x[authentication])
+                    # 以下4行是不排除CN节点，用#号注释掉上面第8行 
+                    #if x[authentication] in passlist:
+                    #    continue
+                    #else:
+                    #    passlist.append(x[authentication])
                 else:
                     try:
                         iplist[ip].append(x['port'])
