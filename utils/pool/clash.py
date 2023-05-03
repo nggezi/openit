@@ -61,12 +61,12 @@ def push(list):
                         if x['protocol'] not in ssr_supported_protocol:
                             continue
                         #--------如果不排除CN，请注释掉下面-----------
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        #if country != 'CN':
+                        #    if ip in iplist:
+                        #        continue
+                        #    else:
+                        #        iplist.append(ip)
+                        #        iplist[ip].append(x['port'])
                         #------------------------------
                         authentication = 'password'
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
@@ -140,20 +140,20 @@ def push(list):
                 else:
                     continue
                 #--------如果不排除CN，请注释掉下面-----------
-                if ip in iplist and x['port'] in iplist[ip]:
-                    if country != 'CN':
-                        continue
-                    else:
-                        if x[authentication] in passlist:
-                            continue
-                        else:
-                            passlist.append(x[authentication])
-                else:
-                    try:
-                        iplist[ip].append(x['port'])
-                    except:
-                        iplist[ip] = []
-                        iplist[ip].append(x['port'])
+                #if ip in iplist and x['port'] in iplist[ip]:
+                #    if country != 'CN':
+                #        continue
+                #    else:
+                #        if x[authentication] in passlist:
+                #            continue
+                #        else:
+                #            passlist.append(x[authentication])
+                #else:
+                #    try:
+                #        iplist[ip].append(x['port'])
+                #    except:
+                #        iplist[ip] = []
+                #        iplist[ip].append(x['port'])
                 #------------------------------
                 clash['proxies'].append(x)
                 clash['proxy-groups'][0]['proxies'].append(x['name'])
