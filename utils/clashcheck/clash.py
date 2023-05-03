@@ -255,6 +255,8 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                     except:
                         continue
                 else:
+                    print(x)
+                    print('unsupported')
                     continue
 
                 if ip in iplist and x['port'] in iplist[ip]:
