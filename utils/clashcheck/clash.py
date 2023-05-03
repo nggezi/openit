@@ -146,20 +146,20 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
                             continue
                         # 以下两行是排除CN节点，用#号注释掉下面第8-14行    
-                        if country != 'CN':
-                            if ip in iplist:
-                                ss_omit_ip_dupe = ss_omit_ip_dupe + 1
-                                continue
-                            else:
-                                iplist[ip] = []
-                                iplist[ip].append(x['port'])
+                        #if country != 'CN':
+                        #    if ip in iplist:
+                        #        ss_omit_ip_dupe = ss_omit_ip_dupe + 1
+                        #        continue
+                        #    else:
+                        #        iplist[ip] = []
+                        #        iplist[ip].append(x['port'])
                         # 以下两行是不排除CN节点，用#号注释掉上面8行        
-                        #if ip in iplist:
-                        #    ss_omit_ip_dupe = ss_omit_ip_dupe + 1
-                        #    continue
-                        #else:
-                        #    iplist[ip] = []
-                        #    iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            ss_omit_ip_dupe = ss_omit_ip_dupe + 1
+                            continue
+                        else:
+                            iplist[ip] = []
+                            iplist[ip].append(x['port'])
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSS'
                         authentication = 'password'
                     except:
