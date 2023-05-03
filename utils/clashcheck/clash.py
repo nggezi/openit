@@ -203,12 +203,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
                         # 以下6行是排除CN节点，用#号注释掉下面第7-12行 
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                         authentication = 'uuid'
                     except:
@@ -222,12 +221,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             if x['skip-cert-verify'] not in [False, True]:
                                 continue
                         # 以下6行是排除CN节点，用#号注释掉下面第7-12行 
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                       
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'TJN'
                         authentication = 'password'
@@ -242,12 +240,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             if x['skip-cert-verify'] not in [False, True]:
                                 continue
                         # 以下6行是排除CN节点，用#号注释掉下面第7-12行 
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                          
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SNL'
                         authentication = 'psk'
@@ -259,12 +256,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             if x['tls'] not in [False, True]:
                                 continue
                         # 以下6行是排除CN节点，用#号注释掉下面第7-12行 
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                         
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'HTT'
                         # authentication = 'userpass'
@@ -282,12 +278,11 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             if x['skip-cert-verify'] not in [False, True]:
                                 continue
                         # 以下6行是排除CN节点，用#号注释掉下面第7-12行 
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                         
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SK5'
                         # authentication = 'userpass'
