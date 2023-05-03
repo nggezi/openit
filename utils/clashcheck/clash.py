@@ -39,8 +39,14 @@ def push(list, outfile):
                     try:
                         country = str(countrify.get(ip)['country']['iso_code'])
                     except:
-                        country = 'UN'
-                    flagcountry = country
+                    # 以下两行是排除CN节点，用#号注释掉下面第5-7行
+                    if country == 'TW' or country == 'MO' or country == 'HK':
+                        flagcountry = 'CN'
+                    else:
+                        flagcountry = country
+                    # 以下两行是不排除CN节点，用#号注释掉上面5行
+                    #    country = 'UN'
+                    #flagcountry = country
                     try:
                         country_count[country] = country_count[country] + 1
                         x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
@@ -139,12 +145,21 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         if x['cipher'] not in ss_supported_ciphers:
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
                             continue
-                        if ip in iplist:
-                            ss_omit_ip_dupe = ss_omit_ip_dupe + 1
-                            continue
-                        else:
-                            iplist[ip] = []
-                            iplist[ip].append(x['port'])
+                        # 以下两行是排除CN节点，用#号注释掉下面第8-14行    
+                        if country != 'CN':
+                            if ip in iplist:
+                                ss_omit_ip_dupe = ss_omit_ip_dupe + 1
+                                continue
+                            else:
+                                iplist[ip] = []
+                                iplist[ip].append(x['port'])
+                        # 以下两行是不排除CN节点，用#号注释掉上面8行        
+                        #if ip in iplist:
+                        #    ss_omit_ip_dupe = ss_omit_ip_dupe + 1
+                        #    continue
+                        #else:
+                        #    iplist[ip] = []
+                        #    iplist[ip].append(x['port'])
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSS'
                         authentication = 'password'
                     except:
@@ -157,11 +172,19 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             continue
                         if x['protocol'] not in ssr_supported_protocol:
                             continue
-                        if ip in iplist:
-                            continue
-                        else:
-                            iplist.append(ip)
-                            iplist[ip].append(x['port'])
+                        # 以下两行是排除CN节点，用#号注释掉下面第7-12行 
+                        if country != 'CN':
+                            if ip in iplist:
+                                continue
+                            else:
+                                iplist.append(ip)
+                                iplist[ip].append(x['port'])
+                        # 以下两行是不排除CN节点，用#号注释掉上面7行  
+                        #if ip in iplist:
+                        #    continue
+                        #else:
+                        #    iplist.append(ip)
+                        #    iplist[ip].append(x['port'])
                         authentication = 'password'
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
                     except:
@@ -235,10 +258,19 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                     continue
 
                 if ip in iplist and x['port'] in iplist[ip]:
-                    if x[authentication] in passlist:
+                    # 以下两行是排除CN节点，用#号注释掉下面第8-12行 
+                    if country != 'CN':
                         continue
                     else:
-                        passlist.append(x[authentication])
+                        if x[authentication] in passlist:
+                            continue
+                        else:
+                            passlist.append(x[authentication])
+                    # 以下两行是不排除CN节点，用#号注释掉上面第8行 
+                    #if x[authentication] in passlist:
+                    #    continue
+                    #else:
+                    #    passlist.append(x[authentication])
                 else:
                     try:
                         iplist[ip].append(x['port'])
