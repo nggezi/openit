@@ -196,7 +196,8 @@ dns:
       - +.googleapis.com
       - +.gvt1.com
 proxies:
-  - {name: 🇨🇳 CN 1 → anjue, server: usstand1.eucdurl.me, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 48566:LLLiuiuiu787878, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 1 → anjue, server: layercm05.initcloud.pro, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 48530:LLLiuiuiu787878, obfs-param: "", udp: true}
+  - {name: 🇨🇳 CN 2 → anjue, server: usstand1.eucdurl.me, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 48566:LLLiuiuiu787878, obfs-param: "", udp: true}
   - {name: 🇺🇸 US 1 → anjue, server: gloal.anjue39.repl.co, port: 443, type: vmess, uuid: f2a1a5ab-4f2e-4840-a469-832d68c942e6, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /f2a1a5ab-4f2e-4840-a469-832d68c942e6-vm, headers: {Host: gloal.anjue39.repl.co}}, udp: true}
 proxy-groups:
   - name: 🌐 节点选择
@@ -216,6 +217,7 @@ proxy-groups:
     type: select
     proxies:
       - 🇨🇳 CN 1 → anjue
+      - 🇨🇳 CN 2 → anjue
       - 🇺🇸 US 1 → anjue
   - name: 💡 自动选择
     type: url-test
@@ -224,6 +226,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - 🇨🇳 CN 1 → anjue
+      - 🇨🇳 CN 2 → anjue
       - 🇺🇸 US 1 → anjue
   - name: 🇭🇰 香港节点
     type: url-test
@@ -271,6 +274,7 @@ proxy-groups:
     type: select
     proxies:
       - 🇨🇳 CN 1 → anjue
+      - 🇨🇳 CN 2 → anjue
   - name: 🪜 故障转移
     type: fallback
     url: https://www.google.com/generate_204
@@ -278,6 +282,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - 🇨🇳 CN 1 → anjue
+      - 🇨🇳 CN 2 → anjue
       - 🇺🇸 US 1 → anjue
   - name: 👉 国内网站
     type: select
