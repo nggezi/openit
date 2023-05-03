@@ -173,18 +173,18 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                         if x['protocol'] not in ssr_supported_protocol:
                             continue
                         # 以下两行是排除CN节点，用#号注释掉下面第7-12行 
-                        if country != 'CN':
-                            if ip in iplist:
-                                continue
-                            else:
-                                iplist.append(ip)
-                                iplist[ip].append(x['port'])
+                        #if country != 'CN':
+                        #    if ip in iplist:
+                        #        continue
+                        #    else:
+                        #        iplist.append(ip)
+                        #        iplist[ip].append(x['port'])
                         # 以下两行是不排除CN节点，用#号注释掉上面7行  
-                        #if ip in iplist:
-                        #    continue
-                        #else:
-                        #    iplist.append(ip)
-                        #    iplist[ip].append(x['port'])
+                        if ip in iplist:
+                            continue
+                        else:
+                            iplist.append(ip)
+                            iplist[ip].append(x['port'])
                         authentication = 'password'
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
                     except:
