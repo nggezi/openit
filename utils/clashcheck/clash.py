@@ -41,12 +41,12 @@ def push(list, outfile):
                     except:
                         country = 'UN'
                     # 以下两行是排除CN节点，用#号注释掉下面第5-6行
-                    if country == 'TW' or country == 'MO' or country == 'HK':
-                        flagcountry = 'CN'
-                    else:
-                        flagcountry = country
+                    #if country == 'TW' or country == 'MO' or country == 'HK':
+                    #    flagcountry = 'CN'
+                    #else:
+                    #    flagcountry = country
                     # 以下两行是不排除CN节点，用#号注释掉上面5行
-                    #flagcountry = country
+                    flagcountry = country
                     try:
                         country_count[country] = country_count[country] + 1
                         x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
