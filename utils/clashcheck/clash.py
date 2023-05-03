@@ -266,6 +266,7 @@ def filter(config): #过滤配置文件中的代理，并返回筛选后的列�
                             continue
                         else:
                             passlist.append(x[authentication])
+                            pass
                     # 以下4行是不排除CN节点，用#号注释掉上面第8行 
                     #if x[authentication] in passlist:
                     #    continue
