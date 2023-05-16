@@ -10,7 +10,7 @@ if __name__ == '__main__':
     with Manager() as manager:
         alive = manager.list()
         # 初始化配置
-        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, config = init()
+        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, config = init()
         clashname, operating_system = checkenv()
         checkuse(clashname[2::], operating_system)
         # 启动 Clash 进程
