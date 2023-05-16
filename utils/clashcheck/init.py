@@ -19,6 +19,7 @@ def init():
         source = str(config['source'])
         timeout = config['timeout']
         testurl = config['test-url']
+        testurl1 = config['test-url1']
         outfile = config['outfile']
     # get clash config file
     if source.startswith('http://'):
@@ -43,7 +44,7 @@ def init():
         file = yaml.dump(config, file)
 
     # return all variables
-    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, config
+    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, config
 
 def clean(clash):
     shutil.rmtree('./temp')
