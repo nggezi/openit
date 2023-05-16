@@ -22,7 +22,7 @@ if __name__ == '__main__':
             p.start()
             processes.append(p)
         for p in processes:
-            p.join
+            p.join()
         time.sleep(5)
         alive=list(alive)
         push(alive,outfile)
