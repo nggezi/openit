@@ -39,24 +39,6 @@ def fetch(proxy_list, filename):
     for x in working['proxies']:
         data_out.append(x)
     proxy_list.append(data_out)
-    
-def fetch1(proxy_list, filename):
-    current_date = time.strftime("%Y%m%d", time.localtime())
-    baseurl = 'https://raw.githubusercontent.com/anjue39/PoolActions/main/subscribe/'
-
-    try:
-        response = requests.get(baseurl, timeout=240)
-        if response.status_code == 200:
-            data = response.content
-            filenames = re.findall(r'\d+', response.text)
-            for filename in filenames:
-                if current_date in filename:
-                    url = baseurl + filenameurl + '.yaml'
-                    working = yaml.safe_load(requests.get(url, timeout=240).text)
-                    data_out = []
-                    for x in working['proxies']:
-                        data_out.append(x)
-                    proxy_list.append(data_out)
 
 proxy_list=[]
 if __name__ == '__main__':
@@ -100,12 +82,6 @@ if __name__ == '__main__':
                 p.join()
             for i in filenames:
                 p = Process(target=fetch, args=(proxy_list, i))
-                p.start()
-                processes.append(p)
-            for p in processes:
-                p.join()
-            for i in filenames:
-                p = Process(target=fetch1, args=(proxy_list, i))
                 p.start()
                 processes.append(p)
             for p in processes:
