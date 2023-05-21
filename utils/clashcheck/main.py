@@ -30,9 +30,10 @@ if __name__ == '__main__':
 
         # 将第一轮测试的结果作为最终结果
         alive = list(alive)
-
+        
         # 如果存在第二轮测试的 testurl1，进行第二轮测试
-        if config.get('test-url1') is not None:
+        testurl1 = config.get('test-url1')  # 获取 testurl1，如果不存在则默认为 None
+        if testurl1 and testurl1.strip():
             processes = []
             second_round_alive = manager.list()
 
