@@ -2,6 +2,7 @@ import time
 import subprocess
 from multiprocessing import Process, Manager, Semaphore
 from check import check
+from check1 import check1
 from tqdm import tqdm
 from init import init, clean
 from clash import push, checkenv, checkuse
@@ -35,7 +36,7 @@ if __name__ == '__main__':
         # 第二轮测试，使用 testurl1，基于第一轮测试的活跃代理
         for proxy in first_round_alive:
             sema.acquire()
-            p = Process(target=check, args=(alive, proxy, apiurl, sema, timeout, testurl1))
+            p = Process(target=check1, args=(alive, proxy, apiurl, sema, timeout, testurl1))
             p.start()
             processes.append(p)
         for p in processes:
