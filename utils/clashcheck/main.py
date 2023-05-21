@@ -1,3 +1,4 @@
+import time
 import subprocess
 from multiprocessing import Process, Manager, Semaphore
 from check import check
