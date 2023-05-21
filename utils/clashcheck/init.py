@@ -19,7 +19,7 @@ def init():
         source = str(config['source'])
         timeout = config['timeout']
         testurl = config['test-url']
-        testurl1 = config['test-url1']
+        testurl1 = config.get('test-url1', '')  # 使用 get 方法获取键值，如果不存在则返回空字符串
         outfile = config['outfile']
     # get clash config file
     if source.startswith('http://'):
