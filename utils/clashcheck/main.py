@@ -2,7 +2,6 @@ import time
 import subprocess
 from multiprocessing import Process, Manager, Semaphore
 from check import check
-from check1 import check1
 from tqdm import tqdm
 from init import init, clean
 from clash import push, checkenv, checkuse
@@ -29,20 +28,23 @@ if __name__ == '__main__':
         for p in processes:
             p.join()
 
-        first_round_alive = list(alive)
-        alive = manager.list()
-        processes = []
+        # 如果存在第二轮测试的 testurl1，进行第二轮测试
+        if testurl1 and testurl1.strip():
+            processes = []
+            second_round_alive = manager.list()
 
-        # 第二轮测试，使用 testurl1，基于第一轮测试的活跃代理
-        for proxy in first_round_alive:
-            sema.acquire()
-            p = Process(target=check1, args=(alive, proxy, apiurl, sema, timeout, testurl1))
-            p.start()
-            processes.append(p)
-        for p in processes:
-            p.join()
+            # 第二轮测试，使用 testurl1，基于第一轮测试的活跃代理
+            for proxy in alive:
+                sema.acquire()
+                p = Process(target=check, args=(second_round_alive, proxy, apiurl, sema, timeout, testurl1))
+                p.start()
+                processes.append(p)
+            for p in processes:
+                p.join()
 
-        alive = list(alive)
+            # 将第二轮测试的结果作为最终结果
+            alive = list(second_round_alive)
+
         # 将测试结果写入文件
         push(alive, outfile)
         # 清理进程和临时文件
