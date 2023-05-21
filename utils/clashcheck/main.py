@@ -28,8 +28,8 @@ if __name__ == '__main__':
         for p in processes:
             p.join()
 
-        # 将第一轮测试的结果保存为初始结果
-        initial_alive = list(alive)
+        # 将第一轮测试的结果作为最终结果
+        alive = list(alive)
 
         # 如果存在第二轮测试的 testurl1，进行第二轮测试
         if testurl1 and testurl1.strip():
@@ -37,7 +37,7 @@ if __name__ == '__main__':
             second_round_alive = manager.list()
 
             # 第二轮测试，使用 testurl1，基于第一轮测试的活跃代理
-            for proxy in tqdm(initial_alive, desc="Testing Round 2"):
+            for proxy in tqdm(alive, desc="Testing Round 2"):
                 sema.acquire()
                 p = Process(target=check, args=(second_round_alive, proxy, apiurl, sema, timeout, testurl1))
                 p.start()
@@ -50,7 +50,7 @@ if __name__ == '__main__':
             print("第二次测试结果数量:", len(alive))
         else:
             # 没有第二轮测试时，将第一轮测试的结果作为最终结果
-            alive = list(initial_alive)
+            alive = list(alive)
             print("只进行了第一次测试，结果数量:", len(alive))
 
         # 将测试结果写入文件
