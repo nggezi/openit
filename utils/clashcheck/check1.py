@@ -1,7 +1,7 @@
 import requests
 import json
 
-def check1(alive, proxy, apiurl, sema, timeout, testurl1):
+def check1(first_round_alive, proxy, apiurl, sema, timeout, testurl1):
     try:
         r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url='+testurl1+'&timeout=' + str(timeout), timeout=10)
         response = json.loads(r.text)
