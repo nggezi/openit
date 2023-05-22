@@ -1,3 +1,6 @@
+# 根据是否存在第二轮测试 testurl1 的判断，决定使用哪个 URL 进行测试。
+# 如果存在第二轮测试，则使用 testurl1 进行测试；否则，只执行第一轮测试，使用 testurl 进行测试。
+# 请注意，在main.py中调用 check() 函数时，确保正确传入 testurl 和 testurl1 的值。
 import requests
 import json
 
