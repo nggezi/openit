@@ -1,9 +1,12 @@
-# 这段代码是一个使用Python语言编写的Clash代理配置文件生成工具。
-# 它依赖于许多Python库，包括yaml、flag、socket、maxminddb、platform、psutil和requests等库。
-# 它的主要功能是将SS、SSR、Vmess等协议的代理服务器列表转换成Clash配置文件格式，并添加国旗和服务器数量信息。
-# 它还检测当前操作系统和处理器架构，确定Clash可执行文件的名称和路径。它还检查是否已有正在运行的Clash进程，并终止它们。
-# 最后，它过滤代理服务器列表，只保留支持的协议和加密方法，并按国家分类。
-# 基于CFW安全，less is more，把hk/mo/tw/cn统一划为CN节点，这些节点不安定，排除不做考虑，CN这个池子啥鱼🐟都有，舍弃它。
+"""
+1. 这段代码是一个使用Python语言编写的Clash代理配置文件生成工具。
+2. 它依赖于许多Python库，包括yaml、flag、socket、maxminddb、platform、psutil和requests等库。
+3. 它的主要功能是将SS、SSR、Vmess等协议的代理服务器列表转换成Clash配置文件格式，并添加国旗和服务器数量信息。
+4. 它还检测当前操作系统和处理器架构，确定Clash可执行文件的名称和路径。它还检查是否已有正在运行的Clash进程，并终止它们。
+5. 最后，它过滤代理服务器列表，只保留支持的协议和加密方法，并按国家分类。
+6. 基于CFW安全，less is more，把hk/mo/tw/cn统一划为CN节点，这些节点不安定，排除不做考虑，CN这个池子啥鱼🐟都有，舍弃它。
+"""
+
 import os
 import yaml
 import flag
@@ -17,6 +20,13 @@ from pathlib import Path
 
 
 def push(list, outfile):
+    """
+    将代理服务器列表转换为Clash配置文件格式，并添加国旗和服务器数量信息。
+
+    参数：
+    - list: 代理服务器列表
+    - outfile: 输出文件路径
+    """
     country_count = {}
     count = 1
     clash = {'proxies': [], 'proxy-groups': [
@@ -40,6 +50,7 @@ def push(list, outfile):
                         country = str(countrify.get(ip)['country']['iso_code'])
                     except:
                         country = 'UN'
+                        
                     # 以下4行是排除CN节点，用#号注释掉下面第5-6行
                     if country == 'TW' or country == 'MO' or country == 'HK':
                         flagcountry = 'CN'
@@ -47,6 +58,7 @@ def push(list, outfile):
                         flagcountry = country
                     # 以下1行是不排除CN节点，用#号注释掉上面5行
                     #flagcountry = country
+                    
                     try:
                         country_count[country] = country_count[country] + 1
                         x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
