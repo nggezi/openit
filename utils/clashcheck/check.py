@@ -1,6 +1,9 @@
-# 根据是否存在第二轮测试 testurl1 的判断，决定使用哪个 URL 进行测试。
-# 如果存在第二轮测试，则使用 testurl1 进行测试；否则，只执行第一轮测试，使用 testurl 进行测试。
-# 请注意，在main.py中调用 check() 函数时，确保正确传入 testurl 和 testurl1 的值。
+"""
+根据是否存在第二轮测试 testurl1 的判断，决定使用哪个 URL 进行测试。
+如果存在第二轮测试，则使用 testurl1 进行测试；否则，只执行第一轮测试，使用 testurl 进行测试。
+请注意，在 main.py 中调用 check() 函数时，确保正确传入 testurl 和 testurl1 的值。
+"""
+
 import requests
 import json
 
@@ -21,14 +24,17 @@ def check(alive, proxy, apiurl, sema, timeout, testurl, testurl1=None):
         None
     """
     try:
+        # 根据是否存在第二轮测试选择测试的 URL
         if testurl1 is not None and testurl1.strip():
             r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url=' + testurl1 + '&timeout=' + str(timeout), timeout=5)
             response = json.loads(r.text)
+            # 如果延迟大于0，将代理添加到活跃代理列表
             if 'delay' in response and response['delay'] > 0:
                 alive.append(proxy)
         else:
             r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url=' + testurl + '&timeout=' + str(timeout), timeout=5)
             response = json.loads(r.text)
+            # 如果延迟大于0，将代理添加到活跃代理列表
             if 'delay' in response and response['delay'] > 0:
                 alive.append(proxy)
     except:
