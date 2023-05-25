@@ -35,7 +35,7 @@ if __name__ == '__main__':
     with Manager() as manager:
         alive = manager.list()
         # 初始化配置
-        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_url, download_timeout, enable_download_test, config = init()
+        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_enable, download_test_url, download_test_timeout, download_speed_threshold, config = init()
         clashname, operating_system = checkenv()
         checkuse(clashname[2::], operating_system)
         # 启动 Clash 进程
@@ -78,14 +78,20 @@ if __name__ == '__main__':
             alive = list(alive)
             print("只进行了第一次测试，结果数量:", len(alive))
             
-        # 下载速度测试
-        if enable_download_test:
+        # 如果开启下载测速测试，并且存在下载测试的 URL
+        if download_test_enable and download_test_url:
+            print("开始下载测速测试...")
+            processes = []
             download_results = []
-            for proxy in tqdm(alive, desc="Download Speed Test"):
-                download_speed = download_speed_test(proxy, download_test_url, download_timeout)
-                if download_speed is not None:
-                    proxy['download_speed'] = download_speed
-                    download_results.append(proxy)
+            for proxy in tqdm(alive, desc="下载测速测试"):
+                sema.acquire()
+                p = Process(target=download_speed_test, args=(proxy, download_test_url, download_test_timeout, filtered_alive, download_speed_threshold))
+                p.start()
+                processes.append(p)
+
+            for p in processes:
+                p.join()
+
 
             # 将下载速度测试的结果作为最终结果
             alive = download_results
