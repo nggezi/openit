@@ -13,6 +13,6 @@ timeout: 1500 #测试的超时界限，单位: 毫秒
 # 配置下载速度测试参数
 download-test-enable: true                # 是否开启下载速度测试
 download-test-url: 'https://speed.cloudflare.com/__down?bytes=10000000'   # 下载速度测试的URL
-download-test-timeout: 10                 # 下载速度测试的超时时间，单位为秒
+download-test-timeout: 60                 # 下载速度测试的超时时间，单位为秒
 download-speed-threshold: 1               # 下载速度的阈值，大于该值才视为有效，单位为兆字节/秒（MB/s）
-download_speed_threads: 10 #下载测试线程数，指一次扫描多少个节点，视系统配置情况而定，此处为5个线程，建议不超过5个，否则容易卡死
+download_speed_threads: 3 #下载测试线程数，指一次扫描多少个节点，视系统配置情况而定，此处为5个线程，建议不超过5个，否则容易卡死
