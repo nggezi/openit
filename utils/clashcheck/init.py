@@ -25,6 +25,7 @@ def init():
         download_test_url = config.get('download-test-url', '')
         download_test_timeout = config.get('download-test-timeout', 5)
         download_speed_threshold = config.get('download-speed-threshold', 2)
+        download_speed_threads = config.get('download_speed_threads', 5)
     # get clash config file
     if source.startswith('http://'):
         proxyconfig = yaml.load(requests.get(source).text, Loader=SafeLoader)
@@ -48,7 +49,7 @@ def init():
         file = yaml.dump(config, file)
 
     # return all variables
-    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_enable, download_test_url, download_test_timeout, download_speed_threshold, config
+    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_enable, download_test_url, download_test_timeout, download_speed_threshold, download_speed_threads, config
 
 def clean(clash):
     shutil.rmtree('./temp')
