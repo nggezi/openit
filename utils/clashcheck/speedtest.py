@@ -18,5 +18,6 @@ def download_speed_test(proxy, download_test_url, download_test_timeout):
         speed_in_mb = speed_in_bytes / (1024 * 1024)
         return speed_in_mb
     except Exception as e:
-        print(f"Download speed test failed for proxy {proxy['name']}: {str(e)}")
+        print("下载速度测试失败:", str(e))
         return None
+sema.release()
