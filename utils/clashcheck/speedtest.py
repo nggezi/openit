@@ -1,6 +1,6 @@
 import requests
 
-def download_speed_test(proxy, download_test_url, download_timeout):
+def download_speed_test(proxy, download_test_url, download-test-timeout):
     """
     下载速度测试
 
