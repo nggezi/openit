@@ -82,14 +82,14 @@ if __name__ == '__main__':
             alive = list(alive)
             print("只进行了第一次测试，结果数量:", len(alive))
             
-        # 如果开启下载测速测试，并且存在下载测试的 URL
+        # ...
         if download_test_enable and download_test_url:
             print("开始下载测速测试...")
             processes = []
             download_results = manager.list()  # 创建共享的下载结果列表
             for proxy in tqdm(alive, desc="下载测速测试"):
                 sema_download.acquire()
-                p = Process(target=download_speed_test, args=(proxy, download_test_url, download_test_timeout))
+                p = Process(target=download_speed_test, args=(proxy, download_test_url, download_test_timeout, download_results))
                 p.start()
                 processes.append(p)
 
@@ -100,6 +100,8 @@ if __name__ == '__main__':
             download_alive = [proxy for proxy in download_results if proxy['speed'] >= download_speed_threshold]
             alive = list(download_alive)  # 将下载测速测试筛选后的结果作为最终结果
             print("下载测速测试结果数量:", len(alive))
+        # ...
+
 
         print("测试结果数量:", len(alive))
         # 将测试结果写入文件
