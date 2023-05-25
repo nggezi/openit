@@ -38,13 +38,14 @@ if __name__ == '__main__':
     with Manager() as manager:
         alive = manager.list()
         # 初始化配置
-        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_enable, download_test_url, download_test_timeout, download_speed_threshold, config = init()
+        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_enable, download_test_url, download_test_timeout, download_speed_threshold, download_speed_threads, config = init()
         clashname, operating_system = checkenv()
         checkuse(clashname[2::], operating_system)
         # 启动 Clash 进程
         clash = subprocess.Popen([clashname, '-f', './temp/working.yaml', '-d', '.'])
         processes = []
         sema = Semaphore(threads)
+        sema_download = Semaphore(download_speed_threads)
         time.sleep(5)  # 等待 Clash 进程启动
 
         # 第一轮测试，使用 testurl
@@ -87,7 +88,7 @@ if __name__ == '__main__':
             processes = []
             download_results = manager.list()  # 创建共享的下载结果列表
             for proxy in tqdm(alive, desc="下载测速测试"):
-                sema.acquire()
+                sema_download.acquire()
                 p = Process(target=download_speed_test, args=(proxy, download_test_url, download_test_timeout))
                 p.start()
                 processes.append(p)
