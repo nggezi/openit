@@ -29,12 +29,13 @@ from check import check
 from tqdm import tqdm
 from init import init, clean
 from clash import push, checkenv, checkuse
+from speedtest import download_speed_test
 
 if __name__ == '__main__':
     with Manager() as manager:
         alive = manager.list()
         # 初始化配置
-        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, config = init()
+        http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_url, download_timeout, enable_download_test, config = init()
         clashname, operating_system = checkenv()
         checkuse(clashname[2::], operating_system)
         # 启动 Clash 进程
@@ -78,12 +79,16 @@ if __name__ == '__main__':
             print("只进行了第一次测试，结果数量:", len(alive))
             
         # 下载速度测试
-        download_results = []
-        for proxy in tqdm(alive, desc="Download Speed Test"):
-            download_speed = download_speed_test(proxy, download_test_url, download_test_timeout)
-            if download_speed is not None:
-                proxy['download_speed'] = download_speed
-                download_results.append(proxy)
+        if enable_download_test:
+            download_results = []
+            for proxy in tqdm(alive, desc="Download Speed Test"):
+                download_speed = download_speed_test(proxy, download_test_url, download_timeout)
+                if download_speed is not None:
+                    proxy['download_speed'] = download_speed
+                    download_results.append(proxy)
+
+            # 将下载速度测试的结果作为最终结果
+            alive = download_results
 
         # 将下载速度测试的结果作为最终结果
         alive = download_results
