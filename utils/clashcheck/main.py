@@ -76,7 +76,19 @@ if __name__ == '__main__':
             # 没有第二轮测试时，将第一轮测试的结果作为最终结果
             alive = list(alive)
             print("只进行了第一次测试，结果数量:", len(alive))
+            
+        # 下载速度测试
+        download_results = []
+        for proxy in tqdm(alive, desc="Download Speed Test"):
+            download_speed = download_speed_test(proxy, download_test_url, download_test_timeout)
+            if download_speed is not None:
+                proxy['download_speed'] = download_speed
+                download_results.append(proxy)
 
+        # 将下载速度测试的结果作为最终结果
+        alive = download_results
+
+        print("测试结果数量:", len(alive))
         # 将测试结果写入文件
         push(alive, outfile)
         # 清理进程和临时文件
