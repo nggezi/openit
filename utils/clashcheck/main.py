@@ -8,8 +8,10 @@
 4. 根据第一轮测试结果进行筛选
 5. 如果存在第二轮测试的 testurl1，执行第二轮测试
 6. 将第二轮测试结果作为最终结果
-7. 将测试结果写入文件
-8. 清理进程和临时文件
+7. 如果开启下载测速测试，并且存在下载测试的 URL，执行下载测速测试
+8. 根据下载测速测试结果进行筛选
+9. 将测试结果写入文件
+10. 清理进程和临时文件
 
 注意事项：
 - 代码使用了多进程进行并发测试，提高测试效率
@@ -20,6 +22,7 @@
 第二轮测试将使用 testurl1 进行测试，并将第二轮测试的结果作为最终结果。
 所以最后的结果是第二轮测试的最终结果，即第二轮测试中的活跃代理列表 alive。
 如果没有第二轮测试或者 testurl1 为空，则最终结果就是第一轮测试的结果，即第一轮测试中的活跃代理列表 alive。
+如果有下载测试，下载测试是在前面延迟测试基础上进行的，下载测试后的结果作为最终结果
 """
 
 import time
@@ -82,22 +85,21 @@ if __name__ == '__main__':
         if download_test_enable and download_test_url:
             print("开始下载测速测试...")
             processes = []
-            download_results = []
+            download_results = manager.list()  # 创建共享的下载结果列表
             for proxy in tqdm(alive, desc="下载测速测试"):
                 sema.acquire()
-                p = Process(target=download_speed_test, args=(proxy, download_test_url, download_test_timeout, filtered_alive, download_speed_threshold))
+                p = Process(target=download_speed_test, args=(proxy, download_test_url, download_test_timeout, download_results, download_speed_threshold))
                 p.start()
                 processes.append(p)
 
             for p in processes:
                 p.join()
 
-
             # 将下载速度测试的结果作为最终结果
-            alive = download_results
+            download_alive = [proxy for proxy in download_results if proxy['speed'] >= download_speed_threshold]
+            alive = list(download_alive)  # 将下载测速测试筛选后的结果作为最终结果
+            print("下载测速测试结果数量:", len(alive))
 
-        # 将下载速度测试的结果作为最终结果
-        alive = download_results
 
         print("测试结果数量:", len(alive))
         # 将测试结果写入文件
