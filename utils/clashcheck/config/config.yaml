@@ -12,6 +12,6 @@ test-url1: http://anjue.oicp.net:85/remote.js #外国服务器延迟测试的本
 timeout: 1500 #测试的超时界限，单位: 毫秒
 # 配置下载速度测试参数
 download-test-enable: true                # 是否开启下载速度测试
-download-test-url: 'https://cachefly.cachefly.net/10mb.test'   # 下载速度测试的URL
-download-test-timeout: 10                 # 下载速度测试的超时时间，单位为秒
+download-test-url: 'https://cachefly.cachefly.net/1mb.test'   # 下载速度测试的URL
+download-test-timeout: 20                 # 下载速度测试的超时时间，单位为秒
 download-speed-threshold: 0.2               # 下载速度的阈值，大于该值才视为有效，单位为兆字节/秒（MB/s）
