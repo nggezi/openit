@@ -20,4 +20,3 @@ def download_speed_test(proxy, download_test_url, download_test_timeout):
     except Exception as e:
         print("下载速度测试失败:", str(e))
         return None
-sema.release()
