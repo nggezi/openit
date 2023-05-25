@@ -1,0 +1,26 @@
+import requests
+
+def download_speed_test(proxy, download_test_url, download_timeout):
+    """
+    下载速度测试
+
+    Args:
+        proxy (dict): 代理信息
+        download_test_url (str): 下载测试文件的 URL
+        download_timeout (int): 下载超时时间
+
+    Returns:
+        float: 下载速度（单位：MB/s）
+    """
+    try:
+        proxies = {
+            'http': f'http://{proxy["server"]}:{proxy["port"]}',
+            'https': f'http://{proxy["server"]}:{proxy["port"]}'
+        }
+        response = requests.get(download_test_url, proxies=proxies, timeout=download_timeout)
+        speed_in_bytes = len(response.content)
+        speed_in_mb = speed_in_bytes / (1024 * 1024)
+        return speed_in_mb
+    except Exception as e:
+        print(f"Download speed test failed for proxy {proxy['name']}: {str(e)}")
+        return None
