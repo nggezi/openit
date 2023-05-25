@@ -83,6 +83,7 @@ if __name__ == '__main__':
             print("只进行了第一次测试，结果数量:", len(alive))
             
         # ...
+
         if download_test_enable and download_test_url:
             print("开始下载测速测试...")
             processes = []
@@ -101,7 +102,6 @@ if __name__ == '__main__':
             alive = list(download_alive)  # 将下载测速测试筛选后的结果作为最终结果
             print("下载测速测试结果数量:", len(alive))
         # ...
-
 
         print("测试结果数量:", len(alive))
         # 将测试结果写入文件
