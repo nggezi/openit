@@ -1,7 +1,8 @@
 import time
 import requests
 
-def download_speed_test(proxy, download_test_url, download_test_timeout):
+download_speeds = []  # 空的列表变量
+download_speed_test(download_results, proxy, download_test_url, download_test_timeout, sema_download, download_speeds):
     """
     下载速度测试
 
