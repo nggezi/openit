@@ -1,5 +1,6 @@
 import time
 import requests
+import json
 
 def download_speed_test(download_results, proxy, download_test_url, download_test_timeout):
     """
