@@ -1,7 +1,7 @@
-sema.release()import time
+import time
 import requests
 
-def download_speed_test(alive, proxy, sema_download, download_results, download_test_url, download_test_timeout):
+def download_speed_test(download_results, proxy, download_test_url, download_test_timeout, sema_download):
     """
     下载速度测试
 
@@ -17,16 +17,11 @@ def download_speed_test(alive, proxy, sema_download, download_results, download_
         response = requests.get(download_test_url, proxies=proxy, timeout=download_test_timeout)
         end_time = time.time()
         total_time = end_time - start_time
-        latency = response.elapsed.total_seconds()
         file_size = len(response.content)
         file_in_mb = file_size / (1024 * 1024)
         speed_in_mb = file_in_mb / (total_time - latency)
-        result = {
-            'proxy': proxy,
-            'speed': speed_in_mb
-        }
-        download_results.append(result)
-        alive.append(proxy)
+        proxy['speed'] = speed_in_mb
     except requests.exceptions.RequestException:
-        pass
-sema_download.release()
+        proxy['speed'] = 0  # 请求异常，速度为 0
+
+    download_results.append(proxy)
