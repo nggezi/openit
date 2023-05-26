@@ -21,11 +21,6 @@ def init():
         testurl = config['test-url']
         testurl1 = config.get('test-url1', '')  # 使用 get 方法获取键值，如果不存在则返回空字符串
         outfile = config['outfile']
-        download_test_enable = config.get('download-test-enable', False)
-        download_test_url = config.get('download-test-url', '')
-        download_test_timeout = config.get('download-test-timeout', 5)
-        download_speed_threshold = config.get('download-speed-threshold', 2)
-        download_speed_threads = config.get('download-speed-threads', 5)
     # get clash config file
     if source.startswith('http://'):
         proxyconfig = yaml.load(requests.get(source).text, Loader=SafeLoader)
@@ -49,7 +44,7 @@ def init():
         file = yaml.dump(config, file)
 
     # return all variables
-    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, download_test_enable, download_test_url, download_test_timeout, download_speed_threshold, download_speed_threads, config
+    return http_port, api_port, threads, source, timeout, outfile, proxyconfig, apiurl, testurl, testurl1, config
 
 def clean(clash):
     shutil.rmtree('./temp')
