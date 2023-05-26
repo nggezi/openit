@@ -45,7 +45,6 @@ if __name__ == '__main__':
         clash = subprocess.Popen([clashname, '-f', './temp/working.yaml', '-d', '.'])
         processes = []
         sema = Semaphore(threads)
-        sema_download = Semaphore(download_speed_threads)
         time.sleep(5)  # 等待 Clash 进程启动
 
         # 第一轮测试，使用 testurl
@@ -88,6 +87,7 @@ if __name__ == '__main__':
         if download_test_enable and download_test_url:
             print("开始下载测速测试...")
             processes = []
+            sema_download = Semaphore(download_speed_threads)
             download_results = manager.list()  # 创建共享的下载结果列表
             for proxy in tqdm(alive, desc="下载测速测试"):
                 sema_download.acquire()
