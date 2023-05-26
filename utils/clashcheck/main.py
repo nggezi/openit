@@ -99,7 +99,7 @@ if __name__ == '__main__':
                 p.join()
 
             # 将下载速度测试的结果作为最终结果
-            download_alive = [proxy for proxy in download_results if proxy['speed'] >= download_speed_threshold]
+            #download_alive = [proxy for proxy in download_results if proxy['speed'] >= download_speed_threshold]
             alive = list(download_results)  # 将下载测速测试筛选后的结果作为最终结果
             print("下载测速测试结果数量:", len(alive))
 
