@@ -13,7 +13,7 @@ def download_speed_test(proxy, download_test_url, download-test-timeout):
         float: 下载速度（单位：MB/s）
     """
     try:
-        response = requests.get(download_results, proxy, download_test_url, download_test_timeout, sema_download)
+        response = requests.get(download-results, proxy, download-test-url, download-test-timeout, sema-download)
         speed_in_bytes = len(response.content)
         speed_in_mb = speed_in_bytes / (1024 * 1024)
         return speed_in_mb
