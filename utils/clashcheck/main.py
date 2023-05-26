@@ -27,7 +27,6 @@
 
 import time
 import subprocess
-import multiprocessing
 from multiprocessing import Process, Manager, Semaphore
 from check import check
 from tqdm import tqdm
@@ -86,12 +85,12 @@ if __name__ == '__main__':
         if download_test_enable and download_test_url:
             print("开始下载测速测试...")
             processes = []
-            sema_download = multiprocessing.Semaphore(download_speed_threads)
+            sema_download = Semaphore(download_speed_threads)
             download_results = manager.list()  # 创建共享的下载结果列表
             
             for proxy in tqdm(alive, desc="下载测速测试"):
                 sema_download.acquire()
-                p = multiprocessing.Process(target=download_speed_test, args=(download_results, proxy, download_test_url, download_test_timeout, download_speed_threshold))
+                p = Process(target=download_speed_test, args=(download_results, proxy, download_test_url, download_test_timeout, download_speed_threshold))
                 p.start()
                 processes.append(p)
 
