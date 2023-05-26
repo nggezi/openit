@@ -25,5 +25,8 @@ def download_speed_test(download_results, proxy, download_test_url, download_tes
     except requests.exceptions.RequestException:
         proxy['speed'] = 0  # 请求异常，速度为 0
         latency = 0  # 设置 latency 的默认值
+        pass
+
 
     download_results.append(proxy)
+    sema_download.release()
