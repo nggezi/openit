@@ -1,7 +1,7 @@
-import time
+sema.release()import time
 import requests
 
-def download_speed_test(alive, proxy, download_results, download_test_url, download_test_timeout):
+def download_speed_test(alive, proxy, sema_download, download_results, download_test_url, download_test_timeout):
     """
     下载速度测试
 
@@ -29,3 +29,4 @@ def download_speed_test(alive, proxy, download_results, download_test_url, downl
         alive.append(proxy)
     except requests.exceptions.RequestException:
         pass
+sema_download.release()
