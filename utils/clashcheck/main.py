@@ -27,6 +27,7 @@
 
 import time
 import subprocess
+import multiprocessing
 from multiprocessing import Process, Manager, Semaphore
 from check import check
 from tqdm import tqdm
