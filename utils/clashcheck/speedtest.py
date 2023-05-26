@@ -1,7 +1,7 @@
 import time
 import requests
 
-def download_speed_test(download_results, proxy, download_test_url, download_test_timeout, download_speed_threshold):
+def download_speed_test(proxy, download_test_url, download_test_timeout):
     """
     下载速度测试
 
@@ -14,7 +14,7 @@ def download_speed_test(download_results, proxy, download_test_url, download_tes
     """
     try:
         start_time = time.time()
-        response = requests.get(download_results, proxy, download_test_url, download_test_timeout, download_speed_threshold)
+        response = requests.get(proxy, download_test_url, download_test_timeout)
         end_time = time.time()
         total_time = end_time - start_time
         latency = response.elapsed.total_seconds()
