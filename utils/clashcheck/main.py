@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
         # 将第一轮测试的结果作为最终结果
         alive = list(alive)
-        
+
         # 如果存在第二轮测试的 testurl1，进行第二轮测试
         if testurl1 and testurl1.strip():
             processes = []
@@ -80,8 +80,6 @@ if __name__ == '__main__':
             # 没有第二轮测试时，将第一轮测试的结果作为最终结果
             alive = list(alive)
             print("只进行了第一次测试，结果数量:", len(alive))
-            
-        # ...
 
         # 如果开启下载测速测试，并且存在下载测试的 URL，执行下载测速测试
         if download_test_enable and download_test_url:
@@ -91,7 +89,7 @@ if __name__ == '__main__':
             download_results = manager.list()  # 创建共享的下载结果列表
             for proxy in tqdm(alive, desc="下载测速测试"):
                 sema_download.acquire()
-                p = Process(target=download_speed_test, args=(download_results, proxy, download_test_url, download_test_timeout, sema_download, speed_list))
+                p = Process(target=download_speed_test, args=(download_results, proxy, download_test_url, download_test_timeout, sema_download))
                 p.start()
                 processes.append(p)
 
