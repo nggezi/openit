@@ -25,5 +25,6 @@ def download_speed_test(proxy, download_test_url, download_test_timeout):
         file_in_mb = file_size / (1024 * 1024)
         speed_in_mb = file_in_mb / (total_time - latency)
         proxy['speed'] = speed_in_mb
+        download_speeds.append(proxy['speed'])  # 将下载速度结果添加到 download_speeds 列表中
     except requests.exceptions.RequestException:
         proxy['speed'] = 0  # 请求异常，速度为 0
