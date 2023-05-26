@@ -1,7 +1,7 @@
 import time
 import requests
 
-def download_speed_test(download_results, proxy, download_test_url, download_test_timeout, sema_download, proxy['speed']):
+def download_speed_test(download_results, proxy, download_test_url, download_test_timeout, sema_download):
     """
     下载速度测试
 
