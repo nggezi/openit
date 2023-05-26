@@ -17,6 +17,7 @@ def download_speed_test(download_results, proxy, download_test_url, download_tes
         response = requests.get(download_test_url, proxies=proxy, timeout=download_test_timeout)
         end_time = time.time()
         total_time = end_time - start_time
+        latency = response.elapsed.total_seconds()
         file_size = len(response.content)
         file_in_mb = file_size / (1024 * 1024)
         speed_in_mb = file_in_mb / (total_time - latency)
