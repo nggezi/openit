@@ -1,7 +1,7 @@
 import time
 import requests
 
-def download_speed_test(alive, proxy, download_results, proxy, download_test_url, download_test_timeout):
+def download_speed_test(alive, proxy, download_results, download_test_url, download_test_timeout):
     """
     下载速度测试
 
@@ -21,8 +21,11 @@ def download_speed_test(alive, proxy, download_results, proxy, download_test_url
         file_size = len(response.content)
         file_in_mb = file_size / (1024 * 1024)
         speed_in_mb = file_in_mb / (total_time - latency)
-        proxy['speed'] = speed_in_mb
+        result = {
+            'proxy': proxy,
+            'speed': speed_in_mb
+        }
+        download_results.append(result)
+        alive.append(proxy)
     except requests.exceptions.RequestException:
-        proxy['speed'] = 0  # 请求异常，速度为 0
-
-    download_results.append(proxy)
+        pass
