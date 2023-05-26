@@ -87,9 +87,10 @@ if __name__ == '__main__':
             processes = []
             sema_download = Semaphore(download_speed_threads)
             download_results = manager.list()  # 创建共享的下载结果列表
+            
             for proxy in tqdm(alive, desc="下载测速测试"):
                 sema_download.acquire()
-                p = Process(target=download_speed_test, args=(download_results, proxy, download_test_url, download_test_timeout, sema_download))
+                p = Process(target=download_speed_test, args=(download_results, proxy, download_test_url, download_test_timeout, sema_download, proxy['speed']))
                 p.start()
                 processes.append(p)
 
@@ -97,7 +98,7 @@ if __name__ == '__main__':
                 p.join()
 
             # 将下载速度测试的结果作为最终结果
-            #download_alive = [proxy for proxy in download_results if proxy['speed'] >= download_speed_threshold]
+            download_alive = [proxy for proxy in download_results if proxy['speed'] >= download_speed_threshold]
             alive = list(download_results)  # 将下载测速测试筛选后的结果作为最终结果
             print("下载测速测试结果数量:", len(alive))
 
