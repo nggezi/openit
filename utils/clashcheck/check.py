@@ -26,13 +26,13 @@ def check(alive, proxy, apiurl, sema, timeout, testurl, testurl1=None):
     try:
         # 根据是否存在第二轮测试选择测试的 URL
         if testurl1 is not None and testurl1.strip():
-            r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url=' + testurl1 + '&timeout=' + str(timeout), timeout=5)
+            r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url=' + testurl1 + '&timeout=' + str(timeout), timeout=10)
             response = json.loads(r.text)
             # 如果延迟大于0，将代理添加到活跃代理列表
             if 'delay' in response and response['delay'] > 0:
                 alive.append(proxy)
         else:
-            r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url=' + testurl + '&timeout=' + str(timeout), timeout=5)
+            r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url=' + testurl + '&timeout=' + str(timeout), timeout=10)
             response = json.loads(r.text)
             # 如果延迟大于0，将代理添加到活跃代理列表
             if 'delay' in response and response['delay'] > 0:
