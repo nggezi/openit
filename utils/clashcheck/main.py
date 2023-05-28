@@ -47,8 +47,11 @@ if __name__ == '__main__':
         for i in tqdm(range(len(config['proxies'])), desc="Testing Round 1"):
             sema.acquire()
             p = Process(target=check, args=(alive, config['proxies'][i], apiurl, sema, timeout, testurl))
-            p.start()
-            processes.append(p)
+            try:
+                p.start()
+                processes.append(p)
+            except:
+                continue
         for p in processes:
             p.join()
         # 将第一轮测试的结果作为最终结果
@@ -63,8 +66,11 @@ if __name__ == '__main__':
             for proxy in tqdm(alive, desc="Testing Round 2"):
                 sema.acquire()
                 p = Process(target=check, args=(second_round_alive, proxy, apiurl, sema, timeout, testurl1))
-                p.start()
-                processes.append(p)
+                try:
+                    p.start()
+                    processes.append(p)
+                except:
+                    continue
             for p in processes:
                 p.join()
             time.sleep(5)
@@ -76,7 +82,6 @@ if __name__ == '__main__':
             alive = list(alive)
             print("只进行了第一次测试，结果数量:", len(alive))
         
-
         # 将测试结果写入文件
         push(alive, outfile)
         # 清理进程和临时文件
