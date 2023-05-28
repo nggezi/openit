@@ -62,7 +62,7 @@ if __name__ == '__main__':
             # 第二轮测试，使用 testurl1，基于第一轮测试的活跃代理
             for proxy in tqdm(alive, desc="Testing Round 2"):
                 sema.acquire()
-                p = Process(target=check, args=(second_round_alive, config['proxies'][i], apiurl, sema, timeout, testurl1))
+                p = Process(target=check, args=(second_round_alive, proxy, apiurl, sema, timeout, testurl1))
                 p.start()
                 processes.append(p)
             for p in processes:
