@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 p.start()
                 processes.append(p)
             for p in processes:
-                p.join
+                p.join()
             time.sleep(5)
             # 将第二轮测试的结果作为最终结果
             alive = list(second_round_alive)
