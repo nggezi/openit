@@ -44,14 +44,11 @@ if __name__ == '__main__':
         time.sleep(5)  # 等待 Clash 进程启动
 
         # 第一轮测试，使用 testurl
-        for i in tqdm(range(len(config['proxies'])), desc="Testing Round 1"):
+        for i in tqdm(range(int(len(config['proxies']))), desc="Testing"):
             sema.acquire()
-            p = Process(target=check, args=(alive, config['proxies'][i], apiurl, sema, timeout, testurl))
-            try:
-                p.start()
-                processes.append(p)
-            except:
-                continue
+            p = Process(target=check, args=(alive,config['proxies'][i],apiurl,sema,timeout,testurl))
+            p.start()
+            processes.append(p)
         for p in processes:
             p.join()
         # 将第一轮测试的结果作为最终结果
@@ -66,11 +63,8 @@ if __name__ == '__main__':
             for proxy in tqdm(alive, desc="Testing Round 2"):
                 sema.acquire()
                 p = Process(target=check, args=(second_round_alive, proxy, apiurl, sema, timeout, testurl1))
-                try:
-                    p.start()
-                    processes.append(p)
-                except:
-                    continue
+                p.start()
+                processes.append(p)
             for p in processes:
                 p.join()
             time.sleep(5)
