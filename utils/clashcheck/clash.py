@@ -116,6 +116,7 @@ def filter(config):
                 x = list[i]
                 authentication = ''
                 x['port'] = int(x['port'])
+                x['password'] = str(x['password'])
                 try:
                     x['password'] = int(x['password'])
                 except ValueError:
