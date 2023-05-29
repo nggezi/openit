@@ -50,7 +50,11 @@ if __name__ == '__main__':
             p.start()
             processes.append(p)
         for p in processes:
-            p.join()
+            try:
+                p.join()
+            except Exception as e:
+                # 在每个子进程中进行异常处理，执行适当的操作，如打印错误信息或停止执行
+                print(f"子进程异常: {e}")
         # 将第一轮测试的结果作为最终结果
         alive = list(alive)
         
@@ -66,7 +70,11 @@ if __name__ == '__main__':
                 p.start()
                 processes.append(p)
             for p in processes:
+                try:
                 p.join()
+            except Exception as e:
+                # 在每个子进程中进行异常处理，执行适当的操作，如打印错误信息或停止执行
+                print(f"子进程异常: {e}")
             time.sleep(5)
             # 将第二轮测试的结果作为最终结果
             alive = list(second_round_alive)
