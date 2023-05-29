@@ -118,10 +118,6 @@ def filter(config):
                 x['port'] = int(x['port'])
                 x['password'] = str(x['password'])
                 try:
-                    x['password'] = int(x['password'])
-                except ValueError:
-                    pass
-                try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
                     ip = x['server']
