@@ -2,9 +2,9 @@ import requests
 import time
 import json
 
-def download_speed_test(alive, proxy, apiurl, timeout, download_test_url, download_test_timeout, sema1):
+def download_speed_test(alive, proxy, apiurl, timeout, download_test_url):
     try:
-        r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url='+download_test_url+'&timeout=' + str(timeout), timeout=download_test_timeout)
+        r = requests.get(url=apiurl + '/proxies/' + str(proxy['name']) + '/delay?url='+download_test_url+'&timeout=' + str(timeout), timeout=10)
         response = json.loads(r.text)
         start_time = time.time()
         end_time = time.time()
