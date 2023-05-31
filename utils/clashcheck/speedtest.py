@@ -1,7 +1,5 @@
 import requests
 import time
-
-import requests
 import json
 
 def download_speed_test(alive, proxy, apiurl, timeout, download_test_url, download_test_timeout, sema1):
