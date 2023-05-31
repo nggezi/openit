@@ -1,31 +1,19 @@
 import time
 import requests
 
-def download_speed_test(proxy, download_test_url, download_test_timeout):
-    """
-    下载速度测试
+def download_speed_test(download_results, proxy, download_test_url, download_test_timeout, download_speed_threads):
+    start_time = time.time()  # 记录开始时间
 
-    Args:
-        download_results (list): 下载结果保存列表
-        proxy (dict): 代理信息
-        download_test_url (str): 下载测试文件的 URL
-        download_test_timeout (int): 下载超时时间
-        sema_download (multiprocessing.Semaphore): 控制并发下载的信号量
-    """
+    # 发起下载请求
     try:
-        start_time = time.time()
-        response = requests.get(proxy, download_test_url, download_test_timeout)
-        end_time = time.time()
-        total_time = end_time - start_time
-        latency = response.elapsed.total_seconds()
-        file_size = len(response.content)
-        file_in_mb = file_size / (1024 * 1024)
-        speed_in_mb = file_in_mb / (total_time - latency)
-        proxy['speed'] = speed_in_mb
+        response = requests.get(download_test_url, proxies=proxy, timeout=download_test_timeout)
     except requests.exceptions.RequestException:
-        proxy['speed'] = 0  # 请求异常，速度为 0
-        latency = 0  # 设置 latency 的默认值
-        pass
+        download_time = None  # 下载失败，将下载时间设为 None
+    else:
+        end_time = time.time()  # 记录结束时间
+        delay = response.elapsed.total_seconds()  # 获取延迟时间
 
+        download_time = end_time - start_time - delay  # 计算下载时间（减去延迟时间）
 
-    download_results.append(proxy)
+    # 将下载时间和代理信息保存到共享列表
+    download_results.append({'proxy': proxy, 'download_time': download_time})
