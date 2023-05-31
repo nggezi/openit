@@ -9,7 +9,7 @@ def download_speed_test(alive, proxy, apiurl, timeout, download_test_url, downlo
         start_time = time.time()
         end_time = time.time()
         if response.status_code == 200:
-            download_speed_bytes = len(response.content) / (end_time - start_time)
+            download_speed_bytes = 10000000 / (end_time - start_time)
             download_speed_mbps = download_speed_bytes * 8 / 1000000  # 转换为兆字节/秒
             proxy['download_speed'] = download_speed_mbps
         else:
