@@ -196,33 +196,37 @@ dns:
       - +.googleapis.com
       - +.gvt1.com
 proxies:
-  - {name: IE 1 → anjue, server: 34.240.213.73, port: 22222, type: trojan, password: telegram-id-directvpn, skip-cert-verify: true, udp: true}
-  - {name: KH 1 → anjue, server: 27.124.47.64, port: 50002, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: RS 1 → anjue, server: 37.120.193.102, port: 52920, type: vmess, uuid: 57170ff0-7180-4664-8f61-8debdda345f7, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: RW 1 → anjue, server: 72.18.82.216, port: 36180, type: vmess, uuid: aca9e186-a4e5-4918-ade0-7e74c89504e1, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇦🇺 AU 1 → anjue, server: 139.99.245.164, port: 49921, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: 🇨🇦 CA 1 → anjue, server: 99.79.189.150, port: 22222, type: trojan, password: telegram-id-directvpn, skip-cert-verify: true, udp: true}
   - {name: 🇨🇳 CN 1 → anjue, server: 18.163.249.175, port: 443, type: trojan, password: ZFYOpKqD8uEClpZ2ya83cyCDalwSOYz3F3eCxnBD4eSXNSR5R0aAATj7I3x69g, sni: golang.protocolbuffer.com, skip-cert-verify: true, udp: true}
-  - {name: 🇨🇳 TW 1 → anjue, server: 1aa446879971445766cdf92fae0fa673.n40.kkyml.ningmengshui.cyou, port: 80, type: vmess, uuid: 16413765-370d-4a62-bdb7-677cbb753a87, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: http, http-opts: {method: GET, path: [/], headers: {Host: [1aa446879971445766cdf92fae0fa673.n40.kkyml.ningmengshui.cyou]}}, udp: true}
-  - {name: 🇬🇧 GB 1 → anjue, server: 194.36.55.106, port: 443, type: vmess, uuid: 927094d3-d678-4763-8591-e240d0bcae87, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /vus4.0bad.com/chat, headers: {Host: delicate-butterfly-93f8.zuhyp4107.workers.dev}}, udp: true}
-  - {name: 🇯🇵 JP 1 → anjue, server: jp2.yihaobao.xyz, port: 10041, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇯🇵 JP 2 → anjue, server: hk6.yihaobao.xyz, port: 10051, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇯🇵 JP 3 → anjue, server: jp5.yihaobao.xyz, port: 10056, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
+  - {name: 🇫🇷 FR 1 → anjue, server: 62.233.57.38, port: 443, type: vmess, uuid: c66d1c03-ef5e-4994-a7a4-d41855867f13, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: http, http-opts: {method: GET, path: [/]}, udp: true}
+  - {name: 🇭🇰 HK 1 → anjue, server: 27.126.206.62, port: 80, type: vmess, uuid: e52d79bb-b26e-4416-ac8a-7755176299a6, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /9SCqOah8/}, udp: true}
+  - {name: 🇭🇰 HK 2 → anjue, server: 103.231.254.149, port: 80, type: vmess, uuid: 762d07cb-aaec-4296-a121-99b20b716738, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: 103.231.254.149}}, udp: true}
   - {name: 🇸🇬 SG 1 → anjue, server: 8.210.154.114, port: 40447, type: vmess, uuid: da8c9ac2-39de-4bed-ee9f-4e4340ade47d, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: 🇸🇬 SG 2 → anjue, server: 8.219.150.28, port: 443, type: vmess, uuid: 1d4379ed-27c2-4f12-9f69-25b8ca8b084c, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /}, udp: true}
+  - {name: 🇸🇬 SG 3 → anjue, server: vsg1.0bad.com, port: 443, type: vmess, uuid: 927094d3-d678-4763-8591-e240d0bcae87, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /chat, headers: {Host: vsg1.0bad.com}}, udp: true}
   - {name: 🇺🇸 US 1 → anjue, server: cloudconeaaa.gorgorchicken.one, port: 8443, type: vmess, uuid: 1cec1ebc-b489-4769-f2d9-e079b5832a60, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /cloudconeaaa, headers: {Host: cloudconeaaa.gorgorchicken.one}}, udp: true}
-  - {name: 🇺🇸 US 10 → anjue, server: 107.148.5.161, port: 53002, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: 🇺🇸 US 11 → anjue, server: cdn.ikuan.dev, port: 2052, type: vmess, uuid: 3185c2f3-4246-49c4-ba8a-5ea8fb2ef6b8, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /FreeForGFW, headers: {Host: freeforgfw.ikuan.dev}}, udp: true}
-  - {name: 🇺🇸 US 12 → anjue, server: s1.2b2.top, port: 50501, type: vmess, uuid: b479ffd3-5809-40a1-b789-12652cc8084d, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /poison, headers: {Host: s1.2b2.top}}, udp: true}
-  - {name: 🇺🇸 US 13 → anjue, server: 104.25.44.92, port: 80, type: vmess, uuid: 79691050-5798-42ce-a93c-1ad585983823, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /blue, headers: {Host: kr.kapacloud.eu.org}}, udp: true}
-  - {name: 🇺🇸 US 14 → anjue, server: o1.992688.xyz, port: 8080, type: vmess, uuid: 6b056a2c-b821-44b2-cf66-59a1126f6c95, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: o1.992688.xyz}}, udp: true}
+  - {name: 🇺🇸 US 10 → anjue, server: 171.22.134.8, port: 53433, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 11 → anjue, server: 171.22.134.9, port: 53433, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 12 → anjue, server: 171.22.134.11, port: 53433, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 13 → anjue, server: 20.24.99.46, port: 50502, type: vmess, uuid: b479ffd3-5809-40a1-b789-12652cc8084d, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /poison}, udp: true}
+  - {name: 🇺🇸 US 14 → anjue, server: vus4.0bad.com, port: 443, type: vmess, uuid: 927094d3-d678-4763-8591-e240d0bcae87, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /chat, headers: {Host: vus4.0bad.com}}, udp: true}
+  - {name: 🇺🇸 US 15 → anjue, server: 104.31.16.27, port: 80, type: vmess, uuid: 58fe1542-5290-40ad-815a-77707a81afe5, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /IOebhLMhl1CTbFHbL95myfRX2}, udp: true}
+  - {name: 🇺🇸 US 16 → anjue, server: 34.218.233.49, port: 22222, type: trojan, password: telegram-id-directvpn, sni: trj.rollingnext.co.uk, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 17 → anjue, server: 3.139.234.222, port: 22222, type: trojan, password: telegram-id-directvpn, sni: trj.rollingnext.co.uk, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 18 → anjue, server: 13.40.60.148, port: 22222, type: trojan, password: telegram-id-privatevpns, sni: trj.rollingnext.co.uk, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 19 → anjue, server: 18.170.64.234, port: 22222, type: trojan, password: telegram-id-privatevpns, sni: trj.rollingnext.co.uk, skip-cert-verify: true, udp: true}
   - {name: 🇺🇸 US 2 → anjue, server: 23.26.239.163, port: 18420, type: vmess, uuid: 65578c09-f23e-49cc-abee-4ad2a1850f9a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /}, udp: true}
-  - {name: 🇺🇸 US 3 → anjue, server: gb1.yihaobao.xyz, port: 10027, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇺🇸 US 4 → anjue, server: gloal.anjue39.repl.co, port: 443, type: vmess, uuid: f2a1a5ab-4f2e-4840-a469-832d68c942e6, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /f2a1a5ab-4f2e-4840-a469-832d68c942e6-vm, headers: {Host: gloal.anjue39.repl.co}}, udp: true}
-  - {name: 🇺🇸 US 5 → anjue, server: us3.yihaobao.xyz, port: 10045, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇺🇸 US 6 → anjue, server: us2.yihaobao.xyz, port: 10041, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇺🇸 US 7 → anjue, server: jp1.yihaobao.xyz, port: 10057, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇺🇸 US 8 → anjue, server: hk4.yihaobao.xyz, port: 10029, type: trojan, password: 4bcb582a-2437-484e-83db-a24750ab6c08, sni: tls.yihaobao.xyz, skip-cert-verify: true, udp: true}
-  - {name: 🇺🇸 US 9 → anjue, server: 107.148.5.160, port: 53002, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 20 → anjue, server: 35.88.142.178, port: 22222, type: trojan, password: telegram-id-directvpn, sni: trj.rollingnext.co.uk, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 3 → anjue, server: cdn.ikuan.dev, port: 2052, type: vmess, uuid: 3185c2f3-4246-49c4-ba8a-5ea8fb2ef6b8, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /FreeForGFW, headers: {Host: freeforgfw.ikuan.dev}}, udp: true}
+  - {name: 🇺🇸 US 4 → anjue, server: 171.22.134.4, port: 53433, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 5 → anjue, server: 171.22.134.28, port: 53433, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 6 → anjue, server: gloal.anjue39.repl.co, port: 443, type: vmess, uuid: f2a1a5ab-4f2e-4840-a469-832d68c942e6, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /f2a1a5ab-4f2e-4840-a469-832d68c942e6-vm, headers: {Host: gloal.anjue39.repl.co}}, udp: true}
+  - {name: 🇺🇸 US 7 → anjue, server: s1.2b2.top, port: 50501, type: vmess, uuid: b479ffd3-5809-40a1-b789-12652cc8084d, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /poison, headers: {Host: s1.2b2.top}}, udp: true}
+  - {name: 🇺🇸 US 8 → anjue, server: 171.22.134.10, port: 53433, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 US 9 → anjue, server: 171.22.134.30, port: 53433, type: vmess, uuid: 418048af-a293-4b99-9b0c-98ca3580dd24, alterId: 64, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
 proxy-groups:
   - name: 🌐 节点选择
     type: select
@@ -240,26 +244,30 @@ proxy-groups:
   - name: ✋ 手动选择
     type: select
     proxies:
-      - IE 1 → anjue
-      - KH 1 → anjue
       - RS 1 → anjue
       - RW 1 → anjue
+      - 🇦🇺 AU 1 → anjue
       - 🇨🇦 CA 1 → anjue
       - 🇨🇳 CN 1 → anjue
-      - 🇨🇳 TW 1 → anjue
-      - 🇬🇧 GB 1 → anjue
-      - 🇯🇵 JP 1 → anjue
-      - 🇯🇵 JP 2 → anjue
-      - 🇯🇵 JP 3 → anjue
+      - 🇫🇷 FR 1 → anjue
+      - 🇭🇰 HK 1 → anjue
+      - 🇭🇰 HK 2 → anjue
       - 🇸🇬 SG 1 → anjue
       - 🇸🇬 SG 2 → anjue
+      - 🇸🇬 SG 3 → anjue
       - 🇺🇸 US 1 → anjue
       - 🇺🇸 US 10 → anjue
       - 🇺🇸 US 11 → anjue
       - 🇺🇸 US 12 → anjue
       - 🇺🇸 US 13 → anjue
       - 🇺🇸 US 14 → anjue
+      - 🇺🇸 US 15 → anjue
+      - 🇺🇸 US 16 → anjue
+      - 🇺🇸 US 17 → anjue
+      - 🇺🇸 US 18 → anjue
+      - 🇺🇸 US 19 → anjue
       - 🇺🇸 US 2 → anjue
+      - 🇺🇸 US 20 → anjue
       - 🇺🇸 US 3 → anjue
       - 🇺🇸 US 4 → anjue
       - 🇺🇸 US 5 → anjue
@@ -273,26 +281,30 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-      - IE 1 → anjue
-      - KH 1 → anjue
       - RS 1 → anjue
       - RW 1 → anjue
+      - 🇦🇺 AU 1 → anjue
       - 🇨🇦 CA 1 → anjue
       - 🇨🇳 CN 1 → anjue
-      - 🇨🇳 TW 1 → anjue
-      - 🇬🇧 GB 1 → anjue
-      - 🇯🇵 JP 1 → anjue
-      - 🇯🇵 JP 2 → anjue
-      - 🇯🇵 JP 3 → anjue
+      - 🇫🇷 FR 1 → anjue
+      - 🇭🇰 HK 1 → anjue
+      - 🇭🇰 HK 2 → anjue
       - 🇸🇬 SG 1 → anjue
       - 🇸🇬 SG 2 → anjue
+      - 🇸🇬 SG 3 → anjue
       - 🇺🇸 US 1 → anjue
       - 🇺🇸 US 10 → anjue
       - 🇺🇸 US 11 → anjue
       - 🇺🇸 US 12 → anjue
       - 🇺🇸 US 13 → anjue
       - 🇺🇸 US 14 → anjue
+      - 🇺🇸 US 15 → anjue
+      - 🇺🇸 US 16 → anjue
+      - 🇺🇸 US 17 → anjue
+      - 🇺🇸 US 18 → anjue
+      - 🇺🇸 US 19 → anjue
       - 🇺🇸 US 2 → anjue
+      - 🇺🇸 US 20 → anjue
       - 🇺🇸 US 3 → anjue
       - 🇺🇸 US 4 → anjue
       - 🇺🇸 US 5 → anjue
@@ -306,16 +318,15 @@ proxy-groups:
     interval: 300
     tolerance: 100
     proxies:
-      - DIRECT
+      - 🇭🇰 HK 1 → anjue
+      - 🇭🇰 HK 2 → anjue
   - name: 🇯🇵 日本节点
     type: url-test
     url: https://www.google.com/generate_204
     interval: 300
     tolerance: 100
     proxies:
-      - 🇯🇵 JP 1 → anjue
-      - 🇯🇵 JP 2 → anjue
-      - 🇯🇵 JP 3 → anjue
+      - DIRECT
   - name: 🇺🇲 美国节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -328,7 +339,13 @@ proxy-groups:
       - 🇺🇸 US 12 → anjue
       - 🇺🇸 US 13 → anjue
       - 🇺🇸 US 14 → anjue
+      - 🇺🇸 US 15 → anjue
+      - 🇺🇸 US 16 → anjue
+      - 🇺🇸 US 17 → anjue
+      - 🇺🇸 US 18 → anjue
+      - 🇺🇸 US 19 → anjue
       - 🇺🇸 US 2 → anjue
+      - 🇺🇸 US 20 → anjue
       - 🇺🇸 US 3 → anjue
       - 🇺🇸 US 4 → anjue
       - 🇺🇸 US 5 → anjue
@@ -342,7 +359,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     proxies:
-      - 🇨🇳 TW 1 → anjue
+      - DIRECT
   - name: 🇸🇬 狮城节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -351,6 +368,7 @@ proxy-groups:
     proxies:
       - 🇸🇬 SG 1 → anjue
       - 🇸🇬 SG 2 → anjue
+      - 🇸🇬 SG 3 → anjue
   - name: 🇰🇷 韩国节点
     type: url-test
     url: https://www.google.com/generate_204
@@ -361,39 +379,42 @@ proxy-groups:
   - name: 🌍 其他地区
     type: select
     proxies:
-      - IE 1 → anjue
-      - KH 1 → anjue
       - RS 1 → anjue
       - RW 1 → anjue
+      - 🇦🇺 AU 1 → anjue
       - 🇨🇦 CA 1 → anjue
       - 🇨🇳 CN 1 → anjue
-      - 🇬🇧 GB 1 → anjue
+      - 🇫🇷 FR 1 → anjue
   - name: 🪜 故障转移
     type: fallback
     url: https://www.google.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - IE 1 → anjue
-      - KH 1 → anjue
       - RS 1 → anjue
       - RW 1 → anjue
+      - 🇦🇺 AU 1 → anjue
       - 🇨🇦 CA 1 → anjue
       - 🇨🇳 CN 1 → anjue
-      - 🇨🇳 TW 1 → anjue
-      - 🇬🇧 GB 1 → anjue
-      - 🇯🇵 JP 1 → anjue
-      - 🇯🇵 JP 2 → anjue
-      - 🇯🇵 JP 3 → anjue
+      - 🇫🇷 FR 1 → anjue
+      - 🇭🇰 HK 1 → anjue
+      - 🇭🇰 HK 2 → anjue
       - 🇸🇬 SG 1 → anjue
       - 🇸🇬 SG 2 → anjue
+      - 🇸🇬 SG 3 → anjue
       - 🇺🇸 US 1 → anjue
       - 🇺🇸 US 10 → anjue
       - 🇺🇸 US 11 → anjue
       - 🇺🇸 US 12 → anjue
       - 🇺🇸 US 13 → anjue
       - 🇺🇸 US 14 → anjue
+      - 🇺🇸 US 15 → anjue
+      - 🇺🇸 US 16 → anjue
+      - 🇺🇸 US 17 → anjue
+      - 🇺🇸 US 18 → anjue
+      - 🇺🇸 US 19 → anjue
       - 🇺🇸 US 2 → anjue
+      - 🇺🇸 US 20 → anjue
       - 🇺🇸 US 3 → anjue
       - 🇺🇸 US 4 → anjue
       - 🇺🇸 US 5 → anjue
