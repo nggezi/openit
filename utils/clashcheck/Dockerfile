@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.12.0
 
 EXPOSE 80/tcp
 LABEL maintainer="yusteven@duck.com"
