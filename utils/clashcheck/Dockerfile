@@ -1,4 +1,4 @@
-FROM python:3.12.0
+FROM python:3.10.6
 
 EXPOSE 80/tcp
 LABEL maintainer="yusteven@duck.com"
@@ -25,7 +25,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # copy all & make web pages
 COPY . .
-RUN rm -r /var/www/html; ln -s /usr/src/clashcheck /var/www/html
+RUN rm -r /var/www/html; ln -s /usr/src/clashcheck/data /var/www/html
 
 # start apache & start clashcheck with while
 CMD ["./start.sh"]
