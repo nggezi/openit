@@ -39,6 +39,7 @@ jobs:
          npm ci
     - name: pip
       run: | #安装pip包
+         python -m pip install --upgrade pip wheel
          pip install -r ./utils/pool/requirements.txt
          pip install -r ./utils/clashcheck/requirements.txt
     - name: pool #input ./utils/pool/config.yaml
