@@ -8,18 +8,27 @@ import psutil
 import requests
 from tqdm import tqdm
 from pathlib import Path
-
+import uuid  # 导入uuid模块
 
 def push(list, outfile):
     country_count = {}
     count = 1
     clash = {'proxies': [], 'proxy-groups': [
-            {'name': 'automatic', 'type': 'url-test', 'proxies': [], 'url': 'https://www.google.com/favicon.ico',
-             'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
-             'rules': ['MATCH,🌐 Proxy']}
+        {'name': 'automatic', 'type': 'url-test', 'proxies': [], 'url': 'https://www.google.com/favicon.ico',
+         'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
+        'rules': ['MATCH,🌐 Proxy']}
     with maxminddb.open_database('Country.mmdb') as countrify:
-        for i in tqdm(range(int(len(list))), desc="Parse"):
+        for i in tqdm(range(int(len(list)), desc="Parse"):
             x = list[i]
+
+            # 验证UUID字段是否有效
+            try:
+                valid_uuid = uuid.UUID(x['uuid'])
+            except ValueError:
+                # 如果UUID无效，跳过当前配置
+                # 这里可以记录错误日志或采取其他适当的措施
+                continue
+
             try:
                 float(x['password'])
             except:
