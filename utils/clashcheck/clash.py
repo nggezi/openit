@@ -28,12 +28,10 @@ def push(list, outfile):
                 # 如果UUID无效，跳过当前配置
                 # 这里可以记录错误日志或采取其他适当的措施
                 continue
-
+            
+            # 验证密码字段是否有效
             try:
                 float(x['password'])
-            except:
-                try:
-                    float(x['uuid'])
                 except:
                     try:
                         ip = str(socket.gethostbyname(x["server"]))
