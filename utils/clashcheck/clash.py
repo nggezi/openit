@@ -171,7 +171,7 @@ def filter(config):
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
                         if 'uuid' in x and len(x['uuid'].replace('-', '')) == 32: # 添加UUID验证
-                        	continue
+                            continue
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                         authentication = 'uuid'
                     except:
