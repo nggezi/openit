@@ -85,13 +85,16 @@ def push(list):
                                 continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
+                        # 检查UUID是否合法（32个字符）
                         if 'uuid' in x and len(x['uuid'].replace('-', '')) == 32:
+                            # 符合标准UUID格式，接受该代理
                             x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                             authentication = 'uuid'
                         else:
                             # 非标准UUID字符串，不接受这个代理
                             continue
                     except:
+                        # 出现异常情况，跳过这个代理
                         continue
                 elif x['type'] == 'trojan':
                     try:
