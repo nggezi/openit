@@ -8,7 +8,7 @@ import psutil
 import requests
 from tqdm import tqdm
 from pathlib import Path
-import uuid
+
 
 def push(list, outfile):
     country_count = {}
@@ -173,10 +173,8 @@ def filter(config):
                                 continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
-                        if 'uuid' in x and len(x['uuid'].replace('-', '')) == 32:
-                            x['uuid'] = uuid.UUID(x['uuid'])  # 将字符串转换为 UUID 对象
-                            x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
-                            authentication = 'uuid'
+                        x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
+                        authentication = 'uuid'
                     except:
                         continue
                 elif x['type'] == 'trojan':
