@@ -88,6 +88,9 @@ def push(list):
                         if 'uuid' in x and len(x['uuid'].replace('-', '')) == 32:
                             x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                             authentication = 'uuid'
+                        else:
+                            # 非标准UUID字符串，不接受这个代理
+                            continue
                     except:
                         continue
                 elif x['type'] == 'trojan':
