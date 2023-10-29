@@ -24,24 +24,27 @@ def push(list, outfile):
                 float(x['password'])
             except:
                 try:
-                    ip = str(socket.gethostbyname(x["server"]))
+                    float(x['uuid'])
                 except:
-                    ip = str(x["server"])
-                try:
-                    country = str(countrify.get(ip)['country']['iso_code'])
-                except:
-                    country = 'UN'
-                flagcountry = country
-                try:
-                    country_count[country] = country_count[country] + 1
-                    x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
-                except:
-                    country_count[country] = 1
-                    x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
-                clash['proxies'].append(x)
-                clash['proxy-groups'][0]['proxies'].append(x['name'])
-                clash['proxy-groups'][1]['proxies'].append(x['name'])
-                count = count + 1
+                    try:
+                        ip = str(socket.gethostbyname(x["server"]))
+                    except:
+                        ip = str(x["server"])
+                    try:
+                        country = str(countrify.get(ip)['country']['iso_code'])
+                    except:
+                        country = 'UN'
+                    flagcountry = country
+                    try:
+                        country_count[country] = country_count[country] + 1
+                        x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
+                    except:
+                        country_count[country] = 1
+                        x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
+                    clash['proxies'].append(x)
+                    clash['proxy-groups'][0]['proxies'].append(x['name'])
+                    clash['proxy-groups'][1]['proxies'].append(x['name'])
+                    count = count + 1
 
     with open(outfile, 'w') as writer:
         yaml.dump(clash, writer, sort_keys=False)
