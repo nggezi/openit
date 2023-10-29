@@ -8,43 +8,40 @@ import psutil
 import requests
 from tqdm import tqdm
 from pathlib import Path
-import uuid  # 导入uuid模块
+
 
 def push(list, outfile):
     country_count = {}
     count = 1
     clash = {'proxies': [], 'proxy-groups': [
-        {'name': 'automatic', 'type': 'url-test', 'proxies': [], 'url': 'https://www.google.com/favicon.ico',
-         'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
-        'rules': ['MATCH,🌐 Proxy']}
+            {'name': 'automatic', 'type': 'url-test', 'proxies': [], 'url': 'https://www.google.com/favicon.ico',
+             'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
+             'rules': ['MATCH,🌐 Proxy']}
     with maxminddb.open_database('Country.mmdb') as countrify:
-        for i in tqdm(range(int(len(list)), desc="Parse")):
+        for i in tqdm(range(int(len(list))), desc="Parse"):
             x = list[i]
             try:
                 float(x['password'])
             except:
                 try:
-                    uuid.UUID(x['uuid'])
+                    ip = str(socket.gethostbyname(x["server"]))
                 except:
-                    try:
-                        ip = str(socket.gethostbyname(x["server"]))
-                    except:
-                        ip = str(x["server"])
-                    try:
-                        country = str(countrify.get(ip)['country']['iso_code'])
-                    except:
-                        country = 'UN'
-                    flagcountry = country
-                    try:
-                        country_count[country] = country_count[country] + 1
-                        x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
-                    except:
-                        country_count[country] = 1
-                        x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
-                    clash['proxies'].append(x)
-                    clash['proxy-groups'][0]['proxies'].append(x['name'])
-                    clash['proxy-groups'][1]['proxies'].append(x['name'])
-                    count = count + 1
+                    ip = str(x["server"])
+                try:
+                    country = str(countrify.get(ip)['country']['iso_code'])
+                except:
+                    country = 'UN'
+                flagcountry = country
+                try:
+                    country_count[country] = country_count[country] + 1
+                    x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
+                except:
+                    country_count[country] = 1
+                    x['name'] = str(flag.flag(flagcountry)) + " " + country + " " + str(count)
+                clash['proxies'].append(x)
+                clash['proxy-groups'][0]['proxies'].append(x['name'])
+                clash['proxy-groups'][1]['proxies'].append(x['name'])
+                count = count + 1
 
     with open(outfile, 'w') as writer:
         yaml.dump(clash, writer, sort_keys=False)
@@ -173,8 +170,7 @@ def filter(config):
                                 continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
-                        #if 'uuid' in x and len(x['uuid'].replace('-', '')) == 32: # 添加UUID验证
-                            x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
+                        x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                         authentication = 'uuid'
                     except:
                         continue
