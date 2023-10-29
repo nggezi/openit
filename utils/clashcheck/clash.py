@@ -18,7 +18,7 @@ def push(list, outfile):
          'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
         'rules': ['MATCH,🌐 Proxy']}
     with maxminddb.open_database('Country.mmdb') as countrify:
-        for i in tqdm(range(int(len(list)), desc="Parse"):
+        for i in tqdm(range(int(len(list)), desc="Parse")):
             x = list[i]
 
             # 验证UUID字段是否有效
