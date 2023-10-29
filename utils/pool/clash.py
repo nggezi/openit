@@ -2,6 +2,7 @@ import yaml
 import flag
 import socket
 import maxminddb
+import uuid
 from tqdm import tqdm
 
 
@@ -85,8 +86,10 @@ def push(list):
                                 continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
-                        x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
-                        authentication = 'uuid'
+                        if 'uuid' in x and len(x['uuid'].replace('-', '')) == 32:
+                            x['uuid'] = uuid.UUID(x['uuid'])  # 将字符串转换为 UUID 对象
+                            x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
+                            authentication = 'uuid'
                     except:
                         continue
                 elif x['type'] == 'trojan':
