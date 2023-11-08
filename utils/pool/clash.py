@@ -34,8 +34,6 @@ def push(list):
                     country = str(countrify.get(ip)['country']['iso_code'])
                 except:
                     country = 'UN'
-                x['subscription'] = subscription_url  # 将订阅地址信息添加到代理配置
-
                 if x['type'] == 'ss':
                     try:
                         if x['cipher'] not in ss_supported_ciphers:
