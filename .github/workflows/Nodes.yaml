@@ -73,13 +73,13 @@ jobs:
          ./utils/subconverter/subconverter -g --artifact "clash"
          ./utils/subconverter/subconverter -g --artifact "long"
          ./utils/subconverter/subconverter -g --artifact "output"
-         ./utils/subconverter/subconverter -g --artifact "sing-box"
+         ./utils/subconverter/subconverter -g --artifact "singbox"
          #output ./utils/subconverter/Clash.yaml ./utils/subconverter/long ./utils/subconverter/output.txt
          mv ./utils/subconverter/Clash.yaml ./Clash.yaml || true #output ./Clash.yaml
          mv ./utils/subconverter/long ./long || true #output ./long
          mv ./utils/subconverter/output.txt ./utils/pool/output.txt || true #output ./utils/pool/output.txt
          rm ./utils/subconverter/base64 ./utils/subconverter/output.yaml  #delete ./utils/subconverter/base64 ./utils/subconverter/output.yaml
-         mv ./utils/subconverter/sing-box ./Sing || true #output ./Sing
+         mv ./utils/subconverter/singbox ./Sing || true #output ./Sing
     - name: git push
       run: ./.github/update-repo.sh || true   #upload files ./url ./https ./long ./Clash.yaml ./utils/pool/output.yaml ./utils/pool/output.txt to GitHub
 
