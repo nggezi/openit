@@ -120,18 +120,8 @@ def filter(config):
               # 以下两行的作用是检查该字符串是否只包含数字字符。如果是，则将该字符串转换为整数，并将新的整数值存储回"x"字典中的"password"键
                 # if x['password'].isdigit():
                    # x['password'] = int(x['password'])
-              # 重新修改代码如下两行代码，密码字段统一为字符串类型
-                # x['password'] = str(x['# 确保密码字段不会导致vmess节点只有一个
-if 'password' in x:
-    # 检查密码字段是否为字符串类型
-    if not isinstance(x['password'], str):
-        # 如果密码字段不是字符串类型，则将其转换为字符串
-        x['password'] = str(x['password'])
-else:
-    # 如果密码字段不存在，可以添加适当的处理逻辑
-    pass  # 这里是您的处理代码
-
-# 继续处理其他字段，确保数据的完整性和一致性
+              # 重新修改代码如下一行代码，密码字段统一为字符串类型
+                x['password'] = str(x['password'])
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
