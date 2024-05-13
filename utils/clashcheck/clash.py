@@ -121,7 +121,17 @@ def filter(config):
                 # if x['password'].isdigit():
                    # x['password'] = int(x['password'])
               # 重新修改代码如下两行代码，密码字段统一为字符串类型
-                # x['password'] = str(x['password'])
+                # x['password'] = str(x['# 确保密码字段不会导致vmess节点只有一个
+if 'password' in x:
+    # 检查密码字段是否为字符串类型
+    if not isinstance(x['password'], str):
+        # 如果密码字段不是字符串类型，则将其转换为字符串
+        x['password'] = str(x['password'])
+else:
+    # 如果密码字段不存在，可以添加适当的处理逻辑
+    pass  # 这里是您的处理代码
+
+# 继续处理其他字段，确保数据的完整性和一致性
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
