@@ -6,6 +6,7 @@ def parse(data_in):
     dtpr2 = [x for x in dtpr1 if ".yaml" in x]
     textdict = {}
     for x in dtpr2:
+        # 为解决类似0pmtpm/2024_05_05/J5WT3hh.yaml目录结构导致失败的问题，这个数据包含多个 / 分隔符，导致了解包错误。为了解决这个问题，分割操作之前对数据进行进一步处理，以确保每个字符串只包含一个 / 分隔符。
         # 进一步处理数据，只保留第一个 '/' 分隔符之前的部分作为日期，剩余部分作为文件名
         parts = x.split('/', 1)  # 仅分割一次，保留第一个分隔符之前的部分
         if len(parts) != 2:
