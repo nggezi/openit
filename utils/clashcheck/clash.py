@@ -121,7 +121,7 @@ def filter(config):
                 # if x['password'].isdigit():
                    # x['password'] = int(x['password'])
               # 重新修改代码如下两行代码，密码字段统一为字符串类型
-                x['password'] = str(x['password'])
+                # x['password'] = str(x['password'])
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
