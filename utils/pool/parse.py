@@ -6,8 +6,8 @@ def parse(data_in):
     dtpr2 = [x for x in dtpr1 if ".yaml" in x]
     textdict = {}
     for x in dtpr2:
-        # 添加对分割结果的验证
-        parts = x.split('/')
+        # 进一步处理数据，只保留第一个 '/' 分隔符之前的部分作为日期，剩余部分作为文件名
+        parts = x.split('/', 1)  # 仅分割一次，保留第一个分隔符之前的部分
         if len(parts) != 2:
             print("Error in data:", x)  # 输出导致错误的具体数据
             raise ValueError("Input should contain exactly one '/' separator")
