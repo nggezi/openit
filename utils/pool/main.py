@@ -34,8 +34,7 @@ def url(proxy_list, link):
 def fetch(proxy_list, filename):
     current_date = time.strftime("%Y_%m_%d", time.localtime())
     baseurl = 'https://raw.githubusercontent.com/changfengoss/pub/main/data/'
-    working = yaml.safe_load(requests.get(url=baseurl + current_date + '/' + filename, timeout=240).    working['proxies'] = [int(x) for x in working['proxies']]
-    working['proxies'] = [int(x) for x in working['proxies']]
+    working = yaml.safe_load(requests.get(url=baseurl + current_date + '/' + filename, timeout=240).text)
     data_out = []
     for x in working['proxies']:
         data_out.append(x)
