@@ -116,10 +116,14 @@ def filter(config):
                 x = list[i]
                 authentication = ''
                 x['port'] = int(x['port'])
-              # 以下两行如果加上，vmess节点就没了，也不知道什么原因
+              # 以下两行是原来的代码，感觉是错误的。如果加上，vmess节点就没了，也不知道什么原因
               # 以下两行的作用是检查该字符串是否只包含数字字符。如果是，则将该字符串转换为整数，并将新的整数值存储回"x"字典中的"password"键
                 # if x['password'].isdigit():
                    # x['password'] = int(x['password'])
+              # 重新修改代码如下两行代码。
+              # 检查密码字段是否只包含数字字符，如果是，则转换为字符串类型
+                if x['password'].isdigit():
+                   x['password'] = str(x['password'])
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
