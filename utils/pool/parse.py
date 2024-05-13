@@ -9,6 +9,7 @@ def parse(data_in):
         # 添加对分割结果的验证
         parts = x.split('/')
         if len(parts) != 2:
+            print("Error in data:", x)  # 输出导致错误的具体数据
             raise ValueError("Input should contain exactly one '/' separator")
         
         date, filename = parts
