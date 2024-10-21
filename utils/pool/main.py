@@ -1,56 +1,82 @@
 import time
 import yaml
 import requests
+import base64
 from crawl import get_file_list, get_proxies
 from parse import parse, makeclash
 from clash import push
 from multiprocessing import Process, Manager
 from yaml.loader import SafeLoader
-import base64
 
 headers = {'Accept': '*/*', 'Accept-Encoding': 'gzip', 'Connection': 'Keep-Alive', 'User-Agent': 'Clash'}
+
+def is_base64(content):
+    """检查内容是否为Base64编码"""
+    try:
+        base64.b64decode(content)
+        return True
+    except Exception:
+        return False
+
+def convert_to_clash_format(content):
+    """尝试将非Clash格式的节点转换为Clash格式"""
+    data_out = []
+    lines = content.strip().splitlines()
+    for line in lines:
+        if line.startswith("ss://"):
+            # 处理 Shadowsocks 节点
+            data_out.append({'name': 'SS Node', 'type': 'ss', 'server': 'example.com', 'port': 8388, 'cipher': 'aes-128-gcm', 'password': 'password'})
+        elif line.startswith("vmess://"):
+            # 处理 Vmess 节点
+            data_out.append({'name': 'Vmess Node', 'type': 'vmess', 'server': 'example.com', 'port': 443, 'uuid': 'uuid_here', 'alterId': 64, 'cipher': 'auto'})
+        elif line.startswith("vless://"):
+            # 处理 Vless 节点
+            data_out.append({'name': 'Vless Node', 'type': 'vless', 'server': 'example.com', 'port': 443, 'uuid': 'uuid_here', 'encryption': 'none'})
+        # 可以继续添加对其他节点格式的支持
+    return data_out
+
+def parse_content(content):
+    """解析内容并转换为Clash格式"""
+    # 检查是否是Base64编码
+    if is_base64(content):
+        content = base64.b64decode(content).decode('utf-8')
+
+    # 尝试解析为Clash格式
+    try:
+        working = yaml.safe_load(content)
+        if 'proxies' in working:
+            return working['proxies']
+    except yaml.YAMLError:
+        pass
+
+    # 如果不是Clash格式，则尝试将其转换为Clash格式
+    return convert_to_clash_format(content)
 
 def local(proxy_list, file):
     try:
         with open(file, 'r') as reader:
-            working = yaml.safe_load(reader)
-        data_out = []
-        if 'proxies' in working:
-            for x in working['proxies']:
-                data_out.append(x)
-            proxy_list.append(data_out)
+            content = reader.read()
+        proxies = parse_content(content)
+        if proxies:
+            proxy_list.append(proxies)
         else:
-            print(f"{file}: 没有找到 'proxies' 字段")
+            print(f"{file}: 无法找到有效的代理配置")
     except FileNotFoundError:
         print(f"{file}: 文件不存在")
-    except yaml.YAMLError as e:
-        print(f"{file}: 解析 YAML 文件时出错: {e}")
+    except Exception as e:
+        print(f"{file}: 处理时出错: {e}")
 
 def url(proxy_list, link):
     try:
         response = requests.get(url=link, timeout=240, headers=headers)
         content = response.text.strip()
-
-        # 判断是否是base64格式
-        try:
-            # 尝试解码base64
-            decoded_content = base64.b64decode(content).decode('utf-8')
-            working = yaml.safe_load(decoded_content)
-        except Exception:
-            # 如果解码失败，尝试直接解析
-            working = yaml.safe_load(content)
-
-        data_out = []
-        if 'proxies' in working:
-            for x in working['proxies']:
-                data_out.append(x)
-            proxy_list.append(data_out)
+        proxies = parse_content(content)
+        if proxies:
+            proxy_list.append(proxies)
         else:
-            print(f"{link}: 无法找到 'proxies' 字段，可能不是Clash格式")
+            print(f"{link}: 无法找到有效的代理配置")
     except requests.RequestException as e:
         print(f"请求错误: {link}, 错误信息: {e}")
-    except yaml.YAMLError as e:
-        print(f"{link}: 解析 YAML 文件时出错: {e}")
 
 def fetch(proxy_list, filename):
     current_date = time.strftime("%Y_%m_%d", time.localtime())
@@ -58,28 +84,20 @@ def fetch(proxy_list, filename):
     try:
         response = requests.get(url=baseurl + current_date + '/' + filename, timeout=240)
         content = response.text.strip()
-
-        # 尝试解析内容
-        working = yaml.safe_load(content)
-
-        data_out = []
-        if 'proxies' in working:
-            for x in working['proxies']:
-                data_out.append(x)
-            proxy_list.append(data_out)
+        proxies = parse_content(content)
+        if proxies:
+            proxy_list.append(proxies)
         else:
-            print(f"{filename}: 无法找到 'proxies' 字段，可能不是Clash格式")
+            print(f"{filename}: 无法找到有效的代理配置")
     except requests.RequestException as e:
         print(f"请求错误: {filename}, 错误信息: {e}")
-    except yaml.YAMLError as e:
-        print(f"{filename}: 解析 YAML 文件时出错: {e}")
 
 proxy_list=[]
 if __name__ == '__main__':
     with Manager() as manager:
         proxy_list = manager.list()
         current_date = time.strftime("%Y_%m_%d", time.localtime())
-        start = time.time() #time start
+        start = time.time() # time start
         config = 'config.yaml'
         with open(config, 'r') as reader:
             config = yaml.load(reader, Loader=SafeLoader)
@@ -89,16 +107,15 @@ if __name__ == '__main__':
         data = parse(directories)
         try:
             sfiles = len(subscribe_links)
-            tfiles = len(subscribe_links) + len(data[current_date])
-            processes=[]
-            filenames = list()
-            filenames = data[current_date]
+            tfiles = len(subscribe_links) + len(data.get(current_date, []))
+            filenames = data.get(current_date, [])
+            processes = []
         except KeyError:
-            print("Success: 找到 " + str(sfiles) + " Clash 链接")
+            print(f"Success: 找到 {sfiles} Clash 链接")
         else:
-            print("Success: 找到 " + str(tfiles) + " Clash 链接")
+            print(f"Success: 找到 {tfiles} Clash 链接")
 
-        processes=[]
+        processes = []
 
         try: # 多线程处理
             for i in subscribe_files:
@@ -120,11 +137,11 @@ if __name__ == '__main__':
             for p in processes:
                 p.join()
             end = time.time() # time end
-            print("收集完成，用时 " + "{:.2f}".format(end-start) + " 秒")
+            print(f"收集完成，用时 {end-start:.2f} 秒")
         except Exception as e:
             end = time.time() # time end
             print(f"收集失败，用时 {end-start:.2f} 秒: {e}")
 
-        proxy_list=list(proxy_list)
+        proxy_list = list(proxy_list)
         proxies = makeclash(proxy_list)
         push(proxies)
