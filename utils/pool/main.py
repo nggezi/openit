@@ -25,13 +25,18 @@ def convert_to_clash_format(content):
     for line in lines:
         if line.startswith("ss://"):
             # 处理 Shadowsocks 节点
+            print("发现SS节点，正在转换为Clash格式")
             data_out.append({'name': 'SS Node', 'type': 'ss', 'server': 'example.com', 'port': 8388, 'cipher': 'aes-128-gcm', 'password': 'password'})
         elif line.startswith("vmess://"):
             # 处理 Vmess 节点
+            print("发现Vmess节点，正在转换为Clash格式")
             data_out.append({'name': 'Vmess Node', 'type': 'vmess', 'server': 'example.com', 'port': 443, 'uuid': 'uuid_here', 'alterId': 64, 'cipher': 'auto'})
         elif line.startswith("vless://"):
             # 处理 Vless 节点
+            print("发现Vless节点，正在转换为Clash格式")
             data_out.append({'name': 'Vless Node', 'type': 'vless', 'server': 'example.com', 'port': 443, 'uuid': 'uuid_here', 'encryption': 'none'})
+        else:
+            print(f"未知格式的节点: {line}")
         # 可以继续添加对其他节点格式的支持
     return data_out
 
@@ -40,14 +45,16 @@ def parse_content(content):
     # 检查是否是Base64编码
     if is_base64(content):
         content = base64.b64decode(content).decode('utf-8')
+        print("Base64解码成功")
 
     # 尝试解析为Clash格式
     try:
         working = yaml.safe_load(content)
         if 'proxies' in working:
+            print("成功解析为Clash格式")
             return working['proxies']
     except yaml.YAMLError:
-        pass
+        print("YAML解析失败，尝试转换为非Clash格式的节点")
 
     # 如果不是Clash格式，则尝试将其转换为Clash格式
     return convert_to_clash_format(content)
@@ -59,6 +66,7 @@ def local(proxy_list, file):
         proxies = parse_content(content)
         if proxies:
             proxy_list.append(proxies)
+            print(f"{file}: 成功添加代理到列表")
         else:
             print(f"{file}: 无法找到有效的代理配置")
     except FileNotFoundError:
@@ -73,6 +81,7 @@ def url(proxy_list, link):
         proxies = parse_content(content)
         if proxies:
             proxy_list.append(proxies)
+            print(f"{link}: 成功添加代理到列表")
         else:
             print(f"{link}: 无法找到有效的代理配置")
     except requests.RequestException as e:
@@ -87,6 +96,7 @@ def fetch(proxy_list, filename):
         proxies = parse_content(content)
         if proxies:
             proxy_list.append(proxies)
+            print(f"{filename}: 成功添加代理到列表")
         else:
             print(f"{filename}: 无法找到有效的代理配置")
     except requests.RequestException as e:
