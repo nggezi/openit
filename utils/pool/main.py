@@ -30,31 +30,34 @@ def parse_content(content):
         print("不是有效的YAML格式，跳过解析")
     return []
 
-def process_content(proxy_list, content):
+def process_content(proxy_list, content, source_name):
     """处理节点内容：如果是Base64编码，则解码后解析；否则直接解析"""
     if is_base64(content):
         try:
             # Base64解码
             decoded_content = base64.b64decode(content).decode('utf-8')
-            print("Base64解码成功")
+            print(f"{source_name}: Base64解码成功")
             proxies = parse_content(decoded_content)
         except Exception as e:
-            print(f"Base64解码失败: {e}")
+            print(f"{source_name}: Base64解码失败 - {e}")
             proxies = parse_content(content)  # 尝试直接解析原始内容
     else:
         # 直接解析原始内容
         proxies = parse_content(content)
 
+    # 如果有代理，添加到列表并返回数量
     if proxies:
         proxy_list.append(proxies)
+        print(f"{source_name}: 成功添加 {len(proxies)} 个代理到列表")
+    else:
+        print(f"{source_name}: 未找到有效的代理")
 
 def local(proxy_list, file):
     """读取本地文件并添加代理到列表"""
     try:
         with open(file, 'r') as reader:
             content = reader.read()
-        process_content(proxy_list, content)
-        print(f"{file}: 成功添加代理到列表")
+        process_content(proxy_list, content, file)
     except FileNotFoundError:
         print(f"{file}: 无法找到文件")
 
@@ -63,8 +66,7 @@ def url(proxy_list, link):
     try:
         response = requests.get(url=link, timeout=240, headers=headers)
         content = response.text
-        process_content(proxy_list, content)
-        print(f"{link}: 成功添加代理到列表")
+        process_content(proxy_list, content, link)
     except Exception as e:
         print(f"{link}: 处理失败 - {e}")
 
@@ -75,8 +77,7 @@ def fetch(proxy_list, filename):
     try:
         response = requests.get(url=baseurl + current_date + '/' + filename, timeout=240)
         content = response.text
-        process_content(proxy_list, content)
-        print(f"{filename}: 成功添加代理到列表")
+        process_content(proxy_list, content, filename)
     except Exception as e:
         print(f"{filename}: 处理失败 - {e}")
 
