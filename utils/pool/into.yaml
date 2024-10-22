@@ -1,19 +1,19 @@
 proxies:
-  - {name: RU 1 → anjue, server: 147.45.60.33, port: 16356, type: ss, cipher: chacha20-ietf-poly1305, password: 6IE8yeCZU2sjTN13OHHd4c, udp: true}
+  - {name: IE 1 → anjue, server: 13.74.65.144, port: 32935, type: ss, cipher: chacha20-ietf-poly1305, password: FX77Cp2CHKq8JKTHux2xUi, udp: true}
 proxy-groups:
   - name: 🌐 Proxy
     type: select
     proxies:
       - 💡 Auto
       - DIRECT
-      - RU 1 → anjue
+      - IE 1 → anjue
   - name: 💡 Auto
     type: url-test
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - RU 1 → anjue
+      - IE 1 → anjue
 cfw-bypass:
   - localhost
   - 127.*
