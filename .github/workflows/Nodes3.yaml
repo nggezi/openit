@@ -42,10 +42,11 @@ jobs:
          pip install -r ./utils/pool/requirements.txt
          pip install -r ./utils/clashcheck/requirements.txt
     - name: pool #input ./utils/pool/config.yaml
-      run: cd ./utils/pool/ && python main.py #output ./utils/pool/output.yaml
-           base64 ./utils/pool/url3 > ./utils/subconverter/url3 -w 0 
-           ./utils/subconverter/subconverter -g --artifact "url3" && rm utils/subconverter/url3
-
+      run: |
+         cd ./utils/pool/ && python main.py #output ./utils/pool/output.yaml
+         base64 ./utils/pool/url3 > ./utils/subconverter/url3 -w 0 
+         ./utils/subconverter/subconverter -g --artifact "url3" && rm utils/subconverter/url3
+         cd ./utils/pool/ && python main.py #output ./utils/pool/output.yaml
     - name: copy pool to clashcheck #input ./utils/pool/output.yaml
       run: cp ./utils/pool/output.yaml ./utils/clashcheck/data/input.yaml #output ./utils/clashcheck/data/input.yaml
     - name: clashcheck #because ./utils/clashcheck/config/config.yaml so input ./utils/clashcheck/data/input.yaml
