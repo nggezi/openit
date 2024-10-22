@@ -36,10 +36,10 @@ def process_content(proxy_list, content, source_name, stats):
         try:
             # Base64解码
             decoded_content = base64.b64decode(content).decode('utf-8')
-            print(f"{source_name}: Base64解码成功")
+            print(f"{source_name}：Base64解码成功")
             proxies = parse_content(decoded_content)
         except Exception as e:
-            print(f"{source_name}: Base64解码失败 - {e}")
+            print(f"{source_name}：Base64解码失败 - {e}")
             proxies = parse_content(content)  # 尝试直接解析原始内容
     else:
         # 直接解析原始内容
@@ -49,11 +49,13 @@ def process_content(proxy_list, content, source_name, stats):
     if proxies:
         proxy_list.append(proxies)
         count = len(proxies)
-        print(f"{source_name}: 成功添加 {count} 个代理到列表")
+        print(f"{source_name}：成功添加 {count} 个代理到列表")
         stats[source_name] = count
     else:
-        print(f"{source_name}: 未找到有效的代理")
-        stats[source_name] = 0
+        # 将非YAML格式的节点内容直接添加
+        proxy_list.append([content.strip()])
+        print(f"{source_name}：未找到有效的YAML代理，内容已添加为原始节点")
+        stats[source_name] = 1
 
 def local(proxy_list, file, stats):
     """读取本地文件并添加代理到列表"""
@@ -62,7 +64,7 @@ def local(proxy_list, file, stats):
             content = reader.read()
         process_content(proxy_list, content, file, stats)
     except FileNotFoundError:
-        print(f"{file}: 无法找到文件")
+        print(f"{file}：无法找到文件")
 
 def url(proxy_list, link, stats):
     """从URL读取内容并添加代理到列表"""
@@ -71,7 +73,7 @@ def url(proxy_list, link, stats):
         content = response.text
         process_content(proxy_list, content, link, stats)
     except Exception as e:
-        print(f"{link}: 处理失败 - {e}")
+        print(f"{link}：处理失败 - {e}")
 
 def fetch(proxy_list, filename, stats):
     """从GitHub源获取代理"""
@@ -82,7 +84,7 @@ def fetch(proxy_list, filename, stats):
         content = response.text
         process_content(proxy_list, content, filename, stats)
     except Exception as e:
-        print(f"{filename}: 处理失败 - {e}")
+        print(f"{filename}：处理失败 - {e}")
 
 if __name__ == '__main__':
     with Manager() as manager:
