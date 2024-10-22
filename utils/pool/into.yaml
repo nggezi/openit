@@ -1,19 +1,19 @@
 proxies:
-  - {name: RU 1 → anjue, server: 147.45.60.33, port: 16356, type: ss, cipher: chacha20-ietf-poly1305, password: 6IE8yeCZU2sjTN13OHHd4c, udp: true}
+  - {name: US 1 → anjue, server: gloal.anjue39.repl.co, port: 443, type: vmess, uuid: f2a1a5ab-4f2e-4840-a469-832d68c942e6, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /f2a1a5ab-4f2e-4840-a469-832d68c942e6-vm, headers: {Host: gloal.anjue39.repl.co}}, udp: true}
 proxy-groups:
   - name: 🌐 Proxy
     type: select
     proxies:
       - 💡 Auto
       - DIRECT
-      - RU 1 → anjue
+      - US 1 → anjue
   - name: 💡 Auto
     type: url-test
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - RU 1 → anjue
+      - US 1 → anjue
 cfw-bypass:
   - localhost
   - 127.*
