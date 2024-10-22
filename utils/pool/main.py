@@ -30,6 +30,16 @@ def parse_content(content):
         print("不是有效的YAML格式，跳过解析")
     return []
 
+def convert_to_yaml(content):
+    """将非YAML格式的内容转为YAML格式"""
+    proxies = []
+    lines = content.strip().splitlines()
+    for line in lines:
+        # 根据URL前缀判断节点类型并添加到代理列表
+        if line.startswith("ss://") or line.startswith("vmess://") or line.startswith("trojan://") or line.startswith("hy2://"):
+            proxies.append({'name': line[:10] + '...', 'type': 'custom', 'content': line})
+    return {'proxies': proxies}
+
 def process_content(proxy_list, content, source_name, stats):
     """处理节点内容：如果是Base64编码，则解码后解析；否则直接解析"""
     if is_base64(content):
@@ -42,8 +52,12 @@ def process_content(proxy_list, content, source_name, stats):
             print(f"{source_name}：Base64解码失败 - {e}")
             proxies = parse_content(content)  # 尝试直接解析原始内容
     else:
-        # 直接解析原始内容
+        # 尝试直接解析原始内容为YAML
         proxies = parse_content(content)
+        if not proxies:
+            # 转换为YAML格式并解析
+            yaml_content = convert_to_yaml(content)
+            proxies = yaml_content.get('proxies', [])
 
     # 如果有代理，添加到列表并更新统计
     if proxies:
@@ -52,10 +66,8 @@ def process_content(proxy_list, content, source_name, stats):
         print(f"{source_name}：成功添加 {count} 个代理到列表")
         stats[source_name] = count
     else:
-        # 将非YAML格式的节点内容直接添加
-        proxy_list.append([content.strip()])
-        print(f"{source_name}：未找到有效的YAML代理，内容已添加为原始节点")
-        stats[source_name] = 1
+        print(f"{source_name}：未找到有效的代理")
+        stats[source_name] = 0
 
 def local(proxy_list, file, stats):
     """读取本地文件并添加代理到列表"""
