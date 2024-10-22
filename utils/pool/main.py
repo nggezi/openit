@@ -40,7 +40,7 @@ def convert_to_yaml(content):
 
 def write_to_url_file(non_clash_nodes):
     """将非Clash格式的节点写入到 ./url 文件中"""
-    with open('./url', 'w') as f:
+    with open('./url3', 'w') as f:
         for node in non_clash_nodes:
             f.write(node + '\n')
     print(f"非Clash格式的节点已汇总到 ./url 文件中")
