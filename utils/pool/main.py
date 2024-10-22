@@ -1,4 +1,3 @@
-import os
 import time
 import yaml
 import requests
@@ -6,10 +5,19 @@ import base64
 from crawl import get_file_list, get_proxies  # 自定义模块
 from parse import parse, makeclash            # 自定义模块
 from clash import push                        # 自定义模块
-from multiprocessing import Manager
+from multiprocessing import Process, Manager
 from yaml.loader import SafeLoader
 
 headers = {'Accept': '*/*', 'Accept-Encoding': 'gzip', 'Connection': 'Keep-Alive', 'User-Agent': 'Clash'}
+
+def is_base64(content):
+    """检查内容是否是Base64编码"""
+    try:
+        if base64.b64encode(base64.b64decode(content)).decode() == content:
+            return True
+    except Exception:
+        pass
+    return False
 
 def parse_content(content):
     """解析YAML格式的内容，并返回代理列表"""
@@ -21,38 +29,6 @@ def parse_content(content):
         print("不是有效的YAML格式，跳过解析")
     return []
 
-def write_to_url_file(non_clash_nodes):
-    """将非Clash格式的节点写入到 ./url3 文件中，并统计数量"""
-    with open('./url3', 'w') as f:
-        for node in non_clash_nodes:
-            f.write(node + '\n')
-    count = len(non_clash_nodes)
-    print(f"非Clash格式的节点已汇总到 ./url3 文件中，共 {count} 个")
-    return count
-
-def process_url3_yaml(proxy_list):
-    """处理 ./url3.yaml 文件"""
-    try:
-        with open('./url3.yaml', 'r') as reader:
-            content = reader.read()
-        proxies = parse_content(content)
-        if proxies:
-            proxy_list.extend(proxies)  # 将有效的代理添加到 proxy_list
-            print(f"成功添加 {len(proxies)} 个代理到列表")
-        else:
-            print("未找到有效的代理")
-    except FileNotFoundError:
-        print("./url3.yaml ：无法找到文件")
-
-def is_base64(content):
-    """检查内容是否是Base64编码"""
-    try:
-        if base64.b64encode(base64.b64decode(content)).decode() == content:
-            return True
-    except Exception:
-        pass
-    return False
-
 def convert_to_yaml(content):
     """将非YAML格式的内容转为YAML格式"""
     proxies = []
@@ -61,6 +37,13 @@ def convert_to_yaml(content):
         if line.startswith("ss://") or line.startswith("vmess://") or line.startswith("trojan://") or line.startswith("hy2://"):
             proxies.append({'name': line[:10] + '...', 'type': 'custom', 'content': line})
     return {'proxies': proxies}
+
+def write_to_url_file(non_clash_nodes):
+    """将非Clash格式的节点写入到 ./url 文件中"""
+    with open('./url3', 'w') as f:
+        for node in non_clash_nodes:
+            f.write(node + '\n')
+    print(f"非Clash格式的节点已汇总到 ./url 文件中")
 
 def process_content(proxy_list, non_clash_nodes, content, source_name, stats):
     """处理节点内容：如果是Base64编码，则解码后解析；否则直接解析"""
@@ -79,7 +62,7 @@ def process_content(proxy_list, non_clash_nodes, content, source_name, stats):
             proxies = yaml_content.get('proxies', [])
 
     if proxies:
-        proxy_list.extend(proxies)
+        proxy_list.append(proxies)
         count = len(proxies)
         print(f"{source_name} ：成功添加 {count} 个代理到列表")
         stats[source_name] = count
@@ -119,73 +102,61 @@ def fetch(proxy_list, non_clash_nodes, filename, stats):
 
 if __name__ == '__main__':
     with Manager() as manager:
-        proxy_list = manager.list()  # 用于存储有效的代理
+        proxy_list = manager.list()
         non_clash_nodes = manager.list()  # 用于存储非Clash格式的节点
         stats = manager.dict()  # 用于存储每种节点源的代理数量统计
+        current_date = time.strftime("%Y_%m_%d", time.localtime())
         start = time.time()
+        config = 'config.yaml'
+        
+        with open(config, 'r') as reader:
+            config = yaml.load(reader, Loader=SafeLoader)
+            subscribe_links = config['sub']
+            subscribe_files = config['local']
 
-        # 检查 ./url3.yaml 是否存在，如果存在则只处理该文件
-        if os.path.exists('./url3.yaml'):
-            print("发现 ./url3.yaml，正在处理该文件...")
-            process_url3_yaml(proxy_list)
+        directories, total = get_file_list()
+        data = parse(directories)
+        sfiles = len(subscribe_links)
+        try:
+            tfiles = sfiles + len(data[current_date])
+            filenames = data[current_date]
+        except KeyError:
+            tfiles = sfiles
+            filenames = []
 
-            # 处理完后将非Clash节点写入到 ./url3 文件
+        print(f"Success: 找到 {tfiles} Clash 链接")
+
+        processes = []
+
+        try:
+            for i in subscribe_files:
+                p = Process(target=local, args=(proxy_list, non_clash_nodes, i, stats))
+                p.start()
+                processes.append(p)
+            for i in subscribe_links:
+                p = Process(target=url, args=(proxy_list, non_clash_nodes, i, stats))
+                p.start()
+                processes.append(p)
+            for i in filenames:
+                p = Process(target=fetch, args=(proxy_list, non_clash_nodes, i, stats))
+                p.start()
+                processes.append(p)
+
+            for p in processes:
+                p.join()
+
+            end = time.time()
+            print(f"收集完成，用时 {end - start:.2f} 秒")
+
+            for source, count in stats.items():
+                print(f"{source} ：共收集到 {count} 个代理")
+
+            proxy_list = list(proxy_list)
+            proxies = makeclash(proxy_list)
+            push(proxies)
+
+            # 将非Clash节点写入 ./url 文件
             write_to_url_file(non_clash_nodes)
-            print("程序结束，不执行其他操作。")
-        else:
-            print("未发现 ./url3.yaml，执行原程序逻辑...")
-
-            current_date = time.strftime("%Y_%m_%d", time.localtime())
-            config = 'config.yaml'
-
-            with open(config, 'r') as reader:
-                config = yaml.load(reader, Loader=SafeLoader)
-                subscribe_links = config['sub']
-                subscribe_files = config['local']
-
-            directories, total = get_file_list()
-            data = parse(directories)
-            sfiles = len(subscribe_links)
-            try:
-                tfiles = sfiles + len(data[current_date])
-                filenames = data[current_date]
-            except KeyError:
-                tfiles = sfiles
-                filenames = []
-
-            print(f"Success: 找到 {tfiles} Clash 链接")
-
-            processes = []
-
-            try:
-                for i in subscribe_files:
-                    p = Process(target=local, args=(proxy_list, non_clash_nodes, i, stats))
-                    p.start()
-                    processes.append(p)
-                for i in subscribe_links:
-                    p = Process(target=url, args=(proxy_list, non_clash_nodes, i, stats))
-                    p.start()
-                    processes.append(p)
-                for i in filenames:
-                    p = Process(target=fetch, args=(proxy_list, non_clash_nodes, i, stats))
-                    p.start()
-                    processes.append(p)
-
-                for p in processes:
-                    p.join()
-
-                end = time.time()
-                print(f"收集完成，用时 {end - start:.2f} 秒")
-
-                for source, count in stats.items():
-                    print(f"{source} ：共收集到 {count} 个代理")
-
-                proxy_list = list(proxy_list)
-                proxies = makeclash(proxy_list)
-                push(proxies)
-
-                # 将非Clash节点写入 ./url 文件
-                write_to_url_file(non_clash_nodes)
-            except Exception as e:
-                end = time.time()
-                print(f"收集过程出现异常，用时 {end - start:.2f} 秒 - 错误: {e}")
+        except Exception as e:
+            end = time.time()
+            print(f"收集过程出现异常，用时 {end - start:.2f} 秒 - 错误: {e}")
