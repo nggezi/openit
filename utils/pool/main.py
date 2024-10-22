@@ -23,13 +23,23 @@ def local(proxy_list, file):
 
 def url(proxy_list, link):
     try:
-        working = yaml.safe_load(requests.get(url=link, timeout=240, headers=headers).text)
+        response = requests.get(url=link, timeout=240, headers=headers)
+        working_text = response.text
+        
+        # 判断是否为 Base64 格式
+        if is_base64_encoded(working_text):
+            working = yaml.safe_load(base64.b64decode(working_text))
+        else:
+            # 转换为 Base64 格式
+            working_text = base64.b64encode(working_text.encode()).decode()
+            working = yaml.safe_load(base64.b64decode(working_text))
+
         data_out = []
         for x in working['proxies']:
             data_out.append(x)
         proxy_list.append(data_out)
-    except:
-        print("Error in Collecting " + link)
+    except Exception as e:
+        print("Error in Collecting " + link + " - " + str(e))
 
 def fetch(proxy_list, filename):
     current_date = time.strftime("%Y_%m_%d", time.localtime())
@@ -103,21 +113,6 @@ if __name__ == '__main__':
                 processes.append(p)
             for p in processes:
                 p.join()
-
-            # 处理非Clash节点
-            new_proxy_list = []
-            for node in proxy_list:
-                if node and not isinstance(node[0], dict):  # 如果不是字典，认为是非Clash节点
-                    # 先判断是否为 Base64 编码
-                    if is_base64_encoded(node[0]):
-                        new_proxy_list.append(yaml.safe_load(node[0]))  # 直接追加到 Clash 节点
-                    else:
-                        converted_nodes = convert_non_clash(node[0])
-                        new_proxy_list.append(yaml.safe_load(converted_nodes))  # 将转换后的节点加载到proxy_list
-                else:
-                    new_proxy_list.append(node)  # 如果是字典则直接添加
-
-            proxy_list = new_proxy_list  # 更新代理列表
 
             end = time.time()  # time end
             print("Collecting in " + "{:.2f}".format(end-start) + " seconds")
