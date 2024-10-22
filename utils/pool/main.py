@@ -29,24 +29,15 @@ def parse_content(content):
         print("不是有效的YAML格式，跳过解析")
     return []
 
-def convert_to_yaml(content):
-    """将非YAML格式的内容转为YAML格式"""
-    proxies = []
-    lines = content.strip().splitlines()
-    for line in lines:
-        if line.startswith("ss://") or line.startswith("vmess://") or line.startswith("trojan://") or line.startswith("hy2://"):
-            proxies.append({'name': line[:10] + '...', 'type': 'custom', 'content': line})
-    return {'proxies': proxies}
-
 def write_to_url_file(non_clash_nodes):
-    """将非Clash格式的节点写入到 ./url 文件中"""
+    """将非Clash格式的节点写入到 ./url3 文件中"""
     with open('./url3', 'w') as f:
         for node in non_clash_nodes:
             f.write(node + '\n')
-    print(f"非Clash格式的节点已汇总到 ./url 文件中")
+    print(f"非Clash格式的节点已汇总到 ./url3 文件中")
 
 def process_content(proxy_list, non_clash_nodes, content, source_name, stats):
-    """处理节点内容：如果是Base64编码，则解码后解析；否则直接解析"""
+    """处理节点内容：如果是Base64编码，则解码后解析；否则直接逐行追加到非Clash列表"""
     if is_base64(content):
         try:
             decoded_content = base64.b64decode(content).decode('utf-8')
@@ -54,21 +45,20 @@ def process_content(proxy_list, non_clash_nodes, content, source_name, stats):
             proxies = parse_content(decoded_content)
         except Exception as e:
             print(f"{source_name} ：Base64解码失败 - {e}")
-            proxies = parse_content(content)
+            proxies = []
     else:
         proxies = parse_content(content)
-        if not proxies:
-            yaml_content = convert_to_yaml(content)
-            proxies = yaml_content.get('proxies', [])
 
+    # 如果解码成功且是Clash格式
     if proxies:
         proxy_list.append(proxies)
         count = len(proxies)
         print(f"{source_name} ：成功添加 {count} 个代理到列表")
         stats[source_name] = count
     else:
+        # 如果解析失败，逐行添加到非Clash节点列表
         non_clash_nodes.append(content.strip())
-        print(f"{source_name} ：未找到有效的代理")
+        print(f"{source_name} ：未找到有效的Clash格式，添加到非Clash列表")
         stats[source_name] = 0
 
 def local(proxy_list, non_clash_nodes, file, stats):
@@ -155,7 +145,7 @@ if __name__ == '__main__':
             proxies = makeclash(proxy_list)
             push(proxies)
 
-            # 将非Clash节点写入 ./url 文件
+            # 将非Clash节点写入 ./url3 文件
             write_to_url_file(non_clash_nodes)
         except Exception as e:
             end = time.time()
