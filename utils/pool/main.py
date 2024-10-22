@@ -30,7 +30,7 @@ def parse_content(content):
         print("不是有效的YAML格式，跳过解析")
     return []
 
-def process_content(proxy_list, content, source_name):
+def process_content(proxy_list, content, source_name, stats):
     """处理节点内容：如果是Base64编码，则解码后解析；否则直接解析"""
     if is_base64(content):
         try:
@@ -45,45 +45,49 @@ def process_content(proxy_list, content, source_name):
         # 直接解析原始内容
         proxies = parse_content(content)
 
-    # 如果有代理，添加到列表并返回数量
+    # 如果有代理，添加到列表并更新统计
     if proxies:
         proxy_list.append(proxies)
-        print(f"{source_name}: 成功添加 {len(proxies)} 个代理到列表")
+        count = len(proxies)
+        print(f"{source_name}: 成功添加 {count} 个代理到列表")
+        stats[source_name] = count
     else:
         print(f"{source_name}: 未找到有效的代理")
+        stats[source_name] = 0
 
-def local(proxy_list, file):
+def local(proxy_list, file, stats):
     """读取本地文件并添加代理到列表"""
     try:
         with open(file, 'r') as reader:
             content = reader.read()
-        process_content(proxy_list, content, file)
+        process_content(proxy_list, content, file, stats)
     except FileNotFoundError:
         print(f"{file}: 无法找到文件")
 
-def url(proxy_list, link):
+def url(proxy_list, link, stats):
     """从URL读取内容并添加代理到列表"""
     try:
         response = requests.get(url=link, timeout=240, headers=headers)
         content = response.text
-        process_content(proxy_list, content, link)
+        process_content(proxy_list, content, link, stats)
     except Exception as e:
         print(f"{link}: 处理失败 - {e}")
 
-def fetch(proxy_list, filename):
+def fetch(proxy_list, filename, stats):
     """从GitHub源获取代理"""
     current_date = time.strftime("%Y_%m_%d", time.localtime())
     baseurl = 'https://raw.githubusercontent.com/changfengoss/pub/main/data/'
     try:
         response = requests.get(url=baseurl + current_date + '/' + filename, timeout=240)
         content = response.text
-        process_content(proxy_list, content, filename)
+        process_content(proxy_list, content, filename, stats)
     except Exception as e:
         print(f"{filename}: 处理失败 - {e}")
 
 if __name__ == '__main__':
     with Manager() as manager:
         proxy_list = manager.list()
+        stats = manager.dict()  # 用于存储每种节点源的代理数量统计
         current_date = time.strftime("%Y_%m_%d", time.localtime())
         start = time.time()  # 记录开始时间
         config = 'config.yaml'
@@ -110,17 +114,17 @@ if __name__ == '__main__':
         try:
             # 处理本地文件
             for i in subscribe_files:
-                p = Process(target=local, args=(proxy_list, i))
+                p = Process(target=local, args=(proxy_list, i, stats))
                 p.start()
                 processes.append(p)
             # 处理URL订阅
             for i in subscribe_links:
-                p = Process(target=url, args=(proxy_list, i))
+                p = Process(target=url, args=(proxy_list, i, stats))
                 p.start()
                 processes.append(p)
             # 处理远程文件
             for i in filenames:
-                p = Process(target=fetch, args=(proxy_list, i))
+                p = Process(target=fetch, args=(proxy_list, i, stats))
                 p.start()
                 processes.append(p)
 
@@ -130,6 +134,10 @@ if __name__ == '__main__':
 
             end = time.time()  # 记录结束时间
             print(f"收集完成，用时 {end - start:.2f} 秒")
+
+            # 输出每个节点源的代理数量统计
+            for source, count in stats.items():
+                print(f"{source}：共收集到 {count} 个代理")
 
             proxy_list = list(proxy_list)
             proxies = makeclash(proxy_list)
