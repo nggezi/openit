@@ -1,8 +1,7 @@
 import time
 import yaml
 import requests
-import os
-import subprocess
+import base64
 from crawl import get_file_list, get_proxies
 from parse import parse, makeclash
 from clash import push
@@ -41,33 +40,23 @@ def fetch(proxy_list, filename):
         data_out.append(x)
     proxy_list.append(data_out)
 
-def convert_to_clash_proxy(temp_file):
+def convert_non_clash(node):
+    """调用subconverter模块处理非Clash节点"""
+    with open('./utils/subconverter/input.txt', 'w') as f:
+        f.write(node)
+    
+    os.system('base64 ./utils/subconverter/input.txt > ./utils/subconverter/b64 -w 0')
+    os.system('./utils/subconverter/subconverter -g --artifact "push"')
+    with open('./utils/subconverter/output.txt', 'r') as f:
+        converted_nodes = f.read()
+    
+    return converted_nodes
+
+def is_base64_encoded(s):
     try:
-        # Base64 encode the temporary file
-        base64_file = f'./utils/subconverter/push2'
-        subprocess.run(['base64', temp_file, '-w', '0'], stdout=open(base64_file, 'wb'))
-
-        # Call the subconverter to convert to Clash format
-        subprocess.run(['./utils/subconverter/subconverter', '-g', '--artifact', 'push'])
-
-        # Read the converted output
-        output_file = './utils/subconverter/output.yaml'
-        with open(output_file, 'r') as reader:
-            clash_proxies = yaml.safe_load(reader)
-
-        # Append converted proxies to the proxy list
-        return clash_proxies['proxies']
-
-    except Exception as e:
-        print(f"Error converting proxies from {temp_file}: {e}")
-        return []
-
-def remove_temp_file(temp_file):
-    try:
-        os.remove(temp_file)
-        print(f"Removed temporary file: {temp_file}")
-    except Exception as e:
-        print(f"Error removing file {temp_file}: {e}")
+        return base64.b64encode(base64.b64decode(s)).decode() == s
+    except Exception:
+        return False
 
 proxy_list = []
 if __name__ == '__main__':
@@ -115,19 +104,26 @@ if __name__ == '__main__':
             for p in processes:
                 p.join()
 
-            # Convert non-Clash nodes
-            temp_files = ['./path/to/your/non_clash_file.yaml']  # Replace with your list of temp files
-            for temp_file in temp_files:
-                clash_proxies = convert_to_clash_proxy(temp_file)
-                if clash_proxies:
-                    proxy_list.append(clash_proxies)
-                remove_temp_file(temp_file)
+            # 处理非Clash节点
+            new_proxy_list = []
+            for node in proxy_list:
+                if node and not isinstance(node[0], dict):  # 如果不是字典，认为是非Clash节点
+                    # 先判断是否为 Base64 编码
+                    if is_base64_encoded(node[0]):
+                        new_proxy_list.append(yaml.safe_load(node[0]))  # 直接追加到 Clash 节点
+                    else:
+                        converted_nodes = convert_non_clash(node[0])
+                        new_proxy_list.append(yaml.safe_load(converted_nodes))  # 将转换后的节点加载到proxy_list
+                else:
+                    new_proxy_list.append(node)  # 如果是字典则直接添加
+
+            proxy_list = new_proxy_list  # 更新代理列表
 
             end = time.time()  # time end
-            print("Collecting in " + "{:.2f}".format(end - start) + " seconds")
+            print("Collecting in " + "{:.2f}".format(end-start) + " seconds")
         except:
             end = time.time()  # time end
-            print("Collecting in " + "{:.2f}".format(end - start) + " seconds")
+            print("Collecting in " + "{:.2f}".format(end-start) + " seconds")
 
         proxy_list = list(proxy_list)
         proxies = makeclash(proxy_list)
