@@ -21,10 +21,13 @@ let urlCountryList = { UN: [] };
 async function deepDetectCountry(address) {
     let country = await location.get(address);
     if (!country || country === 'unknown') {
-        // 尝试使用其他数据源或深度检测
-        country = await location.alternativeDetect(address);
-        if (!country || country === 'unknown') {
-            // 还未识别，使用默认值
+        // 如果 location.get 无法识别国家，则尝试使用备用逻辑
+        if (address.match(/^\d+\.\d+\.\d+\.\d+$/)) {
+            // 简单的 IP 地址检测逻辑，可以扩展为调用外部 IP 数据库服务
+            // 例如，通过判断 IP 的区域划分来推测国家
+            country = 'UN'; // 未识别的情况下使用 'UN' 作为默认值
+        } else {
+            // 其它情况仍使用默认值
             country = 'UN';
         }
     }
@@ -54,8 +57,23 @@ async function run() {
                 let trojanAddress = trojanData.split('@')[1].split('?')[0].split(':')[0];
                 resList.push({ type: 'trojan', data: trojanData, address: trojanAddress });
                 break;
-            // 其他协议解析同理
+            case 'ss':
+                let ssData = url.split('://')[1].split('#')[0];
+                let ssAddress = ssData.split('@')[1].split('#')[0].split(':')[0];
+                resList.push({ type: 'ss', data: ssData, address: ssAddress });
+                break;
+            case 'ssr':
+                let ssrData = Buffer.from(url.split('://')[1], 'base64').toString('utf-8');
+                let ssrAddress = ssrData.split(':')[0];
+                resList.push({ type: 'ssr', data: ssrData.replace(/remarks=.*?(?=&)/, "remarks={name}&"), address: ssrAddress });
+                break;
+            case 'https':
+                let httpsData = url.split('://')[1].split('#')[0];
+                let httpsAddress = Buffer.from(httpsData.split('?')[0], "base64").toString('utf8').split('@')[1].split(':')[0];
+                resList.push({ type: 'https', data: httpsData, address: httpsAddress });
+                break;
             default:
+                console.log('未知协议类型: ' + url.split('://')[0]);
                 break;
         }
     }
@@ -85,10 +103,37 @@ async function run() {
                     item.data.ps = name;
                     urlCountryList[finalList[i].country].push('vmess://' + Buffer.from(JSON.stringify(item.data), 'utf8').toString('base64'));
                 } catch (e) {
-                    console.log('vmess节点错误');
+                    console.log('生成链接错误: ' + e.message + ', 类型: vmess');
                 }
                 break;
-            // 其他协议处理同理
+            case 'trojan':
+                try {
+                    urlCountryList[finalList[i].country].push('trojan://' + item.data + '#' + encodeURIComponent(name));
+                } catch (e) {
+                    console.log('生成链接错误: ' + e.message + ', 类型: trojan');
+                }
+                break;
+            case 'ss':
+                try {
+                    urlCountryList[finalList[i].country].push('ss://' + item.data + '#' + encodeURIComponent(name));
+                } catch (e) {
+                    console.log('生成链接错误: ' + e.message + ', 类型: ss');
+                }
+                break;
+            case 'ssr':
+                try {
+                    urlCountryList[finalList[i].country].push('ssr://' + Buffer.from(item.data.replace('{name}', Buffer.from(name, 'utf8').toString('base64')), 'utf8').toString('base64'));
+                } catch (e) {
+                    console.log('生成链接错误: ' + e.message + ', 类型: ssr');
+                }
+                break;
+            case 'https':
+                try {
+                    urlCountryList[finalList[i].country].push('https://' + item.data + '#' + encodeURIComponent(name));
+                } catch (e) {
+                    console.log('生成链接错误: ' + e.message + ', 类型: https');
+                }
+                break;
             default:
                 break;
         }
