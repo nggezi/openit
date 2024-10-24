@@ -130,7 +130,17 @@ def filter(config):
                     country = str(countrify.get(ip)['country']['iso_code'])
                 except:
                     country = 'UN'
-                if x['type'] == 'ss':
+                           
+                # 1. 合并 grpc 和 h2 类型处理逻辑 (添加)
+                if x['type'] in ['grpc', 'h2']:
+                    try:
+                        x['tls'] = True  # 强制启用 TLS 以避免错误
+                        x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + x['type'].upper()
+                        authentication = 'password'
+                    except:
+                        continue
+                          
+                elif x['type'] == 'ss':
                     try:
                         if x['cipher'] not in ss_supported_ciphers:
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
