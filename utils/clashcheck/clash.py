@@ -157,13 +157,13 @@ def filter(config):
                     country = 'UN'
 
                 # 节点类型校验逻辑
-                if x['type'] in ['grpc', 'h2']:
+                if x['type'] in ['grpc', 'h2', 'ss', 'ssr', 'vmess', 'trojan', 'snell']:
                     # 确保 TLS 开启
                     if 'tls' not in x or not x['tls']:
-                        x['tls'] = True
+                        x['tls'] = True  # 强制开启 TLS
                     x['name'] = f"{str(flag.flag(country))} {country} {count} {x['type'].upper()}"
                     authentication = 'password'
-                
+
                 elif x['type'] == 'ss':
                     try:
                         if x['cipher'] not in ss_supported_ciphers:
