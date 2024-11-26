@@ -161,7 +161,8 @@ def filter(config):
                     # 确保 TLS 开启
                     if 'tls' not in x or not x['tls']:
                         x['tls'] = True  # 强制开启 TLS
-                    x['name'] = f"{str(flag.flag(country))} {country} {count} {x['type'].upper()}"
+                    # x['name'] = f"{str(flag.flag(country))} {country} {count} {x['type'].upper()}"
+                    x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + str(type)
                     authentication = 'password'
 
                 elif x['type'] == 'ss':
@@ -173,7 +174,7 @@ def filter(config):
                         else:
                             iplist[ip] = []
                             iplist[ip].append(x['port'])
-                        x['name'] = f"{str(flag.flag(country))} {country} {count} SSS"
+                        x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSS'
                         authentication = 'password'
                     except:
                         continue
@@ -192,7 +193,7 @@ def filter(config):
                             iplist[ip] = []
                             iplist[ip].append(x['port'])
                         authentication = 'password'
-                        x['name'] = f"{str(flag.flag(country))} {country} {count} SSR"
+                        x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SSR'
                     except:
                         continue
                 
@@ -206,7 +207,7 @@ def filter(config):
                             continue
                         if x['cipher'] not in vmess_supported_ciphers:
                             continue
-                        x['name'] = f"{str(flag.flag(country))} {country} {count} VMS"
+                        x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'VMS'
                         authentication = 'uuid'
                     except:
                         continue
