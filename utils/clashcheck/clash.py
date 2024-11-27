@@ -126,7 +126,14 @@ def filter(config):
                     country = str(countrify.get(ip)['country']['iso_code'])
                 except:
                     country = 'UN'
-                if x['type'] == 'ss':
+                # 增加gprc和h2 tls类型校验，确保开启TLS
+                if x['type'] in ['grpc', 'h2']:
+                    # 确保 TLS 开启
+                    if 'tls' not in x or not x['tls']:
+                        x['tls'] = True  # 强制开启 TLS
+                    x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + str(x['type'].upper())
+                    authentication = 'password'
+                elif x['type'] == 'ss':
                     try:
                         if x['cipher'] not in ss_supported_ciphers:
                             ss_omit_cipher_unsupported = ss_omit_cipher_unsupported + 1
@@ -221,14 +228,6 @@ def filter(config):
                                 continue
                         x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + 'SK5'
                         # authentication = 'userpass'
-                
-                # 增加gprc和h2 tls类型校验，确保开启TLS
-                elif x['type'] in ['grpc', 'h2']:
-                    # 确保 TLS 开启
-                    if 'tls' not in x or not x['tls']:
-                        x['tls'] = True  # 强制开启 TLS
-                    x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + str(x['type'].upper())
-                    authentication = 'password'
                 
                     except:
                         continue
