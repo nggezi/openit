@@ -161,8 +161,7 @@ def filter(config):
                     # 确保 TLS 开启
                     if 'tls' not in x or not x['tls']:
                         x['tls'] = True  # 强制开启 TLS
-                    # x['name'] = f"{str(flag.flag(country))} {country} {count} {x['type'].upper()}"
-                    x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + str(type)
+                    x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + str(x['type'].upper())
                     authentication = 'password'
 
                 elif x['type'] == 'ss':
