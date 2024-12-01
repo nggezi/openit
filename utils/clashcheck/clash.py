@@ -116,8 +116,24 @@ def filter(config):
                 x = list[i]
                 authentication = ''
                 x['port'] = int(x['port'])
-                if x['password'].isdigit():
-                    x['password'] = int(x['password'])
+              
+              # 以下两行是原来的代码，感觉是错误的。如果加上，vmess节点就没了，也不知道什么原因
+              # 以下两行的作用是检查该字符串是否只包含数字字符。如果是，则将该字符串转换为整数，并将新的整数值存储回"x"字典中的"password"键
+                # if x['password'].isdigit():
+                   # x['password'] = int(x['password'])
+              # 重新修改代码如下一行代码，密码字段统一为字符串类型
+                # x['password'] = str(x['password'])
+                # 统一 password 字段为字符串类型
+                if 'password' in x:
+                    try:
+                        # 强制将 password 转为字符串类型
+                        x['password'] = str(x['password'])
+                    except Exception as e:
+                        print(f"Error processing password for node {x['name']}: {e}")
+                        x['password'] = ''  # 如果处理失败，设置为空字符串或跳过该节点
+                else:
+                    x['password'] = ''  # 如果字段缺失，设置默认值
+                    
                 try:
                     ip = str(socket.gethostbyname(x["server"]))
                 except:
@@ -126,6 +142,7 @@ def filter(config):
                     country = str(countrify.get(ip)['country']['iso_code'])
                 except:
                     country = 'UN'
+                
                 # 增加gprc和h2 tls类型校验，确保开启TLS
                 if x['type'] in ['grpc', 'h2']:
                     # 确保 TLS 开启
@@ -133,6 +150,7 @@ def filter(config):
                         x['tls'] = True  # 强制开启 TLS
                     x['name'] = str(flag.flag(country)) + ' ' + str(country) + ' ' + str(count) + ' ' + str(x['type'].upper())
                     authentication = 'password'
+                    
                 elif x['type'] == 'ss':
                     try:
                         if x['cipher'] not in ss_supported_ciphers:
